@@ -4,82 +4,95 @@ namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use App\UserInfo;
 
 class UserInfoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // TODO ?
+    // Possibilità di togliere questa funzione ed utilizzare direttamente la homepage privata
+    // per mostrare tutte le info del ristorante subito nella dashboard
     public function index()
     {
-        //
+        $current_user = Auth::user();
+
+        $data = [
+            'user' => $current_user,
+            'user_info' => $current_user->userInfo
+        ];
+
+        return view('restaurant.info.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('restaurant.info.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'restaurant_name' => 'required|min:5',
+            'address' => 'required|min:5|max:30',
+            'VAT' => 'required|min:11|max:11',
+        ]);
+
+        $form_data = $request->all();
+
+        $user_info = new UserInfo();
+
+        $user_info->fill($form_data);
+        $user_info->slug = Str::slug($form_data['restaurant_name'], '-');
+        $user_info->user_id = Auth::id();
+        $user_info->save();
+
+        return redirect()->route('restaurant-info.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function edit($slug)
     {
-        //
+        $current_user = Auth::user();
+
+        $data = [
+            'user' => $current_user,
+            'user_info' => $current_user->userInfo
+        ];
+
+        return view('restaurant.info.edit', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function update(Request $request, $slug)
     {
-        //
+        $request->validate([
+            'restaurant_name' => 'required|min:5',
+            'address' => 'required|min:5|max:30',
+            'VAT' => 'required|min:11|max:11',
+        ]);
+
+        $current_user = Auth::user();
+
+        $form_data = $request->all();
+
+        $user_to_edit = $current_user->userInfo;
+
+        if ($form_data['restaurant_name'] != $user_to_edit->slug) {
+            $user_to_edit->slug = Str::slug($form_data['restaurant_name'], '-');
+        }
+
+        $user_to_edit->update($form_data);
+
+        return redirect()->route('restaurant-info.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        
     }
 }

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">Restaurant Home</div>
         
                     <div class="card-body">
                         @if (session('status'))
@@ -13,8 +13,16 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-        
-                        <h1>Restaurant Home</h1>
+
+                        <h2>Welcome {{ $user->name }}!</h2>
+                        <p>
+                            This is your Dashboard, you can visit the other links to take a look at DeliveBoo.
+                        </p>
+
+                        @if (!$user_info)
+                        <h3>First Step</h3>
+                        <a class="btn btn-primary" href="{{ route('restaurant-info.create') }}">Add Restaurant Info</a>
+                        @endif
                     </div>
                 </div>
             </div>

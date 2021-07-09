@@ -20,9 +20,9 @@ class CreateRestaurantInfoTable extends Migration
             $table->string('VAT', 11);
             $table->string('cover', 255)->nullable();
             $table->string('slug', 255)->unique();
-            $table->unsignedBigInteger('restaurant_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('restaurant_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

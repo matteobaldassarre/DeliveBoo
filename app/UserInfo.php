@@ -13,8 +13,6 @@ class UserInfo extends Model
         'address',
         'VAT',
         'cover',
-        'slug',
-        'restaurant_id'
     ];
 
     public function users() {
