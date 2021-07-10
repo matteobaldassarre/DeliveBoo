@@ -10,23 +10,6 @@ use App\UserInfo;
 
 class UserInfoController extends Controller
 {
-
-    // TODO ?
-    // Possibilità di togliere questa funzione ed utilizzare direttamente la homepage privata
-    // per mostrare tutte le info del ristorante subito nella dashboard
-    public function index()
-    {
-        $current_user = Auth::user();
-
-        $data = [
-            'user' => $current_user,
-            'user_info' => $current_user->userInfo
-        ];
-
-        return view('restaurant.info.index', $data);
-    }
-
-
     public function create()
     {
         return view('restaurant.info.create');
@@ -50,7 +33,7 @@ class UserInfoController extends Controller
         $user_info->user_id = Auth::id();
         $user_info->save();
 
-        return redirect()->route('restaurant-info.index');
+        return redirect()->route('restaurant.home');
     }
 
 
@@ -87,7 +70,7 @@ class UserInfoController extends Controller
 
         $user_to_edit->update($form_data);
 
-        return redirect()->route('restaurant-info.index');
+        return redirect()->route('restaurant.home');
     }
 
 

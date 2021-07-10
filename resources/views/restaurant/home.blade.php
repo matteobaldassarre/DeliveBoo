@@ -20,8 +20,22 @@
                         </p>
 
                         @if (!$user_info)
-                        <h3>First Step</h3>
-                        <a class="btn btn-primary" href="{{ route('restaurant-info.create') }}">Add Restaurant Info</a>
+                            <h3>First Step</h3>
+                            <a class="btn btn-primary" href="{{ route('restaurant-info.create') }}">Add Restaurant Info</a>
+                        @else
+                            <ul>
+                                <li>
+                                    {{ $user_info->restaurant_name }}
+                                </li>
+                                <li>
+                                    {{ $user_info->address }}
+                                </li>
+                                <li>
+                                    {{ $user_info->VAT }}
+                                </li>
+                            </ul>
+
+                            <a href="{{ route('restaurant-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
                         @endif
                     </div>
                 </div>
