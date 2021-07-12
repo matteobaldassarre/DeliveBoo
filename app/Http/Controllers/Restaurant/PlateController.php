@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Plate;
 
 class PlateController extends Controller
@@ -17,7 +18,10 @@ class PlateController extends Controller
      */
     public function index()
     {
-        return view('restaurant.plates.menu');
+        $data = [
+            'plates' => Plate::all()
+        ];
+        return view('restaurant.plates.menu', $data);
     }
 
     /**
@@ -38,8 +42,19 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
+       
+
         $form_data = $request->all();
-    
+
+        // Image Upload
+        if (isset($form_data['image'])) {
+            $img_path = Storage::put('plates-img', $form_data['image']);
+
+            if ($img_path) {
+                $form_data['image'] = $img_path;
+            }
+        }
+
         $plate = new Plate();
 
         // Slug Management

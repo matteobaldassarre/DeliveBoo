@@ -20,7 +20,7 @@ class UserInfoController extends Controller
     {
         $request->validate([
             'restaurant_name' => 'required|min:5',
-            'address' => 'required|min:5|max:30',
+            'address' => 'required|min:5|max:50',
             'VAT' => 'required|min:11|max:11',
         ]);
 
@@ -54,7 +54,7 @@ class UserInfoController extends Controller
     {
         $request->validate([
             'restaurant_name' => 'required|min:5',
-            'address' => 'required|min:5|max:30',
+            'address' => 'required|min:5|max:50',
             'VAT' => 'required|min:11|max:11',
         ]);
 

@@ -14,7 +14,8 @@ class Plate extends Model
         'price',
         'slug',
         'visible',
-        'user_id'
+        'user_id',
+        'image'
     ];
 
     public function orders() {
