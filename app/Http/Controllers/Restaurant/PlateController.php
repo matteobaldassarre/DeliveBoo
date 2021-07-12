@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use App\Plate;
 
 class PlateController extends Controller
 {
@@ -35,7 +38,30 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+    
+        $plate = new Plate();
+
+        // Slug Management
+        $new_slug = Str::slug($plate->name, '-');
+        $base_slug = $new_slug;
+        $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
+        $counter = 1;
+
+        while ($existing_plate_with_slug) {
+            $new_slug = $base_slug . '-' . $counter;
+            $counter++;
+            $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
+        }    
+
+        $plate->slug = $new_slug;
+
+        $plate->user_id = Auth::id();
+
+        $plate->fill($form_data);
+        $plate->save();
+
+        return redirect()->route('restaurant.plates.index');
     }
 
     /**
