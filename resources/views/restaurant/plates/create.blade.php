@@ -7,6 +7,7 @@
         @csrf
         @method('POST')
 
+        {{-- Plate Name Field --}}
         <div class="form-group">
             <div class="row col-md-4 col-lg-3">
                 <label for="restaurant_name">Plate Name</label>
@@ -14,6 +15,7 @@
             </div>
         </div>
 
+        {{-- Plate Name Field --}}
         <div class="form-group">
             <div class="row col-md-4 col-lg-3">
                 <label for="address">Ingredients</label>

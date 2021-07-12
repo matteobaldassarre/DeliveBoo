@@ -24,7 +24,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurant.plates.create');
     }
 
     /**

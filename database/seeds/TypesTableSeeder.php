@@ -23,7 +23,8 @@ class TypesTableSeeder extends Seeder
             'Indiano',
             'Hamburger'
         ];
-        foreach($types as $type) {
+
+        foreach ($types as $type) {
             $newType = new Type();
             $newType->type_name = $type;
             $newType->save();
