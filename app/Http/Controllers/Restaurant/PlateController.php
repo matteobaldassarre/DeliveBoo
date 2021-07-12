@@ -21,6 +21,9 @@ class PlateController extends Controller
         $data = [
             'plates' => Plate::all()
         ];
+
+        dd(Plate::all());
+        
         return view('restaurant.plates.menu', $data);
     }
 
@@ -168,7 +171,7 @@ class PlateController extends Controller
             'name' => 'required|min:5|max:80',
             'image' => 'nullable|image|size:3000',
             'ingredients' => 'required|min:5|max:500',
-            'price' => 'required|numeric|lt:99'
+            'price' => 'required|numeric|lt:100'
         ]);
     }
 }

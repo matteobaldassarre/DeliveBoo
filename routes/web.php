@@ -36,3 +36,6 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->middl
     Route::resource('plates', 'PlateController');
 
 });
+
+
+Route::get('/vue-restaurants', 'HomeController@vueRestaurants')->name('vue-restaurants');

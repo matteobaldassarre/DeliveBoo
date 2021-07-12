@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('customer.home');
     }
+
+    public function vueRestaurants()
+    {
+        return view('customer.vue-restaurants');
+    }
 }
