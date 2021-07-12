@@ -38,4 +38,5 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->middl
 });
 
 
+// VueJS Restaurants Rest API
 Route::get('/vue-restaurants', 'HomeController@vueRestaurants')->name('vue-restaurants');

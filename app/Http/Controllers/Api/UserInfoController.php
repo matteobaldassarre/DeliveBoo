@@ -29,7 +29,7 @@ class UserInfoController extends Controller
 
         $result = [
             'restaurants' => $filtered_restaurants,
-            'succes' => true
+            'success' => true
         ];
 
         return response()->json($result);
