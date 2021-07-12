@@ -47,6 +47,17 @@
                 </select>
             </div>
 
+            <div class="select">
+                <label for="type">select plate type: </label>
+                <select name="type" id="type"> 
+                    <option value="Primo">Primo</option>
+                    <option value="Secondo">Secondo</option>
+                    <option value="Contorno">Contorno</option>
+                    <option value="Dolce">Dolce</option>
+                    <option value="Antipasto">Antipasto</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Done</button>
         </form>
     </div>

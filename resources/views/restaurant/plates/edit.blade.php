@@ -5,9 +5,9 @@
         <h1>Edit Plate</h1>
 
         {{-- Edit New Plate --}}
-        <form action="{{ route('restaurant.plates.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('restaurant.plates.update', ['plate' => $plate->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('POST')
+            @method('PUT')
 
             {{-- Plate Name Field --}}
             <div class="form-group">
@@ -43,8 +43,19 @@
             <div class="select">
                 <label for="visible">select plate visibility to the customers: </label>
                 <select name="visible" id="visible">
-                <option value="1">visible</option>
-                <option value="0">invisible</option>
+                    <option value="1">visible</option>
+                    <option value="0">invisible</option>
+                </select>
+            </div>
+
+            <div class="select">
+                <label for="type">select plate type: </label>
+                <select name="type" id="type">
+                    <option value="Primo">Primo</option>
+                    <option value="Secondo">Secondo</option>
+                    <option value="Contorno">Contorno</option>
+                    <option value="Dolce">Dolce</option>
+                    <option value="Antipasto">Antipasto</option>
                 </select>
             </div>
 

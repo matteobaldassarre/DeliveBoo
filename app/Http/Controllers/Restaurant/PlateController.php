@@ -113,7 +113,37 @@ class PlateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form_data = $request->all();
+        $plate = Plate::findOrFail($id);
+
+        if ($form_data['name'] != $plate->name){
+            // Slug Management
+            $new_slug = Str::slug($plate->name, '-');
+            $base_slug = $new_slug;
+            $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
+            $counter = 1;
+
+            while ($existing_plate_with_slug) {
+                $new_slug = $base_slug . '-' . $counter;
+                $counter++;
+                $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
+            }    
+
+            $plate->slug = $new_slug;
+        }
+
+        // Image Upload
+        if (isset($form_data['image'])) {
+            $img_path = Storage::put('plates-img', $form_data['image']);
+
+            if ($img_path) {
+                $form_data['image'] = $img_path;
+            }
+        }
+
+        $plate->update($form_data);
+
+        return redirect()->route('restaurant.plates.index');
     }
 
     /**

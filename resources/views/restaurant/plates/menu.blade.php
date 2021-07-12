@@ -11,7 +11,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$plate->name}}</h5>
                     <p class="card-text">{{$plate->ingredients}}</p>
-                    {{-- <a href="{{ route('restaurant.plates.edit') }}" class="card-link">view Plate</a> --}}
+                    <p class="card-text">{{$plate->type}}</p>
+                    {{-- <a href="#" class="card-link">view Plate</a> --}}
                     <a href="{{ route('restaurant.plates.edit', ['plate' => $plate->id]) }}" class="card-link">Edit Plate</a>
                     {{-- <a href="{{ route('restaurant.plates.edit') }}" class="card-link">delete Plate</a> --}}
                 </div>
