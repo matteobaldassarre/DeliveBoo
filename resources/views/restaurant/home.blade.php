@@ -36,6 +36,8 @@
                             </ul>
 
                             <a href="{{ route('restaurant-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
+                            <a href="{{ route('restaurant.plates.index') }}" class="btn btn-primary">View Menu</a>
+                            <a href="{{ route('restaurant.plates.create') }}" class="btn btn-primary">Create Menu</a>
                         @endif
                     </div>
                 </div>

@@ -14,7 +14,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
+        return view('restaurant.plates.menu');
     }
 
     /**
