@@ -113,6 +113,8 @@ class PlateController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->formValidation($request);
+
         $form_data = $request->all();
         $plate = Plate::findOrFail($id);
 
@@ -154,6 +156,19 @@ class PlateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $plate = Plate::findOrFail($id);
+        $plate->delete();
+
+        return redirect()->route('restaurant.plates.index');
+    }
+
+    private function formValidation($request) {
+
+        $request->validate([
+            'name' => 'required|min:5|max:80',
+            'image' => 'nullable|image|size:3000',
+            'ingredients' => 'required|min:5|max:500',
+            'price' => 'required|numeric|lt:999'
+        ]);
     }
 }

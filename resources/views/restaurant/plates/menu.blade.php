@@ -14,7 +14,13 @@
                     <p class="card-text">{{$plate->type}}</p>
                     {{-- <a href="#" class="card-link">view Plate</a> --}}
                     <a href="{{ route('restaurant.plates.edit', ['plate' => $plate->id]) }}" class="card-link">Edit Plate</a>
-                    {{-- <a href="{{ route('restaurant.plates.edit') }}" class="card-link">delete Plate</a> --}}
+                    
+                    <form action="{{ route('restaurant.plates.destroy', ['plate' => $plate->id ] )}}" method="post">
+                        @csrf
+                        @method('DELETE')
+
+                        <input type="submit" class="btn btn-danger" value="Cancella post" onclick="return confirm('Press ok to confirm and delete this plate')">
+                    </form>
                 </div>
             </div>
         @endforeach
