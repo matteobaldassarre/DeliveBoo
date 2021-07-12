@@ -98,7 +98,10 @@ class PlateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'plate' => Plate::findOrFail($id)
+        ];
+        return view('restaurant.plates.edit', $data);
     }
 
     /**
