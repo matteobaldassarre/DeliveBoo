@@ -76,6 +76,7 @@
                 </select>
             </div>
 
+            {{-- Done Button --}}
             <button type="submit" class="btn btn-primary">Done</button>
         </form>
     </div>
