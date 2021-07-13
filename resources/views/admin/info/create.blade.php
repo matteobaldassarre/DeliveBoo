@@ -44,6 +44,19 @@
                     <input type="text" class="form-control" id="VAT" name="VAT" placeholder="Enter your VAT Number" value="{{ old('VAT') }}">
                 </div>
             </div> 
+            
+            <div class="form-group">
+                <h5>Select Restaurant types</h5>
+                
+                @foreach ($types as $type)
+                    <div class="form-check mb-3 mt-3">
+                        <input class="form-check-input" name="types[]" type="checkbox" id="type-{{ $type->id }}" value="{{ $type->id }}">
+                        <label class="form-check-label" for="type-{{ $type->id }}">{{ $type->type_name }}</label>
+                    </div>
+                @endforeach
+
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Done</button>
         </form>

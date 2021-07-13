@@ -20,6 +20,12 @@
 
                             {{-- Restaurant Address --}}
                             <p class="card-text">@{{ restaurant.address }}</p>
+
+                            {{-- Restaurant Types --}}
+                            <div v-for="type in restaurant.types">
+                                <p>@{{type.type_name}}</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>

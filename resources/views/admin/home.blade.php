@@ -24,7 +24,7 @@
 
                         @if (!$user_info)
                             <h3>First Step</h3>
-                            <a class="btn btn-primary" href="{{ route('restaurant-info.create') }}">Add Restaurant Info</a>
+                            <a class="btn btn-primary" href="{{ route('admin-info.create') }}">Add Restaurant Info</a>
                         @else
                             <ul>
                                 <li>
@@ -36,6 +36,14 @@
                                 <li>
                                     Your VAT &#8594; {{ $user_info->VAT }}
                                 </li>
+
+                                <li>
+                                    Types &#8594;
+                                    @foreach ($user->types as $type)
+                                            {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
+                                    @endforeach
+                                </li>
+                                
                             </ul>
 
                             <a href="{{ route('admin-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
