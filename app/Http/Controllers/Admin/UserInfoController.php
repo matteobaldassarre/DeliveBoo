@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Restaurant;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class UserInfoController extends Controller
 {
     public function create()
     {
-        return view('restaurant.info.create');
+        return view('admin.info.create');
     }
 
 
@@ -33,7 +33,7 @@ class UserInfoController extends Controller
         $user_info->user_id = Auth::id();
         $user_info->save();
 
-        return redirect()->route('restaurant.home');
+        return redirect()->route('admin.home');
     }
 
 
@@ -46,7 +46,7 @@ class UserInfoController extends Controller
             'user_info' => $current_user->userInfo
         ];
 
-        return view('restaurant.info.edit', $data);
+        return view('admin.info.edit', $data);
     }
 
 
@@ -70,7 +70,7 @@ class UserInfoController extends Controller
 
         $user_to_edit->update($form_data);
 
-        return redirect()->route('restaurant.home');
+        return redirect()->route('admin.home');
     }
 
 

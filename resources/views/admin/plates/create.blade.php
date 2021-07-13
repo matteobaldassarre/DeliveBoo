@@ -19,7 +19,7 @@
         {{-- End Bootstrap Validation Error Box--}}
         
         {{-- Add New Plate --}}
-        <form action="{{ route('restaurant.plates.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.plates.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
 

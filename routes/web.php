@@ -16,21 +16,21 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // VueJS Restaurants Rest API (HOME)
-Route::get('/', 'HomeController@index')->name('vue-restaurants');
+Route::get('/', 'HomeController@index')->name('restaurant.home');
 
 
 // Restaurant Info Routes
-Route::get('/restaurant-info/create', 'Restaurant\UserInfoController@create')->middleware('auth')->name('restaurant-info.create');
+Route::get('/restaurant-info/create', 'Admin\UserInfoController@create')->middleware('auth')->name('admin-info.create');
 
-Route::post('/restaurant-info/store', 'Restaurant\UserInfoController@store')->middleware('auth')->name('restaurant-info.store');
+Route::post('/restaurant-info/store', 'Admin\UserInfoController@store')->middleware('auth')->name('admin-info.store');
 
-Route::get('/restaurant-info/{slug}/edit', 'Restaurant\UserInfoController@edit')->middleware('auth')->name('restaurant-info.edit');
+Route::get('/restaurant-info/{slug}/edit', 'Admin\UserInfoController@edit')->middleware('auth')->name('admin-info.edit');
 
-Route::put('/restaurant-info/{slug}/update', 'Restaurant\UserInfoController@update')->middleware('auth')->name('restaurant-info.update');
+Route::put('/restaurant-info/{slug}/update', 'Admin\UserInfoController@update')->middleware('auth')->name('admin-info.update');
 
 
 // Restaurant Plates Routes
-Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->middleware('auth')->group(function () {
+Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('home');
 

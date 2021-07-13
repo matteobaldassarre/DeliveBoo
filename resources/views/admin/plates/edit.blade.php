@@ -19,7 +19,7 @@
         {{-- End Bootstrap Validation Error Box--}}
 
         {{-- Edit New Plate Form --}}
-        <form action="{{ route('restaurant.plates.update', ['plate' => $plate->id]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.plates.update', ['plate' => $plate->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

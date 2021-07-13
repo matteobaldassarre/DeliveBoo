@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Restaurant;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,6 +17,6 @@ class HomeController extends Controller
             'user_info' => $current_user->userInfo
         ];
 
-        return view('restaurant.home', $data);
+        return view('admin.home', $data);
     }
 }

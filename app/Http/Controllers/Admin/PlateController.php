@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Restaurant;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class PlateController extends Controller
             'plates' => $filtered_plates
         ];
         
-        return view('restaurant.plates.menu', $data);
+        return view('admin.plates.index', $data);
     }
 
     /**
@@ -44,7 +44,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('restaurant.plates.create');
+        return view('admin.plates.create');
     }
 
     /**
@@ -89,7 +89,7 @@ class PlateController extends Controller
         $plate->fill($form_data);
         $plate->save();
 
-        return redirect()->route('restaurant.plates.index');
+        return redirect()->route('admin.plates.index');
     }
 
     /**
@@ -114,7 +114,7 @@ class PlateController extends Controller
         $data = [
             'plate' => Plate::findOrFail($id)
         ];
-        return view('restaurant.plates.edit', $data);
+        return view('admin.plates.edit', $data);
     }
 
     /**
@@ -159,7 +159,7 @@ class PlateController extends Controller
 
         $plate->update($form_data);
 
-        return redirect()->route('restaurant.plates.index');
+        return redirect()->route('admin.plates.index');
     }
 
     /**
@@ -173,7 +173,7 @@ class PlateController extends Controller
         $plate = Plate::findOrFail($id);
         $plate->delete();
 
-        return redirect()->route('restaurant.plates.index');
+        return redirect()->route('admin.plates.index');
     }
 
     // Form Validation Function

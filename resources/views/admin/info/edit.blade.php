@@ -20,7 +20,7 @@
 
 
         {{-- Edit Your Restaurant Form --}}
-        <form action="{{ route('restaurant-info.update', ['slug' => $user_info->slug]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin-info.update', ['slug' => $user_info->slug]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

@@ -38,11 +38,11 @@
 
 
                                 {{-- Edit Plate Button --}}
-                                <a href="{{ route('restaurant.plates.edit', ['plate' => $plate->id]) }}" class="card-link">Edit Plate</a>
+                                <a href="{{ route('admin.plates.edit', ['plate' => $plate->id]) }}" class="card-link">Edit Plate</a>
                                 
 
                                 {{-- Delete Plate Button --}}
-                                <form action="{{ route('restaurant.plates.destroy', ['plate' => $plate->id ] )}}" method="post" class="d-inline-block">
+                                <form action="{{ route('admin.plates.destroy', ['plate' => $plate->id ] )}}" method="post" class="d-inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" class="ml-2" value="Delete Plate" onclick="return confirm('Press ok to confirm and delete this plate')">

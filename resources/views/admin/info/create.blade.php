@@ -20,7 +20,7 @@
 
 
         {{-- Add Your Restaurant Form --}}
-        <form action="{{ route('restaurant-info.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin-info.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
