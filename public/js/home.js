@@ -86,25 +86,40 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/vue-restaurants.js":
-/*!*****************************************!*\
-  !*** ./resources/js/vue-restaurants.js ***!
-  \*****************************************/
+/***/ "./resources/js/home.js":
+/*!******************************!*\
+  !*** ./resources/js/home.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/vue-restaurants.js'");
+var app = new Vue({
+  el: '#root',
+  data: {
+    restaurants: []
+  },
+  methods: {},
+  mounted: function mounted() {
+    var _this = this;
+
+    // Getting all restaurants from the restaurants API
+    axios.get('/api/restaurants').then(function (result) {
+      _this.restaurants = result.data.restaurants;
+      console.log(_this.restaurants);
+    });
+  }
+});
 
 /***/ }),
 
 /***/ 1:
-/*!***********************************************!*\
-  !*** multi ./resources/js/vue-restaurants.js ***!
-  \***********************************************/
+/*!************************************!*\
+  !*** multi ./resources/js/home.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/vue-restaurants.js */"./resources/js/vue-restaurants.js");
+module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })

@@ -18,8 +18,20 @@ class PlateController extends Controller
      */
     public function index()
     {
+        $current_user_id = Auth::id();
+
+        $plates = Plate::all();
+
+        $filtered_plates = [];
+
+        foreach ($plates as $plate) {
+           if ($plate->user_id == $current_user_id) {
+               $filtered_plates[] = $plate;
+           }
+        }        
+
         $data = [
-            'plates' => Plate::all()
+            'plates' => $filtered_plates
         ];
         
         return view('restaurant.plates.menu', $data);
@@ -56,10 +68,8 @@ class PlateController extends Controller
             }
         }
 
-        $plate = new Plate();
-
         // Slug Management
-        $new_slug = Str::slug($plate->name, '-');
+        $new_slug = Str::slug($form_data['name'], '-');
         $base_slug = $new_slug;
         $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
         $counter = 1;
@@ -68,9 +78,11 @@ class PlateController extends Controller
             $new_slug = $base_slug . '-' . $counter;
             $counter++;
             $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
-        }    
+        }
 
-        $plate->slug = $new_slug;
+        $form_data['slug'] = $new_slug;
+
+        $plate = new Plate();
 
         $plate->user_id = Auth::id();
 
@@ -117,11 +129,12 @@ class PlateController extends Controller
         $this->formValidation($request);
 
         $form_data = $request->all();
+
         $plate = Plate::findOrFail($id);
 
         if ($form_data['name'] != $plate->name){
             // Slug Management
-            $new_slug = Str::slug($plate->name, '-');
+            $new_slug = Str::slug($form_data['name'], '-');
             $base_slug = $new_slug;
             $existing_plate_with_slug = Plate::where('slug', '=', $new_slug)->first();
             $counter = 1;
@@ -169,7 +182,7 @@ class PlateController extends Controller
             'name' => 'required|min:5|max:80',
             'image' => 'nullable|image',
             'ingredients' => 'required|min:5|max:500',
-            'price' => 'required|numeric|lt:100'
+            'price' => 'required|numeric|gte:1|lte:500'
         ]);
     }
 }

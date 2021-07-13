@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('customer.home');
+// VueJS Restaurants Rest API (HOME)
+Route::get('/', 'HomeController@index')->name('vue-restaurants');
 
 
 // Restaurant Info Routes
@@ -36,7 +37,3 @@ Route::prefix('restaurant')->namespace('Restaurant')->name('restaurant.')->middl
     Route::resource('plates', 'PlateController');
 
 });
-
-
-// VueJS Restaurants Rest API
-Route::get('/vue-restaurants', 'HomeController@vueRestaurants')->name('vue-restaurants');

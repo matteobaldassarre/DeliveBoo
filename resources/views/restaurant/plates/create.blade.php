@@ -5,6 +5,19 @@
 @section('content')
     <div class="container">
         <h1>Add New Plate</h1>
+
+        {{-- Bootstrap Validation Error Box --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        {{-- End Bootstrap Validation Error Box--}}
+        
         {{-- Add New Plate --}}
         <form action="{{ route('restaurant.plates.store') }}" method="post" enctype="multipart/form-data">
             @csrf
