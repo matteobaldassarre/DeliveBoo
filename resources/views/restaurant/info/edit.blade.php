@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title')Edit Restaurant @endsection
+
 @section('content')
     <div class="container">
         <h1>Edit Your Restaurant</h1>

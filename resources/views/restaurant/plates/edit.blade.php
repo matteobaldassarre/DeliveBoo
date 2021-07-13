@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
+@section('page_title')Edit Plate @endsection
+
 @section('content')
     <div class="container">
         <h1>Edit Plate</h1>
 
+        {{-- Bootstrap Validation Error Box --}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -13,8 +16,9 @@
                 </ul>
             </div>
         @endif
+        {{-- End Bootstrap Validation Error Box--}}
 
-        {{-- Edit New Plate --}}
+        {{-- Edit New Plate Form --}}
         <form action="{{ route('restaurant.plates.update', ['plate' => $plate->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -31,11 +35,11 @@
             <div class="form-group">
                 <div class="row col-md-3 col-lg-3">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" id="image" name="image" placeholder="Enter image">
+                    <input type="file" id="image" name="image" placeholder="Enter image">
                 </div>
             </div> 
 
-            {{-- Plate Name Field --}}
+            {{-- Plate Ingredients Field --}}
             <div class="form-group">
                 <div class="row col-md-4 col-lg-3">
                     <label for="ingredients">Ingredients</label>
@@ -43,6 +47,7 @@
                 </div>
             </div>
 
+            {{-- Plate Price Field --}}
             <div class="form-group">
                 <div class="row col-md-3 col-lg-3">
                     <label for="price">Price</label>
@@ -50,16 +55,18 @@
                 </div>
             </div> 
 
+            {{-- Plate Visibility Field --}}
             <div class="select">
-                <label for="visible">select plate visibility to the customers: </label>
+                <label for="visible">Select Plate Visibility to the customers: </label>
                 <select name="visible" id="visible">
-                    <option value="1">visible</option>
-                    <option value="0">invisible</option>
+                    <option value="1">Visible</option>
+                    <option value="0">Invisible</option>
                 </select>
             </div>
 
+            {{-- Plate Type Field --}}
             <div class="select">
-                <label for="type">select plate type: </label>
+                <label for="type">Select Plate Type: </label>
                 <select name="type" id="type">
                     <option value="Primo" {{ old('type', $plate->type) == 'Primo' ? 'selected' : ''}}>Primo</option>
                     <option value="Secondo" {{ old('type', $plate->type) == 'Secondo' ? 'selected' : ''}}>Secondo</option>
@@ -69,7 +76,9 @@
                 </select>
             </div>
 
+            {{-- Done Button --}}
             <button type="submit" class="btn btn-primary">Done</button>
         </form>
+        {{-- End Edit New Plate Form --}}
     </div>
 @endsection

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title')Add Plate @endsection
+
 @section('content')
     <div class="container">
         <h1>Add New Plate</h1>
@@ -20,11 +22,11 @@
             <div class="form-group">
                 <div class="row col-md-3 col-lg-3">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" id="image" name="image" placeholder="Enter image">
+                    <input type="file" id="image" name="image" placeholder="Enter image">
                 </div>
             </div> 
 
-            {{-- Plate Name Field --}}
+            {{-- Plate Ingredients Field --}}
             <div class="form-group">
                 <div class="row col-md-4 col-lg-3">
                     <label for="address">Ingredients</label>
@@ -32,6 +34,7 @@
                 </div>
             </div>
 
+            {{-- Plate Price Field --}}
             <div class="form-group">
                 <div class="row col-md-3 col-lg-3">
                     <label for="price">Price</label>
@@ -39,17 +42,19 @@
                 </div>
             </div> 
 
+            {{-- Plate Visibility Field --}}
             <div class="select">
-                <label for="visible">select plate visibility to the customers: </label>
+                <label for="visible">Select Plate Visibility to the customers: </label>
                 <select name="visible" id="visible">
-                <option value="1">visible</option>
-                <option value="0">invisible</option>
+                    <option value="1">Visible</option>
+                    <option value="0">Invisible</option>
                 </select>
             </div>
 
+            {{-- Plate Type Field --}}
             <div class="select">
-                <label for="type">select plate type: </label>
-                <select name="type" id="type"> 
+                <label for="type">Select Plate Type: </label>
+                <select name="type" id="type">
                     <option value="Primo">Primo</option>
                     <option value="Secondo">Secondo</option>
                     <option value="Contorno">Contorno</option>

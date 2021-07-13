@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title')Restaurant Dashboard @endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -14,6 +16,7 @@
                             </div>
                         @endif
 
+                        {{-- Dashboard Welcome Message --}}
                         <h2>Welcome {{ $user->name }}!</h2>
                         <p>
                             This is your Dashboard, you can visit the other links to take a look at DeliveBoo.
@@ -25,19 +28,19 @@
                         @else
                             <ul>
                                 <li>
-                                    {{ $user_info->restaurant_name }}
+                                    Restaurant Name &#8594; {{ $user_info->restaurant_name }}
                                 </li>
                                 <li>
-                                    {{ $user_info->address }}
+                                    Restaurant Address &#8594; {{ $user_info->address }}
                                 </li>
                                 <li>
-                                    {{ $user_info->VAT }}
+                                    Your VAT &#8594; {{ $user_info->VAT }}
                                 </li>
                             </ul>
 
                             <a href="{{ route('restaurant-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
                             <a href="{{ route('restaurant.plates.index') }}" class="btn btn-primary">View Menu</a>
-                            <a href="{{ route('restaurant.plates.create') }}" class="btn btn-primary">Create Menu</a>
+                            <a href="{{ route('restaurant.plates.create') }}" class="btn btn-primary">Add Plate</a>
                         @endif
                     </div>
                 </div>

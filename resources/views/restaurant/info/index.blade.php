@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title')Restaurant Dashboard @endsection
+
 @section('content')
     <div class="container">
         <h1>{{ $user->name }}, check your restaurant info!</h1>

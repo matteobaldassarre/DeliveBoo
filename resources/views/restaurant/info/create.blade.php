@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+@section('page_title')Create Restaurant @endsection
+
 @section('content')
     <div class="container">
-        <h1>Edit Your Restaurant</h1>
+        <h1>Create Your Restaurant</h1>
 
         {{-- Bootstrap Validation Error Box --}}
         @if ($errors->any())
