@@ -97,7 +97,7 @@ var app = new Vue({
   el: '#root',
   data: {
     restaurants: [],
-    restaurants_type: ['Cinese', 'Giapponese', 'Pizzeria', 'Gourmet', 'Kebab', 'Messicano', 'Panini', 'Indiano', 'Hamburger']
+    restaurants_types: []
   },
   methods: {},
   mounted: function mounted() {
@@ -106,7 +106,10 @@ var app = new Vue({
     // Getting all restaurants from the restaurants API
     axios.get('/api/restaurants').then(function (result) {
       _this.restaurants = result.data.restaurants;
-      console.log(_this.restaurants);
+    }); // Populating Restaurant Types Array
+
+    axios.get('/api/restaurants/types').then(function (result) {
+      _this.restaurants_types = result.data.restaurants_types;
     });
   }
 });
@@ -120,7 +123,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/giovanni/Desktop/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })

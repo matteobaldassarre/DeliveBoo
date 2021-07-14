@@ -11,11 +11,16 @@
         <div class="container">
             <nav>
                 <h1>Search a Restaurant</h1>
-                <input type="search" placeholder="search a restaurant" >
             </nav>
-            <div v-for="type in restaurants_type">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search a restaurant" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div v-for="type in restaurants_types">
                 @{{ type }}
             </div>
+
             <div class="row">
                 {{-- Bootstrap Plate Card --}}
                 <div class="col-lg-3 mb-4" v-for="restaurant in restaurants">

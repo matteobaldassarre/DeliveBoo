@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
+use App\Type;
 
 class UserInfoController extends Controller
 {
@@ -30,6 +31,27 @@ class UserInfoController extends Controller
 
         $result = [
             'restaurants' => $filtered_restaurants,
+            'success' => true
+        ];
+
+        return response()->json($result);
+    }
+
+
+    public function types()
+    {
+        $restaurants_types = Type::all();
+        
+        $filtered_restaurants_types = [];
+
+        foreach ($restaurants_types as $restaurant_type) {
+
+            $filtered_restaurants_types[] = $restaurant_type->type_name;
+
+        }
+
+        $result = [
+            'restaurants_types' => $filtered_restaurants_types,
             'success' => true
         ];
 
