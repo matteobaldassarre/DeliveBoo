@@ -20,14 +20,15 @@ Route::get('/', 'HomeController@index')->name('restaurant.home');
 
 
 // Restaurant Info Routes
-Route::get('/restaurant-info/create', 'Admin\UserInfoController@create')->middleware('auth')->name('admin-info.create');
+Route::get('/admin-info/create', 'Admin\UserInfoController@create')->middleware('auth')->name('admin-info.create');
 
-Route::post('/restaurant-info/store', 'Admin\UserInfoController@store')->middleware('auth')->name('admin-info.store');
+Route::post('/admin-info/store', 'Admin\UserInfoController@store')->middleware('auth')->name('admin-info.store');
 
-Route::get('/restaurant-info/{slug}/edit', 'Admin\UserInfoController@edit')->middleware('auth')->name('admin-info.edit');
+Route::get('/admin-info/{slug}/edit', 'Admin\UserInfoController@edit')->middleware('auth')->name('admin-info.edit');
 
-Route::put('/restaurant-info/{slug}/update', 'Admin\UserInfoController@update')->middleware('auth')->name('admin-info.update');
+Route::put('/admin-info/{slug}/update', 'Admin\UserInfoController@update')->middleware('auth')->name('admin-info.update');
 
+Route::delete('/admin-info/{id}', 'Admin\UserInfoController@destroy')->middleware('auth')->name('admin-info.destroy');
 
 // Restaurant Plates Routes
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {

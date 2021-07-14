@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Plate;
+use App\UserInfo;
 
 class PlateController extends Controller
 {
@@ -44,7 +45,13 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plates.create');
+        $user = Auth::user();
+
+        if ($user->userInfo) {
+            return view('admin.plates.create');
+        } else {
+            abort(404);
+        }
     }
 
     /**

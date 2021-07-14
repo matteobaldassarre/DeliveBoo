@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\UserInfo;
 use App\Type;
@@ -25,14 +26,19 @@ class UserInfoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'restaurant_name' => 'required|min:5',
-            'address' => 'required|min:5|max:50',
-            'VAT' => 'required|min:11|max:11',
-            'types' => 'nullable|exists:types,id'
-        ]);
+        $this->formValidation($request);
 
         $form_data = $request->all();
+
+        // Image Upload
+        if (isset($form_data['cover'])) {
+            $img_path = Storage::put('restaurants-img', $form_data['cover']);
+
+            if ($img_path) {
+                $form_data['cover'] = $img_path;
+            }
+        }
+
         $user = Auth::user();
         $user_info = new UserInfo();
 
@@ -66,21 +72,26 @@ class UserInfoController extends Controller
 
     public function update(Request $request, $slug)
     {
-        $request->validate([
-            'restaurant_name' => 'required|min:5',
-            'address' => 'required|min:5|max:50',
-            'VAT' => 'required|min:11|max:11',
-        ]);
+        $this->formValidation($request);
 
         $current_user = Auth::user();
 
         $form_data = $request->all();
-        
+
         $user_to_edit = $current_user->userInfo;
 
         if ($form_data['restaurant_name'] != $user_to_edit->slug) {
             $user_to_edit->slug = Str::slug($form_data['restaurant_name'], '-');
         }  
+
+        // Image Upload
+        if (isset($form_data['cover'])) {
+            $img_path = Storage::put('restaurants-img', $form_data['cover']);
+
+            if ($img_path) {
+                $form_data['cover'] = $img_path;
+            }
+        }
 
         $user_to_edit->update($form_data);
 
@@ -97,6 +108,26 @@ class UserInfoController extends Controller
 
     public function destroy($id)
     {
-        
+
+        $userInfo = UserInfo::where('user_id', '=', $id)->get();
+
+        $userInfo->tags()->sync([]);
+        $userInfo->delete();
+
+        return redirect()->route('admin.home');
+    }
+
+    // Form Validation Function
+    private function formValidation($request) 
+    {
+        $request->validate([
+            'restaurant_name' => 'required|min:5',
+            'address' => 'required|min:5|max:50',
+            'VAT' => 'required|min:11|max:11',
+            'types' => 'nullable|exists:types,id',
+            'cover' => 'nullable|image'
+        ]);
     }
 }
+
+

@@ -33,6 +33,13 @@
 
             <div class="form-group">
                 <div class="row col-md-4 col-lg-3">
+                    <label for="cover">Restaurant Cover</label>
+                    <input type="file" id="cover" name="cover" placeholder="Enter your Restaurant Cover" value="{{ old('cover') }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row col-md-4 col-lg-3">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Enter your restaurant address" value="{{ old('address') }}">
                 </div>

@@ -30,6 +30,11 @@
                                 <li>
                                     Restaurant Name &#8594; {{ $user_info->restaurant_name }}
                                 </li>
+
+                                <li>
+                                    <img src="{{ asset('storage/' . $user_info->cover)}}" alt="{{ $user_info->restaurant_name  }}">
+                                </li>
+
                                 <li>
                                     Restaurant Address &#8594; {{ $user_info->address }}
                                 </li>
@@ -45,6 +50,13 @@
                                 </li>
                                 
                             </ul>
+
+                            <form action="{{ route('admin-info.destroy', ['id' => $user->id ] )}}" method="post">
+                                @csrf
+                                @method('DELETE')
+    
+                                <input type="submit" class="btn btn-danger" value="Cancella post">
+                            </form>
 
                             <a href="{{ route('admin-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
                             <a href="{{ route('admin.plates.index') }}" class="btn btn-primary">View Menu</a>
