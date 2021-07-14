@@ -3,7 +3,18 @@ var app = new Vue({
     el: '#root',
 
     data: {
-       restaurants: []
+       restaurants: [],
+       restaurants_type: [
+           'Cinese',
+           'Giapponese',
+           'Pizzeria',
+           'Gourmet',
+           'Kebab',
+           'Messicano',
+           'Panini',
+           'Indiano',
+           'Hamburger'
+       ]
     },
 
     methods: {

@@ -96,7 +96,8 @@
 var app = new Vue({
   el: '#root',
   data: {
-    restaurants: []
+    restaurants: [],
+    restaurants_type: ['Cinese', 'Giapponese', 'Pizzeria', 'Gourmet', 'Kebab', 'Messicano', 'Panini', 'Indiano', 'Hamburger']
   },
   methods: {},
   mounted: function mounted() {
@@ -119,7 +120,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! /Users/giovanni/Desktop/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })

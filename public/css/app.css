@@ -10942,3 +10942,8 @@ a.text-dark:focus {
   }
 }
 
+body nav {
+  display: flex;
+  justify-content: space-between;
+}
+
