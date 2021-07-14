@@ -28,7 +28,6 @@ Route::get('/admin-info/{slug}/edit', 'Admin\UserInfoController@edit')->middlewa
 
 Route::put('/admin-info/{slug}/update', 'Admin\UserInfoController@update')->middleware('auth')->name('admin-info.update');
 
-Route::delete('/admin-info/{id}', 'Admin\UserInfoController@destroy')->middleware('auth')->name('admin-info.destroy');
 
 // Restaurant Plates Routes
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\UserInfo;
 use App\Type;
+use App\User;
 
 class UserInfoController extends Controller
 {
@@ -108,13 +109,7 @@ class UserInfoController extends Controller
 
     public function destroy($id)
     {
-
-        $userInfo = UserInfo::where('user_id', '=', $id)->get();
-
-        $userInfo->tags()->sync([]);
-        $userInfo->delete();
-
-        return redirect()->route('admin.home');
+        
     }
 
     // Form Validation Function
