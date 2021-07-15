@@ -1,5 +1,36 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* List and Links Reset */
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #38c172;
+  text-decoration: none;
+}
+
+.admin-dashboard-page .restaurant-cover {
+  width: 400px;
+}
+
+.admin-dashboard-page .restaurant-actions {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  max-width: 500px;
+  margin: auto;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10940,10 +10971,5 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-}
-
-body nav {
-  display: flex;
-  justify-content: space-between;
 }
 

@@ -4,14 +4,32 @@ var app = new Vue({
 
     data: {
         restaurants: [],
-        restaurants_types: [],
-        filtered_restaurants: []
+        restaurantsTypes: [],
+        filteredRestaurantsByType: [],
+        searchedRestaurant: ''
+        
     },
 
     methods: {
-        searchRestaurant(type) {
+        // Searching restaurant by its name
+        searchRestaurantByName(searchedRestaurant) {
+
+            this.filteredRestaurantsByType = [];
+
+            this.restaurants.forEach(element => {
+
+                if (element.restaurant_name.toLowerCase().includes(searchedRestaurant.toLowerCase())) {
+                    this.filteredRestaurantsByType.push(element);
+                } 
+
+            });
+
+        },
+
+        // Searching restaurant by type using Laravel Api
+        searchRestaurantByType(type) {
             axios.get( '/api/restaurants/' + type ).then(result => {
-                this.filtered_restaurants = result.data.restaurants;
+                this.filteredRestaurantsByType = result.data.restaurants;
             });
         }
     },
@@ -24,7 +42,7 @@ var app = new Vue({
 
         // Populating Restaurant Types Array
         axios.get('/api/restaurants/types').then(result => {
-            this.restaurants_types = result.data.restaurants_types;
+            this.restaurantsTypes = result.data.restaurants_types;
         });
     }
 

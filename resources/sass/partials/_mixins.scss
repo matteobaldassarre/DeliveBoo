@@ -1,0 +1,23 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* List and Links Reset */
+li {
+    list-style-type: none;
+}
+
+a {
+    color: $green;
+    text-decoration: none;
+}
+
+// Flex Mixin
+@mixin flex {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}

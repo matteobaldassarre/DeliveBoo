@@ -21,7 +21,7 @@ class UserInfoController extends Controller
         foreach ($restaurants as $restaurant) {
 
             $filtered_restaurants[] = [
-                'name' => $restaurant->restaurant_name,
+                'restaurant_name' => $restaurant->restaurant_name,
                 'address' => $restaurant->address,
                 'VAT' => $restaurant->VAT,
                 'cover' => $restaurant->cover,
@@ -40,6 +40,7 @@ class UserInfoController extends Controller
     }
 
 
+    // Getting all type to print types buttons in page
     public function types()
     {
         $restaurants_types = Type::all();
@@ -63,6 +64,8 @@ class UserInfoController extends Controller
         return response()->json($result);
     }
 
+
+    // Searching restaurants by type
     public function searchRestaurants($type)
     {
         $type_id = $type;
@@ -93,44 +96,4 @@ class UserInfoController extends Controller
 
         return response()->json($result);
     }
-
-
-
-
-
-    // public function searchRestaurant(Request $request)
-    // {
-    //     // Taking all requests from form
-    //     $type = $request->all();
-
-    //     // Taking type_id from form
-    //     $type_id = array_search(end($type), $type);
-
-    //     // Taking all users
-    //     $all_restaurants = User::all();
-
-    //     // Creating an array to store all filtered restaurants by type
-    //     $filtered_restaurants = [];
-
-    //     // Looping through all restaurants and taking all info of each one
-    //     foreach ($all_restaurants as $restaurant) { 
-    //         if ($restaurant->types->count() > 0) { 
-
-    //             foreach ($restaurant->types as $restaurant_type) {
-    //                 if ($restaurant_type->id == $type_id) {
-    //                     $filtered_restaurants[] = $restaurant->userInfo;
-    //                 }
-
-    //             }
-
-    //         }
-    //     }
-
-    //     $result = [
-    //         'restaurants' => $filtered_restaurants,
-    //         'success' => true
-    //     ];
-
-    //     return response()->json($result);
-    // }
 }

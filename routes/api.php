@@ -18,10 +18,13 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+// All Restaurants API
 Route::get('/restaurants', 'Api\UserInfoController@index')->name('api.restaurants');
 
+// Types Buttons API
 Route::get('/restaurants/types', 'Api\UserInfoController@types')->name('api.restaurants-types');
 
+// Filtered Restaurants By Type API
 Route::get('/restaurants/{type}', 'Api\UserInfoController@searchRestaurants')->name('api.search');
 
 

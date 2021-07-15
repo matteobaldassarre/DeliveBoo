@@ -34,7 +34,7 @@
             <div class="form-group">
                 <div class="row col-md-4 col-lg-3">
                     <label for="cover">Restaurant Cover</label>
-                    <input type="file" id="cover" name="cover" placeholder="Enter your Restaurant Cover" value="{{ old('cover') }}">
+                    <input type="file" id="cover" name="cover" placeholder="Enter your Restaurant Cover">
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                 
                 @foreach ($types as $type)
                     <div class="form-check mb-3 mt-3">
-                        <input class="form-check-input" name="types[]" type="checkbox" id="type-{{ $type->id }}" value="{{ $type->id }}">
+                        <input class="form-check-input" name="types[]" type="checkbox" id="type-{{ $type->id }}" value="{{ $type->id }}" {{ in_array($type->id, old('types', [])) ? 'checked' : '' }}>
                         <label class="form-check-label" for="type-{{ $type->id }}">{{ $type->type_name }}</label>
                     </div>
                 @endforeach

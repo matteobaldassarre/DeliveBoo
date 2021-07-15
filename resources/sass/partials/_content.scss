@@ -1,0 +1,15 @@
+// Admin Dashboard Page (admin.home)
+.admin-dashboard-page {
+    .restaurant-cover {
+        width: 400px;
+    }
+
+    .restaurant-actions {
+        @include flex;
+        justify-content: space-around;
+        max-width: 500px;
+        margin: auto;
+    }
+}
+
+

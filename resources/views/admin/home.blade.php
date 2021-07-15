@@ -3,13 +3,13 @@
 @section('page_title')Restaurant Dashboard @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container admin-dashboard-page">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Restaurant Home</div>
+                    <div class="card-header text-center">Restaurant Home</div>
         
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -26,34 +26,42 @@
                             <h3>First Step</h3>
                             <a class="btn btn-primary" href="{{ route('admin-info.create') }}">Add Restaurant Info</a>
                         @else
-                            <ul>
-                                <li>
-                                    Restaurant Name &#8594; {{ $user_info->restaurant_name }}
-                                </li>
+                            <div class="d-flex align-items-center justify-content-around">
+                                <div class="flex-item">
+                                    <ul>
+                                        <li>
+                                            Restaurant Name &#8594; {{ $user_info->restaurant_name }}
+                                        </li>
 
-                                <li>
-                                    <img src="{{ asset('storage/' . $user_info->cover)}}" alt="{{ $user_info->restaurant_name  }}">
-                                </li>
+                                        <li>
+                                            Restaurant Address &#8594; {{ $user_info->address }}
+                                        </li>
+                                        <li>
+                                            Your VAT &#8594; {{ $user_info->VAT }}
+                                        </li>
 
-                                <li>
-                                    Restaurant Address &#8594; {{ $user_info->address }}
-                                </li>
-                                <li>
-                                    Your VAT &#8594; {{ $user_info->VAT }}
-                                </li>
+                                        <li>
+                                            Types &#8594;
+                                            @foreach ($user->types as $type)
+                                                    {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
+                                            @endforeach
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                <li>
-                                    Types &#8594;
-                                    @foreach ($user->types as $type)
-                                            {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
-                                    @endforeach
-                                </li>
-                                
-                            </ul>
+                                @if ($user_info->cover)
+                                    <div class="flex-item">
+                                        <img class="restaurant-cover" src="{{ asset('storage/' . $user_info->cover) }}" alt="{{ $user_info->restaurant_name  }}">
+                                    </div>
+                                @endif
+                            </div>
 
-                            <a href="{{ route('admin-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
-                            <a href="{{ route('admin.plates.index') }}" class="btn btn-primary">View Menu</a>
-                            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Add Plate</a>
+
+                            <div class="restaurant-actions">
+                                <a href="{{ route('admin-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
+                                <a href="{{ route('admin.plates.index') }}" class="btn btn-primary">View Menu</a>
+                                <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Add Plate</a>
+                            </div>
                         @endif
                     </div>
                 </div>

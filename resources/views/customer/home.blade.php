@@ -14,20 +14,20 @@
             </nav>
 
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search a restaurant" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Search a restaurant" v-model="searchedRestaurant" v-on:keyup="searchRestaurantByName(searchedRestaurant)">
             </div>
 
             <div class="d-flex justify-content-around mb-2">
 
-                <span v-for="type in restaurants_types">
-                    <a class="btn" v-on:click="searchRestaurant(type.id)">@{{ type.name }}</a>
+                <span v-for="type in restaurantsTypes">
+                    <a class="btn" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
                 </span>
 
             </div>
 
             <div class="row">
                 {{-- Bootstrap Plate Card --}}
-                <div class="col-lg-3 mb-4" v-for="restaurant in filtered_restaurants">
+                <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
                     <div class="card">
                         <div class="card-body">
                             {{-- Restaurant Name --}}

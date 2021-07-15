@@ -64,6 +64,7 @@ class UserInfoController extends Controller
         $data = [
             'user' => $current_user,
             'user_info' => $current_user->userInfo,
+            'user_types' => $current_user->types,
             'types' => $types
         ];
 
@@ -119,7 +120,7 @@ class UserInfoController extends Controller
             'restaurant_name' => 'required|min:5',
             'address' => 'required|min:5|max:50',
             'VAT' => 'required|min:11|max:11',
-            'types' => 'nullable|exists:types,id',
+            'types' => 'required|exists:types,id',
             'cover' => 'nullable|image'
         ]);
     }
