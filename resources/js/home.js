@@ -4,11 +4,16 @@ var app = new Vue({
 
     data: {
         restaurants: [],
-        restaurants_types: []
+        restaurants_types: [],
+        filtered_restaurants: []
     },
 
     methods: {
-
+        searchRestaurant(type) {
+            axios.get( '/api/restaurants/' + type ).then(result => {
+                this.filtered_restaurants = result.data.restaurants;
+            });
+        }
     },
 
     mounted() {

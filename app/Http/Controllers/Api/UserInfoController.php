@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\UserInfo;
 use App\Type;
@@ -46,7 +48,10 @@ class UserInfoController extends Controller
 
         foreach ($restaurants_types as $restaurant_type) {
 
-            $filtered_restaurants_types[] = $restaurant_type->type_name;
+            $filtered_restaurants_types[] = [
+                'name' => $restaurant_type->type_name,
+                'id' => $restaurant_type->id
+            ];
 
         }
 
@@ -57,4 +62,75 @@ class UserInfoController extends Controller
 
         return response()->json($result);
     }
+
+    public function searchRestaurants($type)
+    {
+        $type_id = $type;
+
+        $all_restaurants = User::all();
+
+        // Creating an array to store all filtered restaurants by type
+        $filtered_restaurants = [];
+
+        // Looping through all restaurants and taking all info of each one
+        foreach ($all_restaurants as $restaurant) {
+            if ($restaurant->types->count() > 0) {
+
+                foreach ($restaurant->types as $restaurant_type) {
+                    if ($restaurant_type->id == $type_id) {
+                        $filtered_restaurants[] = $restaurant->userInfo;
+                    }
+
+                }
+
+            }
+        }
+
+        $result = [
+            'restaurants' => $filtered_restaurants,
+            'success' => true
+        ];
+
+        return response()->json($result);
+    }
+
+
+
+
+
+    // public function searchRestaurant(Request $request)
+    // {
+    //     // Taking all requests from form
+    //     $type = $request->all();
+
+    //     // Taking type_id from form
+    //     $type_id = array_search(end($type), $type);
+
+    //     // Taking all users
+    //     $all_restaurants = User::all();
+
+    //     // Creating an array to store all filtered restaurants by type
+    //     $filtered_restaurants = [];
+
+    //     // Looping through all restaurants and taking all info of each one
+    //     foreach ($all_restaurants as $restaurant) { 
+    //         if ($restaurant->types->count() > 0) { 
+
+    //             foreach ($restaurant->types as $restaurant_type) {
+    //                 if ($restaurant_type->id == $type_id) {
+    //                     $filtered_restaurants[] = $restaurant->userInfo;
+    //                 }
+
+    //             }
+
+    //         }
+    //     }
+
+    //     $result = [
+    //         'restaurants' => $filtered_restaurants,
+    //         'success' => true
+    //     ];
+
+    //     return response()->json($result);
+    // }
 }

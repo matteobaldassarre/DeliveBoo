@@ -21,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/restaurants', 'Api\UserInfoController@index')->name('api.restaurants');
 
 Route::get('/restaurants/types', 'Api\UserInfoController@types')->name('api.restaurants-types');
+
+Route::get('/restaurants/{type}', 'Api\UserInfoController@searchRestaurants')->name('api.search');
+
+

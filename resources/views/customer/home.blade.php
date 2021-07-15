@@ -17,30 +17,29 @@
                 <input type="text" class="form-control" placeholder="Search a restaurant" aria-label="Username" aria-describedby="basic-addon1">
             </div>
 
-            <div v-for="type in restaurants_types">
-                @{{ type }}
+            <div class="d-flex justify-content-around mb-2">
+
+                <span v-for="type in restaurants_types">
+                    <a class="btn" v-on:click="searchRestaurant(type.id)">@{{ type.name }}</a>
+                </span>
+
             </div>
 
             <div class="row">
                 {{-- Bootstrap Plate Card --}}
-                <div class="col-lg-3 mb-4" v-for="restaurant in restaurants">
+                <div class="col-lg-3 mb-4" v-for="restaurant in filtered_restaurants">
                     <div class="card">
                         <div class="card-body">
                             {{-- Restaurant Name --}}
-                            <h4 class="card-title">@{{ restaurant.name }}</h4>
+                            <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
 
                             {{-- Restaurant Address --}}
-                            <p class="card-text">@{{ restaurant.address }}</p>
-
-                            {{-- Restaurant Types --}}
-                            <div v-for="type in restaurant.types">
-                                <p>@{{type.type_name}}</p>
-                            </div>
-
+                            <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
                         </div>
                     </div>
                 </div>
                 {{-- End Bootstrap Plate Card --}}
+
             </div>
         </div>
     </div>
