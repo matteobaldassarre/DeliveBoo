@@ -31,6 +31,9 @@ var app = new Vue({
             axios.get( '/api/restaurants/' + type ).then(result => {
                 this.filteredRestaurantsByType = result.data.restaurants;
             });
+
+            console.log(this.filteredRestaurantsByType);
+            
         }
     },
 

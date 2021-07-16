@@ -1,0 +1,29 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+/* List and Links Reset */
+li {
+    list-style-type: none;
+}
+
+a {
+    color: $green;
+    text-decoration: none;
+}
+
+// Containers
+.wrapper {
+    padding: 0px 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.small-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}

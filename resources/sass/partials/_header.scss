@@ -1,0 +1,116 @@
+// Customer HomePage NavBar 
+.customer-homepage-navbar {
+    background-color: $primary_color;
+    padding: 20px 0px;
+
+    .container-flex {
+        @include flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo {
+        width: 20%;
+        color: white;
+        font-size: 22px;
+        font-style: oblique;
+        
+        span {
+            padding-left: 15px;
+        }
+
+        .fa-hamburger {
+            position: relative;
+            bottom: 16px;
+            right: 23px;
+            font-size: 15px;
+        }
+    }
+
+    .search-bar {
+        width: 50%;
+        text-align: center;
+
+        input {
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            padding-left: 5px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .login-register {
+        width: 30%;
+        text-align: right;
+        padding-right: 20px;
+
+        .access-buttons {
+            background-color: white;
+            padding: 10px 20px;
+            font-style: oblique;
+            margin-left: 10px;
+            border-radius: 10px;
+            color: $primary_color;
+            font-weight: bold;
+
+            &:nth-child(1) {
+                margin-left: 0px;
+            }
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    // NavBar Media Queries for tablets
+    @media screen and (max-width: $tablet) {
+        .burger-menu {
+            text-align: right;
+            display: block;
+            font-size: 25px;
+            color: white;
+            width: 10%;
+        }
+
+        .login-register {
+            display: none;
+        }
+
+        .logout-dropdown {
+            display: none;
+        }
+
+    }
+
+    // NavBar Media Queries for small devices
+    @media screen and (max-width: $small-devices) {
+        .search-bar {
+            width: 40%;
+        }
+
+        .burger-menu {
+            width: 20%;
+            padding-right: 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            width: 40%;
+            text-align: center;
+        }
+    }
+}

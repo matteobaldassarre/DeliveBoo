@@ -120,6 +120,7 @@ var app = new Vue({
       axios.get('/api/restaurants/' + type).then(function (result) {
         _this2.filteredRestaurantsByType = result.data.restaurants;
       });
+      console.log(this.filteredRestaurantsByType);
     }
   },
   mounted: function mounted() {
