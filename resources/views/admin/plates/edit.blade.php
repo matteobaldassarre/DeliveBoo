@@ -68,11 +68,11 @@
             <div class="select">
                 <label for="type">Select Plate Type: </label>
                 <select name="type" id="type">
+                    <option value="Antipasto" {{ old('type', $plate->type) == 'Antipasto' ? 'selected' : ''}}>Antipasto</option>
                     <option value="Primo" {{ old('type', $plate->type) == 'Primo' ? 'selected' : ''}}>Primo</option>
                     <option value="Secondo" {{ old('type', $plate->type) == 'Secondo' ? 'selected' : ''}}>Secondo</option>
                     <option value="Contorno" {{ old('type', $plate->type) == 'Contorno' ? 'selected' : ''}}>Contorno</option>
                     <option value="Dolce"{{ old('type', $plate->type) == 'Dolce' ? 'selected' : ''}}>Dolce</option>
-                    <option value="Antipasto" {{ old('type', $plate->type) == 'Antipasto' ? 'selected' : ''}}>Antipasto</option>
                 </select>
             </div>
 

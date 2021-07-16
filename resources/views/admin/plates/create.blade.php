@@ -68,11 +68,11 @@
             <div class="select">
                 <label for="type">Select Plate Type: </label>
                 <select name="type" id="type">
+                    <option value="Antipasto">Antipasto</option>
                     <option value="Primo">Primo</option>
                     <option value="Secondo">Secondo</option>
                     <option value="Contorno">Contorno</option>
                     <option value="Dolce">Dolce</option>
-                    <option value="Antipasto">Antipasto</option>
                 </select>
             </div>
 

@@ -18,6 +18,8 @@ Auth::routes();
 // VueJS Restaurants Rest API (HOME)
 Route::get('/', 'HomeController@index')->name('restaurant.home');
 
+// Public Restaurant Menu Page
+Route::get('/restaurant/{slug}', 'UserInfoController@show')->name('restaurant.menu');
 
 // Restaurant Info Routes
 Route::get('/admin-info/create', 'Admin\UserInfoController@create')->middleware('auth')->name('admin-info.create');

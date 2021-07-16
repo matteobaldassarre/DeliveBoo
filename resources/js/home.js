@@ -7,23 +7,17 @@ var app = new Vue({
         restaurantsTypes: [],
         filteredRestaurantsByType: [],
         searchedRestaurant: ''
-        
     },
 
     methods: {
         // Searching restaurant by its name
         searchRestaurantByName(searchedRestaurant) {
-
             this.filteredRestaurantsByType = [];
-
             this.restaurants.forEach(element => {
-
                 if (element.restaurant_name.toLowerCase().includes(searchedRestaurant.toLowerCase())) {
                     this.filteredRestaurantsByType.push(element);
-                } 
-
+                }
             });
-
         },
 
         // Searching restaurant by type using Laravel Api
@@ -31,9 +25,6 @@ var app = new Vue({
             axios.get( '/api/restaurants/' + type ).then(result => {
                 this.filteredRestaurantsByType = result.data.restaurants;
             });
-
-            console.log(this.filteredRestaurantsByType);
-            
         }
     },
 

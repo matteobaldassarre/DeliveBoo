@@ -1,0 +1,110 @@
+.restaurant-menu-page-show {
+    .menu-jumbotron {
+        height: 300px;
+        margin-bottom: 180px;
+        position: relative;
+
+        .menu-info-card {
+            color: white;
+            font-weight: bold;
+            font-style: oblique;
+            background-color: $primary-color;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+            text-align: center;
+            padding: 5% 10%;
+
+            h5 {
+                padding: 20px 0px;
+            }
+        }
+
+        .container-flex {
+            padding: 15px 25px 0px 25px;
+            @include flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart {
+            font-size: 30px;
+            color: white;
+        }
+    }
+
+    .menu-sections-navbar {
+        @include flex;
+        justify-content: space-between;
+        max-width: 450px;
+        margin: 0 auto;
+        border-bottom: 1px solid $primary-color;
+
+        li {
+            padding: 0px 5px;
+
+            a {
+                color: $primary-color;
+                text-decoration: none;
+            }
+
+            &:active {
+                font-weight: bold;
+                border-bottom: 2px solid $primary-color;
+            }
+        }
+    }
+
+    .menu-sections {
+        max-width: 1300px;
+        margin: 0 auto;
+
+        .container-flex {
+            @include flex;
+            justify-content: space-between;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-top: 50px;
+        }
+
+        .food-card {
+            @include flex;
+            padding: 5px;
+            width: calc(100% / 2 - 20px);
+            background-color: white;
+            border: 1px solid black;
+
+            img {
+                width: 200px;
+            }
+
+            .food-card-info {
+                padding-left: 10px;
+
+                .food-card-button {
+                    background-color: $primary-color;
+                    border-radius: 5px;
+                    color: white;
+                    font-weight: bold;
+                    font-style: oblique;
+                    border: none;
+                    padding: 4px 25px;
+                }
+
+                .food-card-price-button {
+                    padding-top: 20px;
+                    text-align: right;
+
+                    .food-card-price {
+                        padding-right: 10px;
+                        color: #12A20B;
+                    }
+                }
+            }
+        }
+    }
+}

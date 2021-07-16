@@ -25,6 +25,7 @@ class UserInfoController extends Controller
                 'address' => $restaurant->address,
                 'VAT' => $restaurant->VAT,
                 'cover' => $restaurant->cover,
+                'slug' => $restaurant->slug,
                 'restaurateur' => User::find($restaurant->user_id)->name,
                 'types' => User::findOrFail($restaurant->user_id)->types
             ];

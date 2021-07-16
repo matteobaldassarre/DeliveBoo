@@ -31,6 +31,39 @@ a {
   margin: 0 auto;
 }
 
+.deliveboo-logo {
+  color: white;
+  font-size: 20px;
+  font-style: oblique;
+}
+
+.deliveboo-logo .fa-hamburger {
+  position: relative;
+  bottom: 16px;
+  right: 23px;
+  font-size: 15px;
+}
+
+.login-page {
+  text-align: center;
+  padding: 20px 0px;
+  background-color: #2A5353;
+  font-size: 25px;
+  margin-bottom: 10vh;
+}
+
+.admin-dashboard-page .restaurant-cover {
+  width: 400px;
+}
+
+.admin-dashboard-page .restaurant-actions {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  max-width: 500px;
+  margin: auto;
+}
+
 .customer-homepage-navbar {
   background-color: #2A5353;
   padding: 20px 0px;
@@ -44,22 +77,9 @@ a {
   width: 100%;
 }
 
-.customer-homepage-navbar .logo {
+.customer-homepage-navbar .deliveboo-logo {
   width: 20%;
-  color: white;
-  font-size: 22px;
-  font-style: oblique;
-}
-
-.customer-homepage-navbar .logo span {
-  padding-left: 15px;
-}
-
-.customer-homepage-navbar .logo .fa-hamburger {
-  position: relative;
-  bottom: 16px;
-  right: 23px;
-  font-size: 15px;
+  margin-bottom: 10px;
 }
 
 .customer-homepage-navbar .search-bar {
@@ -146,23 +166,139 @@ a {
     padding-right: 20px;
   }
 
-  .customer-homepage-navbar .logo {
+  .customer-homepage-navbar .deliveboo-logo {
     font-size: 20px;
     width: 40%;
     text-align: center;
   }
 }
 
-.admin-dashboard-page .restaurant-cover {
-  width: 400px;
+@media screen and (max-width: 375px) {
+  .customer-homepage-navbar .burger-menu {
+    width: 15%;
+    padding-left: 20px;
+  }
+
+  .customer-homepage-navbar .deliveboo-logo {
+    width: 45%;
+  }
+
+  .customer-homepage-navbar .search-bar {
+    width: 40%;
+  }
 }
 
-.admin-dashboard-page .restaurant-actions {
+.restaurant-menu-page-show .menu-jumbotron {
+  height: 300px;
+  margin-bottom: 180px;
+  position: relative;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .menu-info-card {
+  color: white;
+  font-weight: bold;
+  font-style: oblique;
+  background-color: #2A5353;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  text-align: center;
+  padding: 5% 10%;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .menu-info-card h5 {
+  padding: 20px 0px;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .container-flex {
+  padding: 15px 25px 0px 25px;
   display: flex;
   display: -webkit-flex;
-  justify-content: space-around;
-  max-width: 500px;
-  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .cart {
+  font-size: 30px;
+  color: white;
+}
+
+.restaurant-menu-page-show .menu-sections-navbar {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  max-width: 450px;
+  margin: 0 auto;
+  border-bottom: 1px solid #2A5353;
+}
+
+.restaurant-menu-page-show .menu-sections-navbar li {
+  padding: 0px 5px;
+}
+
+.restaurant-menu-page-show .menu-sections-navbar li a {
+  color: #2A5353;
+  text-decoration: none;
+}
+
+.restaurant-menu-page-show .menu-sections-navbar li:active {
+  font-weight: bold;
+  border-bottom: 2px solid #2A5353;
+}
+
+.restaurant-menu-page-show .menu-sections {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.restaurant-menu-page-show .menu-sections .container-flex {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+}
+
+.restaurant-menu-page-show .menu-sections h2 {
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.restaurant-menu-page-show .menu-sections .food-card {
+  display: flex;
+  display: -webkit-flex;
+  padding: 5px;
+  width: calc(100% / 2 - 20px);
+  background-color: white;
+  border: 1px solid black;
+}
+
+.restaurant-menu-page-show .menu-sections .food-card img {
+  width: 200px;
+}
+
+.restaurant-menu-page-show .menu-sections .food-card .food-card-info {
+  padding-left: 10px;
+}
+
+.restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-button {
+  background-color: #2A5353;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-style: oblique;
+  border: none;
+  padding: 4px 25px;
+}
+
+.restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-price-button {
+  padding-top: 20px;
+  text-align: right;
+}
+
+.restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-price-button .food-card-price {
+  padding-right: 10px;
+  color: #12A20B;
 }
 
 /*!

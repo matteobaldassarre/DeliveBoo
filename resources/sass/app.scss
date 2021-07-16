@@ -1,13 +1,25 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'partials/variables';
-@import 'partials/mixins';
-@import 'partials/common';
-@import 'partials/header';
-@import 'partials/content';
-@import 'partials/footer';
+// Importing Common SCSS
+@import 'common/variables';
+@import 'common/mixins';
+@import 'common/reset';
+@import 'common/components';
+
+// Importing Auth SCSS
+@import 'auth/login';
+
+// Importing Admin SCSS
+@import 'admin/info/create';
+@import 'admin/info/edit';
+@import 'admin/home';
+
+
+// Importing Customer SCSS
+@import 'customer/home';
+@import 'customer/show';
+
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

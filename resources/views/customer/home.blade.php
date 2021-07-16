@@ -6,18 +6,18 @@
 
 @section('page_title')DeliveBoo Home @endsection
 
-@section('search-bar')
-    {{-- SearchBar --}}
-    <div class="search-bar">
-        <input type="text" placeholder="Search Restaurant" v-model="searchedRestaurant" v-on:keyup="searchRestaurantByName(searchedRestaurant)">
-    </div>
-@endsection
-
 @section('login-register')
     {{-- Login & Register Buttons --}}
     <div class="login-register">
         <a href="{{ url('/login') }}" class="access-buttons">Login</a>
         <a href="{{ url('/register') }}" class="access-buttons">Register</a>
+    </div>
+@endsection
+
+@section('search-bar')
+    {{-- SearchBar --}}
+    <div class="search-bar">
+        <input type="text" placeholder="Search Restaurant" v-model="searchedRestaurant" v-on:keyup="searchRestaurantByName(searchedRestaurant)">
     </div>
 @endsection
 
@@ -40,6 +40,8 @@
 
                         {{-- Restaurant Address --}}
                         <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
+
+                        <a :href="'restaurant/' + restaurant.slug">Vai Al Menu</a>
                     </div>
                 </div>
             </div>
