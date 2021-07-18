@@ -79,14 +79,11 @@ class UserInfoController extends Controller
         // Looping through all restaurants and taking all info of each one
         foreach ($all_restaurants as $restaurant) {
             if ($restaurant->types->count() > 0) {
-
                 foreach ($restaurant->types as $restaurant_type) {
                     if ($restaurant_type->id == $type_id) {
                         $filtered_restaurants[] = $restaurant->userInfo;
                     }
-
                 }
-
             }
         }
 

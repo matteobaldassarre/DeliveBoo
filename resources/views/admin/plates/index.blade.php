@@ -2,7 +2,7 @@
 
 @section('page_title')Restaurant Menu @endsection
 
-@section('content')
+@section('page_content')
     <div class="container">
         {{-- Private Restaurant Menu Page --}}
         <h1>Restaurant Menu</h1>

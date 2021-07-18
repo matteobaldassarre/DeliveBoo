@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // VueJS Restaurants Rest API (HOME)
-Route::get('/', 'HomeController@index')->name('restaurant.home');
+Route::get('/', 'HomeController@index')->name('customer.home');
 
 // Public Restaurant Menu Page
 Route::get('/restaurant/{slug}', 'UserInfoController@show')->name('restaurant.menu');

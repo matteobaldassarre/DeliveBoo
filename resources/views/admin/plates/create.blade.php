@@ -2,7 +2,7 @@
 
 @section('page_title')Add Plate @endsection
 
-@section('content')
+@section('page_content')
     <div class="container">
         <h1>Add New Plate</h1>
 

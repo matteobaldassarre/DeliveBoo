@@ -2,7 +2,7 @@
 
 @section('page_title')Restaurant Dashboard @endsection
 
-@section('content')
+@section('page_content')
     <div class="container admin-dashboard-page">
         <div class="row justify-content-center">
             <div class="col-md-12">

@@ -2,7 +2,7 @@
 
 @section('page_title')Edit Restaurant @endsection
 
-@section('content')
+@section('page_content')
     <div class="container">
         <h1>Edit Your Restaurant</h1>
 

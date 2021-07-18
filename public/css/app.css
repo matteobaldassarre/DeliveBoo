@@ -52,6 +52,14 @@ a {
   margin-bottom: 10vh;
 }
 
+.register-page {
+  text-align: center;
+  padding: 20px 0px;
+  background-color: #2A5353;
+  font-size: 25px;
+  margin-bottom: 10vh;
+}
+
 .admin-dashboard-page .restaurant-cover {
   width: 400px;
 }
