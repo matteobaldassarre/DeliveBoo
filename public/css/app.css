@@ -204,7 +204,6 @@ a {
 
 .restaurant-menu-page-show .menu-jumbotron .menu-info-card {
   color: white;
-  font-weight: bold;
   font-style: oblique;
   background-color: #2A5353;
   position: absolute;
@@ -214,6 +213,11 @@ a {
   margin: 0 auto;
   text-align: center;
   padding: 5% 10%;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .menu-info-card p,
+.restaurant-menu-page-show .menu-jumbotron .menu-info-card span {
+  font-size: 18px;
 }
 
 .restaurant-menu-page-show .menu-jumbotron .menu-info-card h5 {

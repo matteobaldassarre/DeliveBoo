@@ -28,7 +28,14 @@
             {{-- Restaurant Info Card --}}
             <div class="menu-info-card">
                 <h4>{{ $restaurant->restaurant_name }}</h4>
-                <h5>Hamburger - Pizzeria</h5>
+
+                <p>
+                    @foreach ($restaurant_types as $type)
+                        {{ $type->type_name }} {{ $loop->last ? '' : '-' }}
+                    @endforeach
+                </p>
+
+
                 <span>{{ $restaurant->address }}</span>
             </div>
         </div>
@@ -57,191 +64,137 @@
         </nav>
         {{-- End Menu Sections NavBar --}}
 
+        
         {{-- Menu Sections --}}
         <div class="menu-sections">
+            {{-- Antipasti --}}
             <div class="antipasti">
                 <h2>Antipasti</h2>
                 <div class="container-flex">
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
+                    @foreach ($plates as $plate)
+                        @if ($plate->type == 'Antipasto' )
+                            <div class="food-card">
+                                <div class="food-card-image">
+                                    <img src="{{asset('storage/' . $plate->image)}}" alt="food-image">
+                                </div>
 
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
+                                <div class="food-card-info">
+                                    <h4 class="food-card-title">{{ $plate->name }}</h4>
+                                    <p class="food-card-ingredients">Ingredienti: {{ $plate->ingredients }}</p>
 
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
+                                    <div class="food-card-price-button">
+                                        <span class="food-card-price">{{ $plate->price }}€</span>
+                                        <button class="food-card-button">Add to cart</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
-
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
-
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
 
+            {{-- Primi --}}
             <div class="primi">
                 <h2>Primi</h2>
-                <div class="container-flex">
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
+                @foreach ($plates as $plate)
+                    @if ($plate->type == 'Primo' )
+                        <div class="container-flex">
+                            <div class="food-card">
+                                <div class="food-card-image">
+                                    <img src="{{asset('storage/' . $plate->image)}}" alt="food-image">
+                                </div>
 
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
+                                <div class="food-card-info">
+                                    <h4 class="food-card-title">{{ $plate->name }}</h4>
+                                    <p class="food-card-ingredients">Ingredienti: {{ $plate->ingredients }}</p>
 
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
+                                    <div class="food-card-price-button">
+                                        <span class="food-card-price">{{ $plate->price }}€</span>
+                                        <button class="food-card-button">Add to cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
-
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
-
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             </div>
 
+            {{-- Secondi --}}
             <div class="secondi">
                 <h2>Secondi</h2>
-                <div class="container-flex">
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
+                @foreach ($plates as $plate)
+                    @if ($plate->type == 'Secondo' )
+                        <div class="container-flex">
+                            <div class="food-card">
+                                <div class="food-card-image">
+                                    <img src="{{asset('storage/' . $plate->image)}}" alt="food-image">
+                                </div>
 
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
+                                <div class="food-card-info">
+                                    <h4 class="food-card-title">{{ $plate->name }}</h4>
+                                    <p class="food-card-ingredients">Ingredienti: {{ $plate->ingredients }}</p>
 
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
+                                    <div class="food-card-price-button">
+                                        <span class="food-card-price">{{ $plate->price }}€</span>
+                                        <button class="food-card-button">Add to cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
-
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
-
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             </div>
 
+            {{-- Contorni --}}
             <div class="contorni">
                 <h2>Contorni</h2>
-                <div class="container-flex">
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
+                @foreach ($plates as $plate)
+                    @if ($plate->type == 'Contorno' )
+                        <div class="container-flex">
+                            <div class="food-card">
+                                <div class="food-card-image">
+                                    <img src="{{asset('storage/' . $plate->image)}}" alt="food-image">
+                                </div>
 
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
+                                <div class="food-card-info">
+                                    <h4 class="food-card-title">{{ $plate->name }}</h4>
+                                    <p class="food-card-ingredients">Ingredienti: {{ $plate->ingredients }}</p>
 
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
+                                    <div class="food-card-price-button">
+                                        <span class="food-card-price">{{ $plate->price }}€</span>
+                                        <button class="food-card-button">Add to cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
-
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
-
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             </div>
 
+            {{-- Dolci --}}
             <div class="dolci">
                 <h2>Dolci</h2>
-                <div class="container-flex">
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
+                @foreach ($plates as $plate)
+                    @if ($plate->type == 'Dolce' )
+                        <div class="container-flex">
+                            <div class="food-card">
+                                <div class="food-card-image">
+                                    <img src="{{asset('storage/' . $plate->image)}}" alt="food-image">
+                                </div>
 
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
+                                <div class="food-card-info">
+                                    <h4 class="food-card-title">{{ $plate->name }}</h4>
+                                    <p class="food-card-ingredients">Ingredienti: {{ $plate->ingredients }}</p>
 
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
+                                    <div class="food-card-price-button">
+                                        <span class="food-card-price">{{ $plate->price }}€</span>
+                                        <button class="food-card-button">Add to cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="food-card">
-                        <div class="food-card-image">
-                            <img src="https://www.lospicchiodaglio.it/img/ricette/crocchettepatate.jpg" alt="food-image">
-                        </div>
-
-                        <div class="food-card-info">
-                            <h4 class="food-card-title">Crocchetta di Patate</h4>
-                            <p class="food-card-ingredients">Ingredienti: patate, fagioli, peperoni, pollo...</p>
-
-                            <div class="food-card-price-button">
-                                <span class="food-card-price">1,60€</span>
-                                <button class="food-card-button">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             </div>
         </div>
         {{-- End Menu Sections --}}

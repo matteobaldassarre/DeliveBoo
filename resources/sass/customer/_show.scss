@@ -6,7 +6,6 @@
 
         .menu-info-card {
             color: white;
-            font-weight: bold;
             font-style: oblique;
             background-color: $primary-color;
             position: absolute;
@@ -16,6 +15,10 @@
             margin: 0 auto;
             text-align: center;
             padding: 5% 10%;
+
+            p, span {
+                font-size: 18px;
+            }
 
             h5 {
                 padding: 20px 0px;
