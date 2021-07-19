@@ -39,3 +39,9 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
     Route::resource('plates', 'PlateController');
 
 });
+
+
+// Braintree Routes
+Route::get('/payment', 'PaymentController@index')->name('braintree-index');
+
+Route::post('/payment-checkout', 'PaymentController@checkout')->name('braintree-checkout');
