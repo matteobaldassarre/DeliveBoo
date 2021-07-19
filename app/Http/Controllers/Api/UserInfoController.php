@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\UserInfo;
 use App\Type;
+use App\Plate;
 
 class UserInfoController extends Controller
 {
@@ -26,6 +27,7 @@ class UserInfoController extends Controller
                 'VAT' => $restaurant->VAT,
                 'cover' => $restaurant->cover,
                 'slug' => $restaurant->slug,
+                'user_id' => $restaurant->user_id,
                 'restaurateur' => User::find($restaurant->user_id)->name,
                 'types' => User::findOrFail($restaurant->user_id)->types
             ];
@@ -89,6 +91,25 @@ class UserInfoController extends Controller
 
         $result = [
             'restaurants' => $filtered_restaurants,
+            'success' => true
+        ];
+
+        return response()->json($result);
+    }
+
+
+    public function getRestaurantPlates($id)
+    {
+        $restaurant_plates = Plate::where('user_id', '=', $id)->get();
+
+        $filtered_plates = [];
+
+        foreach ($restaurant_plates as $plate) {
+            $filtered_plates[] = $plate;
+        }
+        
+        $result = [
+            'plates' => $filtered_plates,
             'success' => true
         ];
 

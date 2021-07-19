@@ -27,4 +27,7 @@ Route::get('/restaurants/types', 'Api\UserInfoController@types')->name('api.rest
 // Filtered Restaurants By Type API
 Route::get('/restaurants/{type}', 'Api\UserInfoController@searchRestaurants')->name('api.search');
 
+// Filtered Restaurant Plates By Type API
+Route::get('/restaurants/{id}/plates', 'Api\UserInfoController@getRestaurantPlates')->name('api.restaurants-plates');
+
 

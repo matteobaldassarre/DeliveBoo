@@ -99,7 +99,11 @@ var app = new Vue({
     restaurants: [],
     restaurantsTypes: [],
     filteredRestaurantsByType: [],
-    searchedRestaurant: ''
+    searchedRestaurant: '',
+    currentRestaurantPlates: [],
+    currentRestaurantInfo: [],
+    platesTypes: ['Antipasti', 'Primi', 'Secondi', 'Contorni', 'Dolci'],
+    restaurantChosen: false
   },
   methods: {
     // Searching restaurant by its name
@@ -120,18 +124,33 @@ var app = new Vue({
       axios.get('/api/restaurants/' + type).then(function (result) {
         _this2.filteredRestaurantsByType = result.data.restaurants;
       });
+    },
+    getRestaurantInfo: function getRestaurantInfo(restaurantId) {
+      var _this3 = this;
+
+      // Getting the restaurant info filtered by its id
+      this.restaurants.forEach(function (element) {
+        if (element.user_id == restaurantId) {
+          _this3.currentRestaurantInfo.push(element);
+        }
+      }); // Getting the restaurants plates filtered by the API Controller
+
+      axios.get('/api/restaurants/' + restaurantId + '/plates').then(function (result) {
+        _this3.currentRestaurantPlates = result.data.plates;
+      });
+      this.restaurantChosen = true;
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     // Getting all restaurants from the restaurants API
     axios.get('/api/restaurants').then(function (result) {
-      _this3.restaurants = result.data.restaurants;
+      _this4.restaurants = result.data.restaurants;
     }); // Populating Restaurant Types Array
 
     axios.get('/api/restaurants/types').then(function (result) {
-      _this3.restaurantsTypes = result.data.restaurants_types;
+      _this4.restaurantsTypes = result.data.restaurants_types;
     });
   }
 });

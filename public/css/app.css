@@ -72,12 +72,12 @@ a {
   margin: auto;
 }
 
-.customer-homepage-navbar {
+.homepage-navbar {
   background-color: #2A5353;
   padding: 20px 0px;
 }
 
-.customer-homepage-navbar .container-flex {
+.homepage-navbar .container-flex {
   display: flex;
   display: -webkit-flex;
   justify-content: space-between;
@@ -85,46 +85,46 @@ a {
   width: 100%;
 }
 
-.customer-homepage-navbar .deliveboo-logo {
+.homepage-navbar .deliveboo-logo {
   width: 20%;
   margin-bottom: 10px;
 }
 
-.customer-homepage-navbar .search-bar {
+.homepage-navbar .search-bar {
   width: 50%;
   text-align: center;
 }
 
-.customer-homepage-navbar .search-bar input {
+.homepage-navbar .search-bar input {
   width: 100%;
   border: none;
   border-radius: 5px;
   padding-left: 5px;
 }
 
-.customer-homepage-navbar .search-bar input:focus {
+.homepage-navbar .search-bar input:focus {
   outline: none;
 }
 
-.customer-homepage-navbar .search-bar input::-moz-placeholder {
+.homepage-navbar .search-bar input::-moz-placeholder {
   margin: 0 auto;
 }
 
-.customer-homepage-navbar .search-bar input:-ms-input-placeholder {
+.homepage-navbar .search-bar input:-ms-input-placeholder {
   margin: 0 auto;
 }
 
-.customer-homepage-navbar .search-bar input::placeholder {
+.homepage-navbar .search-bar input::placeholder {
   margin: 0 auto;
 }
 
-.customer-homepage-navbar .login-register {
+.homepage-navbar .login-register {
   width: 30%;
   text-align: right;
   padding-right: 20px;
 }
 
-.customer-homepage-navbar .login-register .access-buttons {
+.homepage-navbar .login-register .access-buttons {
   background-color: white;
   padding: 10px 20px;
   font-style: oblique;
@@ -134,20 +134,20 @@ a {
   font-weight: bold;
 }
 
-.customer-homepage-navbar .login-register .access-buttons:nth-child(1) {
+.homepage-navbar .login-register .access-buttons:nth-child(1) {
   margin-left: 0px;
 }
 
-.customer-homepage-navbar .login-register a:hover {
+.homepage-navbar .login-register a:hover {
   text-decoration: none;
 }
 
-.customer-homepage-navbar .burger-menu {
+.homepage-navbar .burger-menu {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  .customer-homepage-navbar .burger-menu {
+  .homepage-navbar .burger-menu {
     text-align: right;
     display: block;
     font-size: 25px;
@@ -155,26 +155,26 @@ a {
     width: 10%;
   }
 
-  .customer-homepage-navbar .login-register {
+  .homepage-navbar .login-register {
     display: none;
   }
 
-  .customer-homepage-navbar .logout-dropdown {
+  .homepage-navbar .logout-dropdown {
     display: none;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .customer-homepage-navbar .search-bar {
+  .homepage-navbar .search-bar {
     width: 40%;
   }
 
-  .customer-homepage-navbar .burger-menu {
+  .homepage-navbar .burger-menu {
     width: 20%;
     padding-right: 20px;
   }
 
-  .customer-homepage-navbar .deliveboo-logo {
+  .homepage-navbar .deliveboo-logo {
     font-size: 20px;
     width: 40%;
     text-align: center;
@@ -182,16 +182,16 @@ a {
 }
 
 @media screen and (max-width: 375px) {
-  .customer-homepage-navbar .burger-menu {
+  .homepage-navbar .burger-menu {
     width: 15%;
     padding-left: 20px;
   }
 
-  .customer-homepage-navbar .deliveboo-logo {
+  .homepage-navbar .deliveboo-logo {
     width: 45%;
   }
 
-  .customer-homepage-navbar .search-bar {
+  .homepage-navbar .search-bar {
     width: 40%;
   }
 }
@@ -235,29 +235,6 @@ a {
 .restaurant-menu-page-show .menu-jumbotron .cart {
   font-size: 30px;
   color: white;
-}
-
-.restaurant-menu-page-show .menu-sections-navbar {
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  max-width: 450px;
-  margin: 0 auto;
-  border-bottom: 1px solid #2A5353;
-}
-
-.restaurant-menu-page-show .menu-sections-navbar li {
-  padding: 0px 5px;
-}
-
-.restaurant-menu-page-show .menu-sections-navbar li a {
-  color: #2A5353;
-  text-decoration: none;
-}
-
-.restaurant-menu-page-show .menu-sections-navbar li:active {
-  font-weight: bold;
-  border-bottom: 2px solid #2A5353;
 }
 
 .restaurant-menu-page-show .menu-sections {
