@@ -3,7 +3,19 @@
 @section('page_title')Restaurant Dashboard @endsection
 
 @section('page_content')
-    <div class="container admin-dashboard-page">
+    {{-- Admin Dashboard Header --}}
+    <header class="admin-dashboard-header">
+        <div class="wrapper">
+            {{-- DeliveBoo Logo --}}
+            <div class="logo">
+                <a href="{{ route('customer.home') }}" class="text-white text-decoration-none">DeliveBoo</a>
+                <i class="fas fa-hamburger text-white"></i>
+            </div>
+        </div>
+    </header>
+    {{-- End Admin Dashboard Header --}}
+
+    <div class="container admin-dashboard-main">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">

@@ -105,7 +105,16 @@ class UserInfoController extends Controller
         $filtered_plates = [];
 
         foreach ($restaurant_plates as $plate) {
-            $filtered_plates[] = $plate;
+            $filtered_plates[] = [
+                'id' => $plate->id,
+                'name' => $plate->name,
+                'ingredients' => $plate->ingredients,
+                'type' => $plate->type,
+                'quantity' => '0',
+                'image' => $plate->image,
+                'price' => $plate->price,
+                'user_id' => $plate->user_id
+            ];
         }
         
         $result = [
@@ -115,4 +124,6 @@ class UserInfoController extends Controller
 
         return response()->json($result);
     }
+
+    
 }

@@ -1,5 +1,14 @@
-// Admin Dashboard Page (admin.home)
-.admin-dashboard-page {
+// Admin dashboard header
+.admin-dashboard-header {
+    text-align: center;
+    padding: 20px 0px;
+    background-color: $primary-color;
+    font-size: 25px;
+    margin-bottom: 10vh;
+}
+
+// Admin Dashboard Main
+.admin-dashboard-main {
     .restaurant-cover {
         width: 400px;
     }

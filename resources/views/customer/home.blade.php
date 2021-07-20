@@ -10,7 +10,6 @@
 @section('page_content')
         {{-- VueJS Container --}}
         <div id="root">
-
             {{-- HomePage NavBar & Types Component --}}
             <div class="homepage-component" v-if="restaurantChosen == false">
                 {{-- HomePage NavBar --}}
@@ -19,7 +18,7 @@
                         <div class="container-flex">
                             {{-- DeliveBoo Logo --}}
                             <div class="deliveboo-logo">
-                                <a href="{{ route('customer.home') }}">
+                                <a href="{{ url('/') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="102" height="38.833" viewBox="0 0 102 38.833">
                                         <g id="Raggruppa_3" data-name="Raggruppa 3" transform="translate(-127 -74.167)">
                                             <text id="DeliveBoo" transform="translate(127 106)" fill="#fff" font-size="25" font-family="PTSans-BoldItalic, PT Sans" font-weight="700" font-style="italic"><tspan x="0" y="0">DeliveBoo</tspan></text>
@@ -54,6 +53,8 @@
                                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
+
+                                            <a href="{{ route('admin.home') }}" class="dropdown-item">Dashboard</a>
                                         </div>
                                     </div>
 
@@ -111,7 +112,7 @@
                     <div class="container-flex">
                         {{-- DeliveBoo Logo --}}
                         <div class="deliveboo-logo">
-                            <a href="{{ route('customer.home') }}">
+                            <a style="cursor: pointer" v-on:click="restaurantChosen = false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="102" height="38.833" viewBox="0 0 102 38.833">
                                     <g id="Raggruppa_3" data-name="Raggruppa 3" transform="translate(-127 -74.167)">
                                         <text id="DeliveBoo" transform="translate(127 106)" fill="#fff" font-size="25" font-family="PTSans-BoldItalic, PT Sans" font-weight="700" font-style="italic"><tspan x="0" y="0">DeliveBoo</tspan></text>
@@ -133,11 +134,42 @@
 
                         <p>
                             <span v-for="type in restaurantInfo.types">
-                                @{{ type.type_name }} - 
+                                @{{ type.type_name }}
+                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
                             </span>
                         </p>
 
                         <span>@{{ restaurantInfo.address }}</span>
+                    </div>
+
+                    {{-- Restaurant Info Card --}}
+                    <div class="menu-info-card" v-for="restaurantInfo in currentRestaurantInfo">
+                        <h4>@{{ restaurantInfo.restaurant_name }}</h4>
+
+                        <p>
+                            <span v-for="type in restaurantInfo.types">
+                                @{{ type.type_name }}
+                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
+                            </span>
+                        </p>
+
+                        <span>@{{ restaurantInfo.address }}</span>
+                    </div>
+
+                    {{-- Restaurant Info Card --}}
+                    <div class="cart">
+                        <h2>Carrello</h2>
+
+                        <ul>
+                            <li v-for="product in shoppingCart">
+                                <span>@{{ product.name }}</span>
+                                <button v-on:click="removeQuantity(product)"> - </button>
+                                <span>@{{ product.quantity }}</span>
+                                <button v-on:click="addQuantity(product)"> + </button>
+                            </li>
+                        </ul>
+                        <h3>Totale: @{{ totalPrice }}€</h3>
+                        <a v-on:click="checkoutOpened = true">Vai al checkout</a>
                     </div>
                 </div>
                 {{-- End Restaurant Jumbotron --}}
@@ -150,7 +182,7 @@
                         <h2>@{{ type }}</h2>
                         <div class="container-flex">
                             {{-- Food Card --}}
-                            <div class="food-card" v-for="plate in currentRestaurantPlates" v-if="plate.type.replace(/.$/,'i') == type">
+                            <div class="food-card" v-for="(plate, index) in currentRestaurantPlates" v-if="plate.type.replace(/.$/,'i') == type">
                                 {{-- Food Image --}}
                                 <div class="food-card-image">
                                     <img :src="'storage/' + plate.image" alt="plate-image">
@@ -163,7 +195,7 @@
 
                                     <div class="food-card-price-button">
                                         <span class="food-card-price">@{{ plate.price }} €</span>
-                                        <button class="food-card-button">Add to cart</button>
+                                        <button class="food-card-button" v-on:click="addPlateToCart(plate, index)">Add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +205,6 @@
                 {{-- End Menu Sections --}}
             </div>
             {{-- End Single Restaurant Menu Component --}}
-
         </div>
         {{-- End VueJS Container --}}
 @endsection

@@ -25,6 +25,8 @@ class PaymentController extends Controller
         $firstName = $request->firstName;
         $lastName = $request->lastName;
         $address = $request->address;
+        $postalCode = $request->postalcode;
+
 
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
@@ -33,6 +35,7 @@ class PaymentController extends Controller
                 'firstName' => $firstName,
                 'lastName' => $lastName,
                 'streetAddress' => $address,
+                'postalCode' => $postalCode,
             ],
             'options' => [
                 'submitForSettlement' => true
