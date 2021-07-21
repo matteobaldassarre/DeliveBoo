@@ -24,6 +24,8 @@
 }
 
 .horizontal-scroll-container {
+    padding-top: 1em;
+    padding-bottom: 0;
     display: flex;
     overflow-x: auto;
     justify-content: center;
@@ -47,7 +49,7 @@
 .jumbotron-container {
     position: absolute;
     left: 0;
-    top: 160px;
+    top: 175px;
     height: 400px;
     width: 100%;
     img {
