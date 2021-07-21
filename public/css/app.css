@@ -45,10 +45,10 @@ a {
 }
 
 .horizontal-scroll-container {
-  padding-top: 1em;
-  padding-bottom: 0;
   display: flex;
   overflow-x: auto;
+  max-width: 90%;
+  margin: auto;
   justify-content: center;
 }
 
@@ -69,11 +69,7 @@ a {
 }
 
 .jumbotron-container {
-  position: absolute;
-  left: 0;
-  top: 175px;
   height: 400px;
-  width: 100%;
 }
 
 .jumbotron-container img {
@@ -360,13 +356,21 @@ a {
 
 .infos {
   display: flex;
-  height: 300px;
-  margin-top: 400px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
 }
 
-.infos * {
+.infos > * {
+  max-width: 300px;
   padding: 1em;
   text-align: center;
+}
+
+.infos > * .title {
+  color: #2A5353;
+  font-size: 1.75em;
 }
 
 /*!

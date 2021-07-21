@@ -24,10 +24,10 @@
 }
 
 .horizontal-scroll-container {
-    padding-top: 1em;
-    padding-bottom: 0;
     display: flex;
     overflow-x: auto;
+    max-width: 90%;
+    margin: auto;
     justify-content: center;
 }
 
@@ -47,11 +47,7 @@
 }
 
 .jumbotron-container {
-    position: absolute;
-    left: 0;
-    top: 175px;
     height: 400px;
-    width: 100%;
     img {
         object-fit: cover;
         width: 100%;

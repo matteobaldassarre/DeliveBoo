@@ -234,11 +234,19 @@
 // Deliveboo & Developers Infos
 .infos {
     display: flex;
-    height: 300px;
-    margin-top: 400px;
-
-    * {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    > * {    
+        max-width: 300px;
         padding: 1em;
         text-align: center;
+        .title {
+            color: $primary-color;
+            font-size: 1.75em;
+        }
     }
 }
+
+// 760px
