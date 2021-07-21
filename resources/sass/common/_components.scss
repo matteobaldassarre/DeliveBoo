@@ -26,6 +26,9 @@
 .horizontal-scroll-container {
     display: flex;
     overflow-x: auto;
+    max-width: 90%;
+    margin: auto;
+    justify-content: center;
 }
 
 .button {
@@ -44,10 +47,7 @@
 }
 
 .jumbotron-container {
-    position: absolute;
-    left: 0;
     height: 400px;
-    width: 100vw;
     img {
         object-fit: cover;
         width: 100%;

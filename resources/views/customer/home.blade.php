@@ -75,47 +75,44 @@
                 </nav>
 
                 {{-- HomePage Types Buttons --}}
-                <div class="container">
-                    {{-- Types Buttons --}}
-                    <div class="wrapper text-center horizontal-scroll-container">
-                        <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
-                    </div>
+                {{-- Types Buttons --}}
+                <div class="text-center horizontal-scroll-container">
+                    <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
+                </div>
 
-                    <div class="jumbotron-container" v-if="filteredRestaurantsByType == 0">
-                        <img src="https://wallpaperaccess.com/full/767277.jpg" alt="slider-image">
-                    </div>
+                <div class="jumbotron-container" v-if="filteredRestaurantsByType == 0">
+                    <img src="https://wallpaperaccess.com/full/767277.jpg" alt="slider-image">
+                </div>
 
-                    <div v-else>
-                        <div class="row">
-                            {{-- Bootstrap Plate Card --}}
-                            <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
-                                <div class="card">
-                                    <div class="card-body">
-                                        {{-- Restaurant Name --}}
-                                        <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
+                <div v-else>
+                    <div class="row">
+                        {{-- Bootstrap Plate Card --}}
+                        <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{-- Restaurant Name --}}
+                                    <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
 
-                                        {{-- Restaurant Address --}}
-                                        <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
+                                    {{-- Restaurant Address --}}
+                                    <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
 
-                                        <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
-                                    </div>
+                                    <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
                                 </div>
                             </div>
-                            {{-- End Bootstrap Plate Card --}}
                         </div>
+                        {{-- End Bootstrap Plate Card --}}
                     </div>
+                </div>
 
-                    <div class="infos">
-                        <div class="why-deliveboo">
-                            <div class="title">Why DeliveBoo?</div>
-                            DeliveBoo is a modern web application that allows you to order from all the best restaurants in town.
-                        </div>
-                        <div class="about-us">
-                            <div class="title">About Us</div>
-                            DeliveBoo is developed by a team of young and smart developer, here their contacts...
-                        </div>
+                <div class="infos">
+                    <div class="why-deliveboo">
+                        <div class="title">Why DeliveBoo?</div>
+                        DeliveBoo is a modern web application that allows you to order from all the best restaurants in town.
                     </div>
-
+                    <div class="about-us">
+                        <div class="title">About Us</div>
+                        DeliveBoo is developed by a team of young and smart developer, here their contacts...
+                    </div>
                 </div>
             </div>
             {{-- End HomePage NavBar & Types Component --}}
