@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Braintree\Gateway as Gateway;
+use App\Order;
 
 class PaymentController extends Controller
 {
@@ -26,7 +27,8 @@ class PaymentController extends Controller
         $lastName = $request->lastName;
         $address = $request->address;
         $postalCode = $request->postalcode;
-
+        $orderid = $request->id;
+        $mail = $request->mail;
 
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
@@ -45,7 +47,18 @@ class PaymentController extends Controller
         if ($result->success) {
 
             $transaction = $result->transaction;
-            return back()->with('success_message', 'Transaction Successful. Transaction ID:' . $transaction->id);
+            //update order 
+            $order = Order::findOrFail($orderid);
+
+            $order->name = $firstName.' '.$lastName;
+            $order->address = $address;
+            $order->status = true;
+            $order->mail = $mail;
+            
+            $order->update();
+
+            // return back()->with('success_message', 'Transaction Successful. Transaction ID:' . $transaction->id);
+            return view('customer.success');
 
         } else {
             $errorString = "";

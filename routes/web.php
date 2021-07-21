@@ -45,3 +45,6 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
 Route::get('/payment', 'PaymentController@index')->name('braintree-index');
 
 Route::post('/payment-checkout', 'PaymentController@checkout')->name('braintree-checkout');
+
+// orders route
+Route::get('/order', 'OrderController@create')->name('order-create');

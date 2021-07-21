@@ -169,7 +169,18 @@
                             </li>
                         </ul>
                         <h3>Totale: @{{ totalPrice }}€</h3>
-                        <a v-on:click="checkoutOpened = true">Vai al checkout</a>
+                        {{-- <a v-on:click="checkoutOpened = true">Vai al checkout</a> --}}
+                        {{-- form  --}}
+                        <form action="{{ route('order-create') }}">
+                            @csrf
+                            <input type="number" name="total" :value="totalPrice" style="display: none"> {{-- togliere display none e metterlo in sass  --}}
+                           <div v-for="plate in shoppingCart">
+                                <input type="text" name="shoppingCart[]" :value="plate.id"/>
+                                <input type="text" name="shoppingCart[]" :value="plate.quantity"/>
+                           </div>
+                            
+                            <input type="submit" value="Vai al checkout">
+                        </form>
                     </div>
                 </div>
                 {{-- End Restaurant Jumbotron --}}

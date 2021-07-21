@@ -85,8 +85,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="amount">Price Amount</label>
-                                <input type="text" class="form-control" id="amount" name="amount">
+                                <label for="mail">Mail</label>
+                                <input type="email" class="form-control" id="mail" name="mail">
+
+                                {{-- to sass --}}
+                                <input type="text" class="form-control" id="amount" name="amount" value="{{ $amount }}" style="display: none">
+                                <input type="text" class="form-control" id="id" name="id" value="{{ $id_order }}"  style="display: none">
                             </div>
                         </div>
                     </div>
@@ -149,7 +153,7 @@
                     <div class="spacer"></div>
 
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
-                    <button type="submit" class="btn btn-success">Submit Payment</button>
+                    <button type="submit" class="btn btn-success">Payment € {{ $amount }} </button>
                 </form>
                 {{-- End Payment Form --}}
             </div>
