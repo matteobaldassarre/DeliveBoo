@@ -26,8 +26,7 @@
 .horizontal-scroll-container {
     display: flex;
     overflow-x: auto;
-    // width: 100vw;
-    border: 1px solid red;
+    justify-content: center;
 }
 
 .button {
@@ -48,6 +47,7 @@
 .jumbotron-container {
     position: absolute;
     left: 0;
+    top: 160px;
     height: 400px;
     width: 100%;
     img {

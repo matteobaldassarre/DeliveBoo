@@ -75,11 +75,11 @@
                 </nav>
 
                 {{-- HomePage Types Buttons --}}
+                {{-- Types Buttons --}}
+                <div class="text-center horizontal-scroll-container">
+                    <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
+                </div>
                 <div class="container">
-                    {{-- Types Buttons --}}
-                    <div class="wrapper text-center horizontal-scroll-container">
-                        <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
-                    </div>
 
                     <div class="jumbotron-container" v-if="filteredRestaurantsByType == 0">
                         <img src="https://wallpaperaccess.com/full/767277.jpg" alt="slider-image">
