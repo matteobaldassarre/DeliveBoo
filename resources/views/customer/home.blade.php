@@ -160,9 +160,9 @@
                             <ul>
                                 <li v-for="product in shoppingCart">
                                     <span>@{{ product.name }}</span>
-                                    <button v-on:click="removeQuantity(product)"> - </button>
+                                    <a v-on:click="removeQuantity(product)"> - </a>
                                     <span>@{{ product.quantity }}</span>
-                                    <button v-on:click="addQuantity(product)"> + </button>
+                                    <a v-on:click="addQuantity(product)"> + </a>
                                 </li>
                             </ul>
                             <h3>Totale: @{{ totalPrice }}€</h3>
@@ -171,7 +171,7 @@
                             <form action="{{ route('order-create') }}" method="get">
                                 @csrf
                                 @method('GET')
-                                <input type="number" name="total" :value="totalPrice" class="d-none">
+                                {{-- <input type="number" name="total" :value="totalPrice" class="d-none"> --}}
                                 <div v-for="plate in shoppingCart">
                                     <input type="text" name="shoppingCart[]" :value="plate.id" class="d-none">
                                     <input type="text" name="shoppingCart[]" :value="plate.quantity" class="d-none">

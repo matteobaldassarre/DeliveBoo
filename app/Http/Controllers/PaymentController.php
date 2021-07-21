@@ -21,14 +21,23 @@ class PaymentController extends Controller
 
     public function checkout(Gateway $gateway, Request $request)
     {
-        $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
         $firstName = $request->firstName;
         $lastName = $request->lastName;
         $address = $request->address;
         $postalCode = $request->postalcode;
-        $orderid = $request->id;
+        $order_id = $request->id;
         $mail = $request->mail;
+
+
+        $order = Order::findOrFail($order_id);
+
+        if ($order->status) {
+            abort('404');
+        }
+
+        $amount = $order->total;
+
 
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
@@ -49,7 +58,7 @@ class PaymentController extends Controller
             $transaction = $result->transaction;
             
             // Update order 
-            $order = Order::findOrFail($orderid);
+            $order = Order::findOrFail($order_id);
 
             $order->name = $firstName . ' ' . $lastName;
             $order->address = $address;
