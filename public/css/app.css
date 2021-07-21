@@ -44,6 +44,41 @@ a {
   font-size: 15px;
 }
 
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+}
+
+.button {
+  border: 1px solid #2A5353;
+  cursor: pointer;
+  color: #2A5353;
+  border-radius: 20px;
+  margin: 1em 0.5em;
+  min-width: 100px;
+  padding: 0.15em 0.5em;
+}
+
+.button:hover {
+  background-color: #2A5353;
+  color: white;
+  text-decoration: none;
+}
+
+.jumbotron-container {
+  position: absolute;
+  left: 0;
+  height: 400px;
+  width: 100vw;
+}
+
+.jumbotron-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 .login-page {
   text-align: center;
   padding: 20px 0px;
@@ -319,9 +354,15 @@ a {
   color: #12A20B;
 }
 
-.checkout-box .small-wrapper {
-  height: 100vh;
-  align-items: center;
+.infos {
+  display: flex;
+  height: 300px;
+  margin-top: 400px;
+}
+
+.infos * {
+  padding: 1em;
+  text-align: center;
 }
 
 /*!

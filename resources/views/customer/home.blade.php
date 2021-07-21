@@ -77,29 +77,45 @@
                 {{-- HomePage Types Buttons --}}
                 <div class="container">
                     {{-- Types Buttons --}}
-                    <div class="wrapper text-center">
-                        <span v-for="type in restaurantsTypes">
-                            <a class="btn" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
-                        </span>
+                    <div class="wrapper text-center horizontal-scroll-container">
+                        <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
                     </div>
 
-                    <div class="row">
-                        {{-- Bootstrap Plate Card --}}
-                        <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
-                            <div class="card">
-                                <div class="card-body">
-                                    {{-- Restaurant Name --}}
-                                    <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
+                    <div class="jumbotron-container" v-if="filteredRestaurantsByType == 0">
+                        <img src="https://wallpaperaccess.com/full/767277.jpg" alt="slider-image">
+                    </div>
 
-                                    {{-- Restaurant Address --}}
-                                    <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
+                    <div v-else>
+                        <div class="row">
+                            {{-- Bootstrap Plate Card --}}
+                            <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
+                                <div class="card">
+                                    <div class="card-body">
+                                        {{-- Restaurant Name --}}
+                                        <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
 
-                                    <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
+                                        {{-- Restaurant Address --}}
+                                        <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
+
+                                        <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
+                                    </div>
                                 </div>
                             </div>
+                            {{-- End Bootstrap Plate Card --}}
                         </div>
-                        {{-- End Bootstrap Plate Card --}}
                     </div>
+
+                    <div class="infos">
+                        <div class="why-deliveboo">
+                            <div class="title">Why DeliveBoo?</div>
+                            DeliveBoo is a modern web application that allows you to order from all the best restaurants in town.
+                        </div>
+                        <div class="about-us">
+                            <div class="title">About Us</div>
+                            DeliveBoo is developed by a team of young and smart developer, here their contacts...
+                        </div>
+                    </div>
+
                 </div>
             </div>
             {{-- End HomePage NavBar & Types Component --}}
@@ -121,66 +137,49 @@
                                 </svg>
                             </a>
                         </div>
+                    </div>
 
-                        {{-- DeliveBoo Cart --}}
+                    {{-- Restaurant Info Card --}}
+                    <div class="menu-info-card" v-for="restaurantInfo in currentRestaurantInfo">
+                        <h4>@{{ restaurantInfo.restaurant_name }}</h4>
+
+                        <p>
+                            <span v-for="type in restaurantInfo.types">
+                                @{{ type.type_name }}
+                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
+                            </span>
+                        </p>
+
+                        <span>@{{ restaurantInfo.address }}</span>
+                    </div>
+
+                    {{-- Restaurant Shopping Cart --}}
+                    <div :class="totalPrice == 0 ? 'd-none' : ''">
                         <div class="cart">
-                            <i class="fas fa-shopping-cart"></i>
+                            <h2>Carrello</h2>
+                            <ul>
+                                <li v-for="product in shoppingCart">
+                                    <span>@{{ product.name }}</span>
+                                    <button v-on:click="removeQuantity(product)"> - </button>
+                                    <span>@{{ product.quantity }}</span>
+                                    <button v-on:click="addQuantity(product)"> + </button>
+                                </li>
+                            </ul>
+                            <h3>Totale: @{{ totalPrice }}€</h3>
+
+                            {{-- Form  --}}
+                            <form action="{{ route('order-create') }}" method="get">
+                                @csrf
+                                @method('GET')
+                                <input type="number" name="total" :value="totalPrice" class="d-none">
+                                <div v-for="plate in shoppingCart">
+                                    <input type="text" name="shoppingCart[]" :value="plate.id" class="d-none">
+                                    <input type="text" name="shoppingCart[]" :value="plate.quantity" class="d-none">
+                                </div>
+                                
+                                <input type="submit" value="Vai al checkout" class="btn btn-warning">
+                            </form>
                         </div>
-                    </div>
-
-                    {{-- Restaurant Info Card --}}
-                    <div class="menu-info-card" v-for="restaurantInfo in currentRestaurantInfo">
-                        <h4>@{{ restaurantInfo.restaurant_name }}</h4>
-
-                        <p>
-                            <span v-for="type in restaurantInfo.types">
-                                @{{ type.type_name }}
-                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
-                            </span>
-                        </p>
-
-                        <span>@{{ restaurantInfo.address }}</span>
-                    </div>
-
-                    {{-- Restaurant Info Card --}}
-                    <div class="menu-info-card" v-for="restaurantInfo in currentRestaurantInfo">
-                        <h4>@{{ restaurantInfo.restaurant_name }}</h4>
-
-                        <p>
-                            <span v-for="type in restaurantInfo.types">
-                                @{{ type.type_name }}
-                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
-                            </span>
-                        </p>
-
-                        <span>@{{ restaurantInfo.address }}</span>
-                    </div>
-
-                    {{-- Restaurant Info Card --}}
-                    <div class="cart">
-                        <h2>Carrello</h2>
-
-                        <ul>
-                            <li v-for="product in shoppingCart">
-                                <span>@{{ product.name }}</span>
-                                <button v-on:click="removeQuantity(product)"> - </button>
-                                <span>@{{ product.quantity }}</span>
-                                <button v-on:click="addQuantity(product)"> + </button>
-                            </li>
-                        </ul>
-                        <h3>Totale: @{{ totalPrice }}€</h3>
-                        {{-- <a v-on:click="checkoutOpened = true">Vai al checkout</a> --}}
-                        {{-- form  --}}
-                        <form action="{{ route('order-create') }}">
-                            @csrf
-                            <input type="number" name="total" :value="totalPrice" style="display: none"> {{-- togliere display none e metterlo in sass  --}}
-                           <div v-for="plate in shoppingCart">
-                                <input type="text" name="shoppingCart[]" :value="plate.id"/>
-                                <input type="text" name="shoppingCart[]" :value="plate.quantity"/>
-                           </div>
-                            
-                            <input type="submit" value="Vai al checkout">
-                        </form>
                     </div>
                 </div>
                 {{-- End Restaurant Jumbotron --}}

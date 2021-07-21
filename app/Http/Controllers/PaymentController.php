@@ -47,20 +47,21 @@ class PaymentController extends Controller
         if ($result->success) {
 
             $transaction = $result->transaction;
-            //update order 
+            
+            // Update order 
             $order = Order::findOrFail($orderid);
 
-            $order->name = $firstName.' '.$lastName;
+            $order->name = $firstName . ' ' . $lastName;
             $order->address = $address;
             $order->status = true;
             $order->mail = $mail;
             
             $order->update();
 
-            // return back()->with('success_message', 'Transaction Successful. Transaction ID:' . $transaction->id);
             return view('customer.success');
 
         } else {
+
             $errorString = "";
 
             foreach  ($result->errors->deepAll() as $error) {

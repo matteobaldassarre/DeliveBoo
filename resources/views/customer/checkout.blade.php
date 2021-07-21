@@ -88,9 +88,9 @@
                                 <label for="mail">Mail</label>
                                 <input type="email" class="form-control" id="mail" name="mail">
 
-                                {{-- to sass --}}
-                                <input type="text" class="form-control" id="amount" name="amount" value="{{ $amount }}" style="display: none">
-                                <input type="text" class="form-control" id="id" name="id" value="{{ $id_order }}"  style="display: none">
+                                
+                                <input type="text" class="form-control d-none" id="amount" name="amount" value="{{ $amount }}">
+                                <input type="text" class="form-control d-none" id="id" name="id" value="{{ $id_order }}">
                             </div>
                         </div>
                     </div>

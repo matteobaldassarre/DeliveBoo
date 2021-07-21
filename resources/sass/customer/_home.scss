@@ -231,9 +231,14 @@
     }
 }
 
-.checkout-box {
-    .small-wrapper {
-        height: 100vh;
-        align-items: center;
+// Deliveboo & Developers Infos
+.infos {
+    display: flex;
+    height: 300px;
+    margin-top: 400px;
+
+    * {
+        padding: 1em;
+        text-align: center;
     }
 }

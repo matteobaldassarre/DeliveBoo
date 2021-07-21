@@ -46,5 +46,5 @@ Route::get('/payment', 'PaymentController@index')->name('braintree-index');
 
 Route::post('/payment-checkout', 'PaymentController@checkout')->name('braintree-checkout');
 
-// orders route
+// Orders Create Route
 Route::get('/order', 'OrderController@create')->name('order-create');
