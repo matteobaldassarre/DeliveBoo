@@ -127,15 +127,6 @@ var app = new Vue({
             if (totalPrice == 0) {
                 this.sidebareVisible = false;
             }
-        },
-        buttonSidebareVisibility() {
-            function myFunction() {
-                setTimeout(function(){ alert("Hello"); }, 3000);
-              }
-            // function() {
-            //     setTimeout(this.sidebareVisibility(), 1000);
-            // }
-            this.sidebareVisibility();
         }
     }, 
 
