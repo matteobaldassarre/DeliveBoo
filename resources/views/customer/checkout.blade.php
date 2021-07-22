@@ -96,27 +96,26 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        {{-- <div class="col-md-6">
+                            <div class="form-group" id="card-number">
                                 <label for="cc_number">Credit Card Number</label>
                                 <input type="text" class="form-control" id="cc_number" name="cc_number">
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="form-group">
+                            <div class="form-group" id="expiration-date">
                                 <label for="expiry">Expiry</label>
                                 <input type="text" class="form-control" id="expiry" name="expiry">
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="form-group">
+                            <div class="form-group" id="cvv">
                                 <label for="cvc">CVV</label>
                                 <input type="text" class="form-control" id="cvc" name="cvc">
                             </div>
-                        </div>
-
+                        </div> --}}
                     </div>
 
                     <div class="row">
@@ -132,7 +131,7 @@
                             <label for="expiry">Expiry</label>
 
                             <div class="form-group" id="expiration-date">
-
+                                
                             </div>
                         </div>
 
@@ -140,7 +139,7 @@
                             <label for="cvv">CVV</label>
 
                             <div class="form-group" id="cvv">
-
+                                
                             </div>
                         </div>
 
@@ -200,15 +199,18 @@
                     fields: {
                         number: {
                             selector: '#card-number',
-                            placeholder: '4111 1111 1111 1111'
+                            placeholder: '4111 1111 1111 1111',
+                            name: 'cc_number'
                         },
                         cvv: {
                             selector: '#cvv',
-                            placeholder: '123'
+                            placeholder: '123', 
+                            name: 'cvc'
                         },
                         expirationDate: {
                             selector: '#expiration-date',
-                            placeholder: '10/2019'
+                            placeholder: '10/2019',
+                            name: 'expiry'
                         }
                     }
                 }, function (hostedFieldsErr, hostedFieldsInstance) {

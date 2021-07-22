@@ -66,8 +66,10 @@
                             @endguest
 
                             {{-- Responsive Burger Menu --}}
-                            <div class="burger-menu">
-                                <i class="fa fa-bars"></i>
+                            <div class="dropdown">
+                                <div class="burger-menu">
+                                    <i class="fa fa-bars"></i>
+                                </div>
                             </div>
 
                         </div>
@@ -75,32 +77,53 @@
                 </nav>
 
                 {{-- HomePage Types Buttons --}}
-                {{-- Types Buttons --}}
                 <div class="text-center horizontal-scroll-container">
                     <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
                 </div>
 
-                <div class="jumbotron-container" v-if="filteredRestaurantsByType == 0">
-                    <img src="https://wallpaperaccess.com/full/767277.jpg" alt="slider-image">
+                <div class="jumbotron-container pb-5" v-if="filteredRestaurantsByType.length == 0">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80" alt="">
                 </div>
 
-                <div v-else>
+                {{-- Default Restaurants --}}
+                <div class="default-restaurants container" v-if="filteredRestaurantsByType.length == 0">
                     <div class="row">
                         {{-- Bootstrap Plate Card --}}
-                        <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
-                            <div class="card">
-                                <div class="card-body">
-                                    {{-- Restaurant Name --}}
-                                    <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
+                        <div class="col-lg-3 mb-4" v-for="restaurant in defaultRestaurants">
+                            <div class="card" v-on:click="getRestaurantInfo(restaurant.user_id)">
+                                {{-- Restaurant Image --}}
+                                <img class="card-img-top" :src="'storage/' + restaurant.cover" alt="restaurant-cover">
 
-                                    {{-- Restaurant Address --}}
-                                    <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
-
-                                    <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
+                                {{-- Restaurant Name --}}
+                                <div class="card-body text-center">
+                                    <h4 class="card-title user-select-none">@{{ restaurant.restaurant_name }}</h4>
                                 </div>
                             </div>
                         </div>
                         {{-- End Bootstrap Plate Card --}}
+                    </div>
+                </div>
+                {{-- End Default Restaurants --}}
+
+                <div v-if="filteredRestaurantsByType.length > 0">
+                    <div class="container">
+                        <div class="row">
+                            {{-- Bootstrap Plate Card --}}
+                            <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
+                                <div class="card">
+                                    <div class="card-body">
+                                        {{-- Restaurant Name --}}
+                                        <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
+
+                                        {{-- Restaurant Address --}}
+                                        <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
+
+                                        <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- End Bootstrap Plate Card --}}
+                        </div>
                     </div>
                 </div>
 
@@ -111,7 +134,7 @@
                     </div>
                     <div class="about-us">
                         <div class="title">About Us</div>
-                        DeliveBoo is developed by a team of young and smart developer, here their contacts...
+                        DeliveBoo is developed by a team of young and smart junior full-stack web developers
                     </div>
                 </div>
             </div>
@@ -170,8 +193,8 @@
                                 @method('GET')
                                 {{-- <input type="number" name="total" :value="totalPrice" class="d-none"> --}}
                                 <div v-for="plate in shoppingCart">
-                                    <input type="text" name="shoppingCart[]" :value="plate.id" class="d-none">
-                                    <input type="text" name="shoppingCart[]" :value="plate.quantity" class="d-none">
+                                    <input type="hidden" name="shoppingCart[]" :value="plate.id">
+                                    <input type="hidden" name="shoppingCart[]" :value="plate.quantity">
                                 </div>
                                 
                                 <input type="submit" value="Vai al checkout" class="btn btn-warning">

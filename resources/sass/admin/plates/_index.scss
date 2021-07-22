@@ -1,0 +1,24 @@
+.page-header {
+    text-align: center;
+    padding: 20px 0px;
+    background-color: $primary-color;
+    font-size: 25px;
+}
+
+.container {
+    h2 {
+        margin: 15px 0px;
+    }
+}
+
+.fa-edit {
+    color: $primary-color;
+    font-size: 18px;
+}
+
+.fa-trash-alt {
+    color: rgba(236, 72, 72, 0.849);
+
+    font-size: 18px;
+    margin-left: 15px;
+}

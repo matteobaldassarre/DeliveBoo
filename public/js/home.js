@@ -98,6 +98,8 @@ var app = new Vue({
   data: {
     // Array storing all restaurants
     restaurants: [],
+    // The restaurants displayed at the beginning on the HomePage
+    defaultRestaurants: [],
     // Array storing all restaurant types to print the buttons in page
     restaurantsTypes: [],
     // Array storing all restaurants by their types
@@ -141,6 +143,7 @@ var app = new Vue({
       var _this3 = this;
 
       // Getting the restaurant info filtered by its id
+      this.currentRestaurantInfo = [];
       this.restaurants.forEach(function (element) {
         if (element.user_id == restaurantId) {
           _this3.currentRestaurantInfo.push(element);
@@ -153,6 +156,7 @@ var app = new Vue({
       this.restaurantChosen = true;
     },
     addPlateToCart: function addPlateToCart(plate) {
+      // Se il piatto appartiene a quel ristorante oppure se il carrello è vuoto
       if (plate.user_id == this.currentRestaurantInfo[0].user_id || this.shoppingCart == 0) {
         if (!this.shoppingCart.includes(plate)) {
           this.shoppingCart.push(plate);
@@ -190,6 +194,7 @@ var app = new Vue({
     // Getting all restaurants from the restaurants API
     axios.get('/api/restaurants').then(function (result) {
       _this4.restaurants = result.data.restaurants;
+      _this4.defaultRestaurants = result.data.restaurants;
     }); // Populating Restaurant Types Array
 
     axios.get('/api/restaurants/types').then(function (result) {
@@ -207,7 +212,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/giovanni/Desktop/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })

@@ -60,6 +60,7 @@ a {
   margin: 1em 0.5em;
   min-width: 100px;
   padding: 0.15em 0.5em;
+  transition: all 0.2s;
 }
 
 .button:hover {
@@ -93,6 +94,28 @@ a {
   background-color: #2A5353;
   font-size: 25px;
   margin-bottom: 10vh;
+}
+
+.page-header {
+  text-align: center;
+  padding: 20px 0px;
+  background-color: #2A5353;
+  font-size: 25px;
+}
+
+.container h2 {
+  margin: 15px 0px;
+}
+
+.fa-edit {
+  color: #2A5353;
+  font-size: 18px;
+}
+
+.fa-trash-alt {
+  color: rgba(236, 72, 72, 0.849);
+  font-size: 18px;
+  margin-left: 15px;
 }
 
 .admin-dashboard-header {
@@ -159,6 +182,10 @@ a {
 
 .homepage-navbar .search-bar input::placeholder {
   margin: 0 auto;
+}
+
+.homepage-navbar .btn:focus {
+  box-shadow: none;
 }
 
 .homepage-navbar .login-register {
@@ -310,6 +337,7 @@ a {
   display: flex;
   display: -webkit-flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .restaurant-menu-page-show .menu-sections h2 {
@@ -321,9 +349,8 @@ a {
   display: flex;
   display: -webkit-flex;
   padding: 5px;
-  width: calc(100% / 2 - 20px);
-  background-color: white;
-  border: 1px solid black;
+  width: calc(100% / 2);
+  padding-bottom: 50px;
 }
 
 .restaurant-menu-page-show .menu-sections .food-card img {
@@ -346,12 +373,24 @@ a {
 
 .restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-price-button {
   padding-top: 20px;
-  text-align: right;
 }
 
 .restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-price-button .food-card-price {
   padding-right: 10px;
   color: #12A20B;
+}
+
+@media screen and (max-width: 999px) {
+  .restaurant-menu-page-show .menu-sections .food-card {
+    width: calc(100% / 1);
+    justify-content: space-evenly;
+  }
+
+  .restaurant-menu-page-show .menu-sections h2 {
+    font-weight: bold;
+    margin-top: 50px;
+    text-align: center;
+  }
 }
 
 .infos {
@@ -369,8 +408,13 @@ a {
 }
 
 .infos > * .title {
-  color: #2A5353;
+  color: #1E3C3C;
   font-size: 1.75em;
+}
+
+.swiper-container {
+  width: 600px;
+  height: 300px;
 }
 
 /*!

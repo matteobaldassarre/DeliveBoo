@@ -38,35 +38,31 @@
                             <h3>First Step</h3>
                             <a class="btn btn-primary" href="{{ route('admin-info.create') }}">Add Restaurant Info</a>
                         @else
-                            <div class="d-flex align-items-center justify-content-around">
+                            @if ($user_info->cover)
                                 <div class="flex-item">
-                                    <ul>
-                                        <li>
-                                            Restaurant Name &#8594; {{ $user_info->restaurant_name }}
-                                        </li>
-
-                                        <li>
-                                            Restaurant Address &#8594; {{ $user_info->address }}
-                                        </li>
-                                        <li>
-                                            Your VAT &#8594; {{ $user_info->VAT }}
-                                        </li>
-
-                                        <li>
-                                            Types &#8594;
-                                            @foreach ($user->types as $type)
-                                                    {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
-                                            @endforeach
-                                        </li>
-                                    </ul>
+                                    <img class="restaurant-cover" src="{{ asset('storage/' . $user_info->cover) }}" alt="{{ $user_info->restaurant_name  }}">
                                 </div>
+                            @endif
 
-                                @if ($user_info->cover)
-                                    <div class="flex-item">
-                                        <img class="restaurant-cover" src="{{ asset('storage/' . $user_info->cover) }}" alt="{{ $user_info->restaurant_name  }}">
-                                    </div>
-                                @endif
-                            </div>
+                            <ul>
+                                <li>
+                                    Restaurant Name &#8594; {{ $user_info->restaurant_name }}
+                                </li>
+
+                                <li>
+                                    Restaurant Address &#8594; {{ $user_info->address }}
+                                </li>
+                                <li>
+                                    Your VAT &#8594; {{ $user_info->VAT }}
+                                </li>
+
+                                <li>
+                                    Types &#8594;
+                                    @foreach ($user->types as $type)
+                                            {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
+                                    @endforeach
+                                </li>
+                            </ul>
 
 
                             <div class="restaurant-actions">

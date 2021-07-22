@@ -6,6 +6,9 @@ var app = new Vue({
         // Array storing all restaurants
         restaurants: [],
 
+        // The restaurants displayed at the beginning on the HomePage
+        defaultRestaurants: [],
+
         // Array storing all restaurant types to print the buttons in page
         restaurantsTypes: [],
 
@@ -60,6 +63,7 @@ var app = new Vue({
 
         getRestaurantInfo(restaurantId) {
             // Getting the restaurant info filtered by its id
+            this.currentRestaurantInfo = [];
             this.restaurants.forEach(element => {
                 if (element.user_id == restaurantId) {
                     this.currentRestaurantInfo.push(element);
@@ -75,7 +79,10 @@ var app = new Vue({
         },
 
         addPlateToCart(plate) {
+            
+            // Se il piatto appartiene a quel ristorante oppure se il carrello è vuoto
             if (plate.user_id == this.currentRestaurantInfo[0].user_id || this.shoppingCart == 0) {
+
                 if (!this.shoppingCart.includes(plate)) {
                     this.shoppingCart.push(plate);
                     plate.quantity = 1;
@@ -84,8 +91,11 @@ var app = new Vue({
                     plate.quantity++;
                     this.totalPrice += plate.price;
                 }
+
             } else {
-                alert('Puoi ordinare da un solo ristorante alla volta!')
+
+                alert('Puoi ordinare da un solo ristorante alla volta!');
+
             }
         },
 
@@ -113,11 +123,14 @@ var app = new Vue({
         // Getting all restaurants from the restaurants API
         axios.get('/api/restaurants').then(result => {
             this.restaurants = result.data.restaurants;
+            this.defaultRestaurants = result.data.restaurants;
         });
 
         // Populating Restaurant Types Array
         axios.get('/api/restaurants/types').then(result => {
             this.restaurantsTypes = result.data.restaurants_types;
         });
+
+
     }
 });
