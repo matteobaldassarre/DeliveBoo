@@ -133,13 +133,6 @@ i {
 
 
 
-.main-content {
-    min-height: 100vh;
-    // background-color: #666699;
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-  }
   
   button {
     padding: 10px;
@@ -153,12 +146,12 @@ i {
   .drawer {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -240px;
     flex: 0 0 auto;
     background-color: #009933;
     width: 240px;
     height: 100vh;
-    transform: translateX(-105%);
+    transform: translateX(-100%);
     -webkit-box-shadow: 6px 0 6px -3px #333;
     box-shadow: 6px 0 6px -3px #333;
     z-index: 10;

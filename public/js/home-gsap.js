@@ -133,11 +133,14 @@ tl.to(drawer, 0.25, {
   x: 0,
   ease: Power1.easeOut
 }).to(header, 0.25, {
-  marginLeft: 240,
+  marginRight: 240,
   ease: Power1.easeOut,
   force3D: true
-}, 0) // .to(main, 0.25, { marginLeft: 240, ease: Power1.easeOut, force3D: true }, 0)
-.to(drawerVeil, 0.15, {
+}, 0).to(main, 0.25, {
+  marginRight: 240,
+  ease: Power1.easeOut,
+  force3D: true
+}, 0).to(drawerVeil, 0.15, {
   autoAlpha: 0.5
 }, 0).reverse();
 

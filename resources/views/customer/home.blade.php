@@ -10,7 +10,7 @@
 
 @section('page_content')
         {{-- VueJS Container --}}
-        <div class="main-content" id="root">
+        <div id="root">
             <div id="main" class="main">
                 {{-- HomePage NavBar & Types Component --}}
                 <div class="homepage-component" v-if="restaurantChosen == false">
