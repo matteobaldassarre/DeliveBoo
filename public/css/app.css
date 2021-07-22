@@ -123,10 +123,6 @@ i {
   cursor: pointer;
 }
 
-.main-content {
-  min-height: 100vh;
-}
-
 button {
   padding: 10px;
   border-radius: 5px;
