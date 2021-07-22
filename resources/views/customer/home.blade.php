@@ -11,9 +11,10 @@
 @section('page_content')
         {{-- VueJS Container --}}
         <div id="root">
+            <div class="homepage-component" v-if="restaurantChosen == false">
+
             <div id="main" class="main">
                 {{-- HomePage NavBar & Types Component --}}
-                <div class="homepage-component" v-if="restaurantChosen == false">
                     {{-- HomePage NavBar --}}
                     <nav class="homepage-navbar">
                         <div class="wrapper">
@@ -66,11 +67,14 @@
                                     </div>
 
                                 @endguest
+                            </div>
 
-                                {{-- Responsive Burger Menu --}}
-                                <div class="burger-menu">
-                                    <i class="fa fa-bars"></i>
-                                </div>
+                            
+
+                            {{-- Responsive Burger Menu --}}
+                            <div class="burger-menu">
+                                <i class="fa fa-bars"></i>
+                            </div>
 
                             {{-- Responsive Burger Menu --}}
                             <div class="dropdown">
@@ -80,7 +84,7 @@
                             </div>
                         </div>
                     </nav>
-
+                </div>    
                 {{-- HomePage Types Buttons --}}
                 <div class="text-center horizontal-scroll-container">
                     <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
@@ -142,6 +146,8 @@
                         DeliveBoo is developed by a team of young and smart junior full-stack web developers
                     </div>
                 </div>
+
+                <div class="drawer-veil" id="drawer-veil"></div>
             </div>
             {{-- End HomePage NavBar & Types Component --}}
 
@@ -162,6 +168,11 @@
                                 </svg>
                             </a>
                         </div>
+
+                        <div class="cart">
+                            <i id="toggle" class="fas fa-shopping-cart"></i>
+                        </div>
+
                     </div>
 
                     {{-- Restaurant Info Card --}}
@@ -256,16 +267,18 @@
                 DRAWER
             </div>
 
-            <div id="header" class="cart">
-                <i id="toggle" class="fas fa-shopping-cart"></i>
+            <div id="header" class="cart-button">
+                <i id="toggle" v-on:click="test()" class="fas fa-shopping-cart"></i>
             </div>
-            
-            <div class="drawer-veil" id="drawer-veil">
         </div>
         {{-- End VueJS Container --}}
 @endsection
 
 @section('end_page_scripts')
+
+
+    {{-- GSAP CDN --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     {{-- VueJS CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -273,8 +286,7 @@
     {{-- Script JS --}}
     <script src="{{ asset('js/home.js') }}"></script>
 
-    {{-- GSAP CDN --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 
     {{-- Script JS --}}
     <script src="{{ asset('js/home-gsap.js') }}"></script>

@@ -117,7 +117,12 @@ var app = new Vue({
                 product.quantity++;
                 this.totalPrice += product.price;
             }
+        },
+        test() {
+            console.log('test');
+            
         }
+
     },
 
     mounted() {

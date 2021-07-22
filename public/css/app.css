@@ -213,7 +213,6 @@ button {
 
 .main {
   position: relative;
-  min-height: 100vh;
   flex-grow: 1;
   z-index: 1;
 }
@@ -230,7 +229,7 @@ button {
   z-index: 5;
 }
 
-.cart {
+.cart-button {
   color: white;
   font-size: 24px;
   position: absolute;
