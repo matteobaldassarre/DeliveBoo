@@ -15,4 +15,4 @@ mix.js('resources/js/app.js', 'public/js').sass('resources/sass/app.scss', 'publ
 
 mix.js('resources/js/home.js', 'public/js');
 
-mix.js('resources/js/home-gsap.js', 'public/js');
+mix.js('resources/js/chart.js', 'public/js');

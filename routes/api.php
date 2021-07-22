@@ -30,4 +30,7 @@ Route::get('/restaurants/{type}', 'Api\UserInfoController@searchRestaurants')->n
 // Filtered Restaurant Plates By Type API
 Route::get('/restaurants/{id}/plates', 'Api\UserInfoController@getRestaurantPlates')->name('api.restaurants-plates');
 
+// Get Restaurants Statistics API
+Route::get('/restaurants/stats/{id}', 'Api\StatisticController@getStats')->name('api.stats');
+
 

@@ -2,6 +2,13 @@
 
 @section('page_title')Restaurant Dashboard @endsection
 
+@section('specific-cdns')
+    {{-- Axios CDN --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    {{-- ChartJs CDN --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@endsection
+
 @section('page_content')
     {{-- Admin Dashboard Header --}}
     <header class="admin-dashboard-header">
@@ -76,4 +83,14 @@
             </div>
         </div>
     </div>
+
+    <div class="container text-center">
+        <div class="chart-container" style="position: relative; height:30%; width:100%">
+            <canvas id="myCanvas"></canvas>
+        </div>
+    </div>
+@endsection
+
+@section('end_page_scripts')
+    <script src="{{ asset('js/chart.js') }}"></script>
 @endsection
