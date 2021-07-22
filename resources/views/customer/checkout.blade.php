@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="mail">Mail</label>
+                                <label for="mail">Email</label>
                                 <input type="email" class="form-control" id="mail" name="mail">
 
                                 
@@ -93,29 +93,6 @@
                                 <input type="text" class="form-control d-none" id="id" name="id" value="{{ $id_order }}">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        {{-- <div class="col-md-6">
-                            <div class="form-group" id="card-number">
-                                <label for="cc_number">Credit Card Number</label>
-                                <input type="text" class="form-control" id="cc_number" name="cc_number">
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group" id="expiration-date">
-                                <label for="expiry">Expiry</label>
-                                <input type="text" class="form-control" id="expiry" name="expiry">
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group" id="cvv">
-                                <label for="cvc">CVV</label>
-                                <input type="text" class="form-control" id="cvc" name="cvc">
-                            </div>
-                        </div> --}}
                     </div>
 
                     <div class="row">

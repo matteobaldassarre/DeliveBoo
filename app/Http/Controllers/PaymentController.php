@@ -67,7 +67,11 @@ class PaymentController extends Controller
             
             $order->update();
 
-            return view('customer.success');
+            $data = [
+                'order' => $order
+            ];
+
+            return view('customer.success', $data);
 
         } else {
 

@@ -118,11 +118,6 @@ var app = new Vue({
                 this.totalPrice += product.price;
             }
         },
-        test() {
-            console.log('test');
-            
-        }
-
     },
 
     mounted() {
