@@ -84,7 +84,7 @@ a {
   position: fixed;
   top: 0;
   right: -250px;
-  background-color: #262626;
+  background-color: #2A5353;
   z-index: 10;
   width: 250px;
   height: 100%;
@@ -120,9 +120,9 @@ ul li a:hover {
   height: 50px;
   box-sizing: border-box;
   cursor: pointer;
-  background-color: #f5f5f5;
   border: none;
   outline: none;
+  color: white;
 }
 
 .sidebarBtn span {
@@ -378,7 +378,7 @@ ul li a:hover {
   background-color: #2A5353;
   position: absolute;
   top: 100%;
-  left: 25%;
+  left: 50%;
   transform: translate(-50%, -50%);
   margin: 0 auto;
   text-align: center;
