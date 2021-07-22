@@ -41,6 +41,7 @@ var app = new Vue({
 
         // Order Total Price
         totalPrice: 0,
+
     },
 
     methods: {
@@ -116,7 +117,7 @@ var app = new Vue({
                 product.quantity++;
                 this.totalPrice += product.price;
             }
-        },
+        }
     },
 
     mounted() {

@@ -156,22 +156,9 @@
         .cart {
             color: white;
             font-style: oblique;
-            background-color: $primary-color;
-            position: absolute;
-            top: 100%;
-            left: 70%;
-            transform: translate(-50%, -50%);
-            margin: 0 auto;
             text-align: center;
-            padding: 5% 5%;
-
-            button {
-                font-size: 18px;
-            }
-
-            span {
-                font-size: 15px;
-            }
+            font-size: 24px;
+            cursor: pointer;
         }
 
         .container-flex {
@@ -179,11 +166,6 @@
             @include flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .cart {
-            font-size: 30px;
-            color: white;
         }
     }
 
@@ -272,10 +254,4 @@
         }
     }
 
-}
-
-// Swiper Classes
-.swiper-container {
-  width: 600px;
-  height: 300px;
 }
