@@ -3,6 +3,9 @@
 @section('page_title')DeliveBoo Home @endsection
 
 @section('specific-cdns')
+    {{-- GSAP CDN --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Axios CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 @endsection
@@ -57,7 +60,7 @@
                                             <a href="{{ route('admin.home') }}" class="dropdown-item">Dashboard</a>
                                         </div>
                                     </div>
-
+                                    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -134,6 +137,9 @@
                                 </svg>
                             </a>
                         </div>
+                        {{-- <div class="cart" id="toggle" class="waves-effect waves-light btn-flat menu-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div> --}}
                     </div>
 
                     {{-- Restaurant Info Card --}}
@@ -222,4 +228,7 @@
 
     {{-- Script JS --}}
     <script src="{{ asset('js/home.js') }}"></script>
+
+    {{-- Script JS --}}
+    <script src="{{ asset('js/home-gsap.js') }}"></script>
 @endsection

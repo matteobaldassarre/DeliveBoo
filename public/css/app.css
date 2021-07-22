@@ -270,22 +270,9 @@ a {
 .restaurant-menu-page-show .menu-jumbotron .cart {
   color: white;
   font-style: oblique;
-  background-color: #2A5353;
-  position: absolute;
-  top: 100%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
   text-align: center;
-  padding: 5% 5%;
-}
-
-.restaurant-menu-page-show .menu-jumbotron .cart button {
-  font-size: 18px;
-}
-
-.restaurant-menu-page-show .menu-jumbotron .cart span {
-  font-size: 15px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .restaurant-menu-page-show .menu-jumbotron .container-flex {
@@ -294,11 +281,6 @@ a {
   display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.restaurant-menu-page-show .menu-jumbotron .cart {
-  font-size: 30px;
-  color: white;
 }
 
 .restaurant-menu-page-show .menu-sections {
@@ -371,6 +353,12 @@ a {
 .infos > * .title {
   color: #2A5353;
   font-size: 1.75em;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: #0048ff;
 }
 
 /*!
