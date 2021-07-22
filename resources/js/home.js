@@ -42,6 +42,8 @@ var app = new Vue({
         // Order Total Price
         totalPrice: 0,
 
+        sidebareVisible: false
+
     },
 
     methods: {
@@ -118,7 +120,24 @@ var app = new Vue({
                 this.totalPrice += product.price;
             }
         },
-    },
+        sidebareVisibility() {
+            this.sidebareVisible = !this.sidebareVisible;
+        },
+        closeSidebare(totalPrice) {
+            if (totalPrice == 0) {
+                this.sidebareVisible = false;
+            }
+        },
+        buttonSidebareVisibility() {
+            function myFunction() {
+                setTimeout(function(){ alert("Hello"); }, 3000);
+              }
+            // function() {
+            //     setTimeout(this.sidebareVisibility(), 1000);
+            // }
+            this.sidebareVisibility();
+        }
+    }, 
 
     mounted() {
         // Getting all restaurants from the restaurants API

@@ -170,34 +170,15 @@
                         </div>
 
                         {{-- DeliveBoo Cart Icon --}}
-                        <div class="cart">
-                            <i id="toggle" class="fas fa-shopping-cart"></i>
-                        </div>
-                    </div>
-
-                    {{-- Restaurant Info Card --}}
-                    <div class="menu-info-card" v-for="restaurantInfo in currentRestaurantInfo">
-                        <h4>@{{ restaurantInfo.restaurant_name }}</h4>
-
-                        <p>
-                            <span v-for="type in restaurantInfo.types">
-                                @{{ type.type_name }}
-                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
-                            </span>
-                        </p>
-
-                        <span>@{{ restaurantInfo.address }}</span>
-                    </div>
-                    {{-- End Restaurant Info Card --}}
-
-                    {{-- Restaurant Shopping Cart --}}
+                        <div :class="[sidebareVisible ? 'active' : '']" class="sidebar">
+                            {{-- Restaurant Shopping Cart --}}
                     <div :class="totalPrice == 0 ? 'd-none' : ''">
                         <div class="cart">
                             <h2>Carrello</h2>
                             <ul>
                                 <li v-for="product in shoppingCart">
                                     <span>@{{ product.name }}</span>
-                                    <a v-on:click="removeQuantity(product)"> - </a>
+                                    <a v-on:click="removeQuantity(product), closeSidebare(totalPrice)"> - </a>
                                     <span>@{{ product.quantity }}</span>
                                     <a v-on:click="addQuantity(product)"> + </a>
                                 </li>
@@ -219,10 +200,32 @@
                         </div>
                     </div>
                     {{-- End Restaurant Shopping Cart --}}
+                            <button class="sidebarBtn">
+                                <i v-on:click="sidebareVisibility()" class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- Restaurant Info Card --}}
+                    <div class="menu-info-card" v-for="restaurantInfo in currentRestaurantInfo">
+                        <h4>@{{ restaurantInfo.restaurant_name }}</h4>
+
+                        <p>
+                            <span v-for="type in restaurantInfo.types">
+                                @{{ type.type_name }}
+                                <span v-if="restaurantInfo.types.indexOf(type) < restaurantInfo.types.length - 1"> - </span> 
+                            </span>
+                        </p>
+
+                        <span>@{{ restaurantInfo.address }}</span>
+                    </div>
+                    {{-- End Restaurant Info Card --}}
+
+                    
                     
                 </div>
                 {{-- End Restaurant Jumbotron --}}
-            
+
 
                 {{-- Menu Sections --}}
                 <div class="menu-sections">
@@ -244,7 +247,7 @@
 
                                     <div class="food-card-price-button">
                                         <span class="food-card-price">@{{ plate.price }} €</span>
-                                        <button class="food-card-button" v-on:click="addPlateToCart(plate, index)">Add to cart</button>
+                                        <button class="food-card-button" v-on:click="buttonSidebareVisibility(), addPlateToCart(plate, index)">Add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -256,6 +259,8 @@
                 
             </div>
             {{-- End Single Restaurant Menu Component --}}
+            <div v-on:click="sidebareVisibility()" :class="[!sidebareVisible ? 'activeTwo' : '']" class="veil"></div>
+            
         </div>
         {{-- End VueJS Container --}}
 @endsection

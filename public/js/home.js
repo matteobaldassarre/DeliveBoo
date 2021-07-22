@@ -117,7 +117,8 @@ var app = new Vue({
     // Cart Object
     shoppingCart: [],
     // Order Total Price
-    totalPrice: 0
+    totalPrice: 0,
+    sidebareVisible: false
   },
   methods: {
     // Searching restaurant by its name
@@ -186,6 +187,26 @@ var app = new Vue({
         product.quantity++;
         this.totalPrice += product.price;
       }
+    },
+    sidebareVisibility: function sidebareVisibility() {
+      this.sidebareVisible = !this.sidebareVisible;
+    },
+    closeSidebare: function closeSidebare(totalPrice) {
+      if (totalPrice == 0) {
+        this.sidebareVisible = false;
+      }
+    },
+    buttonSidebareVisibility: function buttonSidebareVisibility() {
+      function myFunction() {
+        setTimeout(function () {
+          alert("Hello");
+        }, 3000);
+      } // function() {
+      //     setTimeout(this.sidebareVisibility(), 1000);
+      // }
+
+
+      this.sidebareVisibility();
     }
   },
   mounted: function mounted() {
@@ -212,7 +233,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! /Users/giovanni/Desktop/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })
