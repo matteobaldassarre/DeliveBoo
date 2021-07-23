@@ -28,6 +28,9 @@
 @section('end_page_scripts')
     <script src="sweetalert2.all.min.js"></script>
     <script>
+        localStorage.clear();
+    </script>
+    <script>
         Swal.fire({
             title: 'Success!',
             text: 'Payment Successful',

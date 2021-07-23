@@ -46,6 +46,7 @@ var app = new Vue({
 
     },
 
+    // REGULAR METHODS
     methods: {
         // Searching restaurant by its name
         searchRestaurantByName(searchedRestaurant) {
@@ -82,7 +83,6 @@ var app = new Vue({
         },
 
         addPlateToCart(plate) {
-            
             // Se il piatto appartiene a quel ristorante oppure se il carrello è vuoto
             if (plate.user_id == this.currentRestaurantInfo[0].user_id || this.shoppingCart == 0) {
 
@@ -95,22 +95,25 @@ var app = new Vue({
                     this.totalPrice += plate.price;
                 }
 
+                console.log(this.shoppingCart);
+                
+
             } else {
-
                 alert('Puoi ordinare da un solo ristorante alla volta!');
-
             }
+
+            this.saveShoppingCart(this.shoppingCart, this.totalPrice);
         },
 
         removeQuantity(product) {
             if (product.quantity > 0) {
                 product.quantity--;
                 this.totalPrice -= product.price;
-            }
-
-            if (this.totalPrice == 0) {
+                this.saveShoppingCart(this.shoppingCart, this.totalPrice);
+            } else if (this.totalPrice == 0) {
                 this.shoppingCart = [];
                 product.quantity = 1;
+                this.saveShoppingCart(this.shoppingCart, this.totalPrice);
             }
         },
 
@@ -118,19 +121,48 @@ var app = new Vue({
             if (product.quantity == 0 || product.quantity > 0) {
                 product.quantity++;
                 this.totalPrice += product.price;
+                this.saveShoppingCart(this.shoppingCart, this.totalPrice);
             }
         },
+
+
+        // SideBar Functions
         sidebareVisibility() {
             this.sidebareVisible = !this.sidebareVisible;
         },
+
         closeSidebare(totalPrice) {
             if (totalPrice == 0) {
                 this.sidebareVisible = false;
             }
+        },
+
+        // Saves shoppingCart in localStorage
+        saveShoppingCart(shoppingCart, totalPrice) {
+            // Serializing shopping cart content
+            let serializedShoppingCart = JSON.stringify(shoppingCart);
+            // Serializing totalPrice
+            let serializedTotalPrice = JSON.stringify(totalPrice);
+
+            // Saving shoppingCart content and totalPrice in two localStorage items
+            localStorage.setItem('shoppingCart', serializedShoppingCart);
+            localStorage.setItem('totalPrice', serializedTotalPrice);
         }
     }, 
 
+    // MOUNTED FUNCTIONS
     mounted() {
+        let deserializedShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+        let deserializedTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
+
+        if (deserializedShoppingCart) {
+            deserializedShoppingCart.forEach(element => {
+                this.shoppingCart.push(element);
+            });
+            this.totalPrice = deserializedTotalPrice;
+        }
+           
+        
         // Getting all restaurants from the restaurants API
         axios.get('/api/restaurants').then(result => {
             this.restaurants = result.data.restaurants;
@@ -141,7 +173,5 @@ var app = new Vue({
         axios.get('/api/restaurants/types').then(result => {
             this.restaurantsTypes = result.data.restaurants_types;
         });
-
-
     }
 });

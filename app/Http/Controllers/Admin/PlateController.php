@@ -23,6 +23,8 @@ class PlateController extends Controller
 
         $plates = Plate::all();
 
+        $existing_types = array_unique(array_map(fn ($plate) => $plate->type, $plates->all()));
+
         $filtered_plates = [];
 
         foreach ($plates as $plate) {
@@ -32,7 +34,8 @@ class PlateController extends Controller
         }        
 
         $data = [
-            'plates' => $filtered_plates
+            'plates' => $filtered_plates,
+            'existing_types' => $existing_types
         ];
         
         return view('admin.plates.index', $data);

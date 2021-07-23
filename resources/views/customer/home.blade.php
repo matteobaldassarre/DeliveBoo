@@ -65,17 +65,8 @@
                                 </div>
 
                             @endguest
-                        </div>
 
-                        
-
-                        {{-- Responsive Burger Menu --}}
-                        <div class="burger-menu">
-                            <i class="fa fa-bars"></i>
-                        </div>
-
-                        {{-- Responsive Burger Menu --}}
-                        <div class="dropdown">
+                            {{-- Responsive Burger Menu --}}
                             <div class="burger-menu">
                                 <i class="fa fa-bars"></i>
                             </div>
@@ -96,7 +87,7 @@
                 <div class="default-restaurants container" v-if="filteredRestaurantsByType.length == 0">
                     <div class="row">
                         {{-- Bootstrap Plate Card --}}
-                        <div class="col-lg-3 mb-4" v-for="restaurant in defaultRestaurants">
+                        <div class="col-lg-3 mb-4" v-for="restaurant in defaultRestaurants" style="cursor: pointer">
                             <div class="card" v-on:click="getRestaurantInfo(restaurant.user_id)">
                                 {{-- Restaurant Image --}}
                                 <img class="card-img-top" :src="'storage/' + restaurant.cover" alt="restaurant-cover">
@@ -171,39 +162,45 @@
 
                         {{-- DeliveBoo Cart Icon --}}
                         <div :class="[sidebareVisible ? 'active' : '']" class="sidebar">
-                            {{-- Restaurant Shopping Cart --}}
-                    <div :class="totalPrice == 0 ? 'd-none' : ''">
-                        <div class="cart">
-                            <h2>Carrello</h2>
-                            <ul>
-                                <li v-for="product in shoppingCart">
-                                    <span>@{{ product.name }}</span>
-                                    <a v-on:click="removeQuantity(product), closeSidebare(totalPrice)"> - </a>
-                                    <span>@{{ product.quantity }}</span>
-                                    <a v-on:click="addQuantity(product)"> + </a>
-                                </li>
-                            </ul>
-                            <h3>Totale: @{{ totalPrice }}€</h3>
 
-                            {{-- Form  --}}
-                            <form action="{{ route('order-create') }}" method="get">
-                                @csrf
-                                @method('GET')
-                                {{-- <input type="number" name="total" :value="totalPrice" class="d-none"> --}}
-                                <div v-for="plate in shoppingCart">
-                                    <input type="hidden" name="shoppingCart[]" :value="plate.id">
-                                    <input type="hidden" name="shoppingCart[]" :value="plate.quantity">
+                            {{-- Restaurant Shopping Cart --}}
+                            <div :class="totalPrice == 0 ? 'd-none' : ''">
+                                <div class="cart">
+                                    {{-- Cart Inside --}}
+                                    <h2>Carrello</h2>
+                                    <ul>
+                                        <li v-for="product in shoppingCart">
+                                            <span>@{{ product.name }}</span>
+                                            <a v-on:click="removeQuantity(product), closeSidebare(totalPrice)"> - </a>
+                                            <span>@{{ product.quantity }}</span>
+                                            <a v-on:click="addQuantity(product)"> + </a>
+                                        </li>
+                                    </ul>
+                                    <h3>Totale: @{{ totalPrice }}€</h3>
+                                    {{-- End Cart Inside --}}
+
+                                    {{-- Go to Checkout Form --}}
+                                    <form action="{{ route('order-create') }}" method="get">
+                                        @csrf
+                                        @method('GET')
+                                        <div v-for="plate in shoppingCart">
+                                            <input type="hidden" name="shoppingCart[]" :value="plate.id">
+                                            <input type="hidden" name="shoppingCart[]" :value="plate.quantity">
+                                        </div>
+                                        
+                                        <input type="submit" value="Vai al checkout" class="btn btn-warning">
+                                    </form>
+                                    {{-- End Go to Checkout Form --}}
                                 </div>
-                                
-                                <input type="submit" value="Vai al checkout" class="btn btn-warning">
-                            </form>
-                        </div>
-                    </div>
-                    {{-- End Restaurant Shopping Cart --}}
-                            <button class="sidebarBtn">
-                                <i v-on:click="sidebareVisibility()" class="fas fa-shopping-cart"></i>
+                            </div>
+                            {{-- End Restaurant Shopping Cart --}}
+
+                            <button class="sidebarBtn" v-on:click="sidebareVisibility()">
+                                <i class="fas fa-shopping-cart"></i>
                             </button>
+
                         </div>
+
                     </div>
 
                     {{-- Restaurant Info Card --}}

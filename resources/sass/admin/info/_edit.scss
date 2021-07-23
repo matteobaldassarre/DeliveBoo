@@ -1,0 +1,46 @@
+.container {
+    text-align: center;
+    margin-bottom: 10vh;
+
+    h1 {
+        color: $text_color;
+    }
+
+    .restaurant-form {
+        justify-content: center;
+    }
+
+    .margin_auto {
+        margin: auto;
+        
+        #cover{
+            text-align: left;
+        }
+    }
+
+    .restaurant-type {
+        @include flex;
+        flex-wrap: wrap;
+        width: 52%;
+        margin: auto;
+
+        .form-check {
+            width: calc(100% / 5);
+        }
+
+    }
+
+    // NavBar Media Queries for tablets
+    @media screen and (max-width: 768px) {
+        .restaurant-type {
+            max-width: 50%;
+        }
+    }
+
+    // NavBar Media Queries for small devices
+    @media screen and (max-width: 576px) {
+        .restaurant-type {
+            max-width: 100%;
+        }
+    }
+}

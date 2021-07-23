@@ -5,3 +5,25 @@
     font-size: 25px;
     margin-bottom: 10vh;
 }
+
+
+.register-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.register-content {
+    display: flex;
+    justify-content: center;
+}
+
+.user-input {
+    width: 250px;
+    margin: auto;
+    text-align: center;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 25px;
+}
