@@ -40,6 +40,10 @@
         width: 400px;
     }
 
+    .btn-primary {
+        background-color: $text_color;
+    }
+
     .restaurant-actions {
         @include flex;
         justify-content: space-around;

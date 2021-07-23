@@ -70,7 +70,7 @@ a {
 }
 
 .jumbotron-container {
-  height: 400px;
+  height: 500px;
 }
 
 .jumbotron-container img {
@@ -80,20 +80,43 @@ a {
   height: 100%;
 }
 
+.jumbotron-container .slider-pic-1 {
+  background-image: url(/images/pizza.jpeg?f87ce8c59effcd0f813a1f21f3b5d177);
+  background-size: cover;
+  background-position: 0px -350px;
+  background-repeat: no-repeat;
+}
+
+.jumbotron-container .slider-pic-2 {
+  background-image: url(/images/sushi.jpeg?71b492d2b54cc60e0b6369a0b265479a);
+  background-size: cover;
+  background-position: 0px -200px;
+  background-repeat: no-repeat;
+}
+
+.jumbotron-container .slider-pic-3 {
+  background-image: url(/images/noci.jpeg?0614ff5e348fe67e643690b2a06fca1c);
+  background-size: cover;
+  background-position: 0px -400px;
+  background-repeat: no-repeat;
+}
+
+.jumbotron-container .slider-pic-4 {
+  background-image: url(/images/gelati.jpeg?b9fa904eb9a06f24f5022ef3affbe63e);
+  background-size: cover;
+  background-position: 0px -100px;
+  background-repeat: no-repeat;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
-  right: -250px;
+  right: -300px;
   background-color: #2A5353;
   z-index: 10;
   width: 300px;
   height: 100%;
   transition: 0.3s;
-  padding: 5px;
-}
-
-.sidebar .fa-shopping-cart {
-  font-size: 22px;
 }
 
 ul {
@@ -105,15 +128,31 @@ ul li {
   list-style: none;
 }
 
+ul {
+  margin: 0;
+  padding: 20px 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 ul li a {
   color: #fff;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 ul li span {
   font-size: 18px;
   vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .sidebarBtn {
@@ -126,10 +165,13 @@ ul li span {
   border: none;
   outline: none;
   color: white;
+  font-size: 20px;
+  background-color: #1E3C3C;
 }
 
 .sidebarBtn span {
   display: block;
+  font-size: 18px;
   width: 35px;
   height: 3px;
   background-color: #262626;
@@ -181,6 +223,11 @@ ul li span {
 
 .activeTwo {
   display: none;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
 }
 
 .access-page-container .login-page {
@@ -414,6 +461,10 @@ ul li span {
   width: 400px;
 }
 
+.admin-dashboard-main .btn-primary {
+  background-color: #1E3C3C;
+}
+
 .admin-dashboard-main .restaurant-actions {
   display: flex;
   display: -webkit-flex;
@@ -424,7 +475,7 @@ ul li span {
 
 .homepage-navbar {
   background-color: #2A5353;
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 
 .homepage-navbar .container-flex {
@@ -551,9 +602,21 @@ ul li span {
 }
 
 .restaurant-menu-page-show .menu-jumbotron {
-  height: 300px;
+  height: 350px;
   margin-bottom: 180px;
   position: relative;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .single-restaurant-cover {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+}
+
+.restaurant-menu-page-show .menu-jumbotron .deliveboo-logo {
+  z-index: 1;
 }
 
 .restaurant-menu-page-show .menu-jumbotron .menu-info-card {
@@ -608,7 +671,7 @@ ul li span {
 
 .restaurant-menu-page-show .menu-sections h2 {
   font-weight: bold;
-  margin-top: 50px;
+  color: #1E3C3C;
 }
 
 .restaurant-menu-page-show .menu-sections .food-card {
@@ -616,7 +679,7 @@ ul li span {
   display: -webkit-flex;
   padding: 5px;
   width: calc(100% / 2);
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 
 .restaurant-menu-page-show .menu-sections .food-card img {

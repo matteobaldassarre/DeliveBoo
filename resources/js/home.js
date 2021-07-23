@@ -80,6 +80,9 @@ var app = new Vue({
             });
             
             this.restaurantChosen = true;
+
+            // Scrolling page to the top after a menu is selected
+            window.scrollTo(0, 0);
         },
 
         addPlateToCart(plate) {
@@ -147,11 +150,19 @@ var app = new Vue({
             // Saving shoppingCart content and totalPrice in two localStorage items
             localStorage.setItem('shoppingCart', serializedShoppingCart);
             localStorage.setItem('totalPrice', serializedTotalPrice);
+        },
+
+        // Empties the shoppingCart & clears localStorage
+        emptyCart() {
+            this.totalPrice = 0;
+            this.shoppingCart = [];
+            localStorage.clear();
         }
     }, 
 
     // MOUNTED FUNCTIONS
     mounted() {
+
         let deserializedShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
         let deserializedTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
 

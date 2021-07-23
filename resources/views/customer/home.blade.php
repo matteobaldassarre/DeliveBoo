@@ -3,8 +3,12 @@
 @section('page_title')DeliveBoo Home @endsection
 
 @section('specific-cdns')
-    <!-- Axios CDN -->
+    {{-- Axios CDN --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    {{-- Swiper Slider CDN --}}
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    {{-- Swiper Slider CDN --}}
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 @endsection
 
 @section('page_content')
@@ -79,12 +83,26 @@
                     <a v-for="type in restaurantsTypes" class="button" v-on:click="searchRestaurantByType(type.id)">@{{ type.name }}</a>
                 </div>
 
-                <div class="jumbotron-container pb-5" v-if="filteredRestaurantsByType.length == 0">
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80" alt="">
+                {{-- Food Swiper Slider --}}
+                <div class="jumbotron-container" v-if="filteredRestaurantsByType.length == 0">
+                    {{-- Slider Container --}}
+                    <div class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide slider-pic-1"></div>
+                            <div class="swiper-slide slider-pic-2"></div>
+                            <div class="swiper-slide slider-pic-3"></div>
+                            <div class="swiper-slide slider-pic-4"></div>
+                        </div>
+                    </div>
+                    {{-- End Slider Container --}}
                 </div>
+                {{-- End Food Swiper Slider --}}
 
                 {{-- Default Restaurants --}}
                 <div class="default-restaurants container" v-if="filteredRestaurantsByType.length == 0">
+                    <h2>Ristoranti Popolari</h2>
                     <div class="row">
                         {{-- Bootstrap Plate Card --}}
                         <div class="col-lg-3 mb-4" v-for="restaurant in defaultRestaurants" style="cursor: pointer">
@@ -97,8 +115,8 @@
                                     <h4 class="card-title user-select-none">@{{ restaurant.restaurant_name }}</h4>
                                 </div>
                             </div>
-                            {{-- End Bootstrap Plate Card --}}
                         </div>
+                        {{-- End Bootstrap Plate Card --}}
                     </div>
                 </div>
                 {{-- End Default Restaurants --}}
@@ -108,16 +126,16 @@
                     <div class="container">
                         <div class="row">
                             {{-- Bootstrap Plate Card --}}
-                            <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType">
-                                <div class="card">
+                            <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType" style="cursor: pointer">
+                                <div class="card" v-on:click="getRestaurantInfo(restaurant.user_id)">
+                                    {{-- Restaurant Image --}}
+                                    <img class="card-img-top" :src="'storage/' + restaurant.cover" alt="restaurant-cover">
+
+                                    {{-- Restaurant Name --}}
                                     <div class="card-body">
-                                        {{-- Restaurant Name --}}
-                                        <h4 class="card-title">@{{ restaurant.restaurant_name }}</h4>
-
-                                        {{-- Restaurant Address --}}
-                                        <p class="card-text">Indirizzo: @{{ restaurant.address }}</p>
-
-                                        <span class="btn btn-primary" v-on:click="getRestaurantInfo(restaurant.user_id)">Vai Al Menu</span>
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title user-select-none">@{{ restaurant.restaurant_name }}</h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +144,7 @@
                     </div>
                 </div>
 
-                <div class="infos">
+                <div class="infos" v-if="filteredRestaurantsByType.length == 0">
                     <div class="why-deliveboo">
                         <div class="title">Why DeliveBoo?</div>
                         DeliveBoo is a modern web application that allows you to order from all the best restaurants in town.
@@ -146,7 +164,8 @@
             {{-- Single Restaurant Menu Component --}}
             <div class="restaurant-menu-page-show" v-if="restaurantChosen">
                 {{-- Restaurant Jumbtron --}}
-                <div class="menu-jumbotron" style="background-image: url('https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,f_auto,q_auto,w_1600,h_350,d_it:cuisines:hamburger-8.jpg/v1/it/restaurants/233148.jpg')">
+                <div class="menu-jumbotron">
+                    <img class="single-restaurant-cover" :src="'storage/' + currentRestaurantInfo[0].cover" alt="restaurant-cover">
                     <div class="container-flex">
                         {{-- DeliveBoo Logo --}}
                         <div class="deliveboo-logo">
@@ -164,10 +183,17 @@
                         <div :class="[sidebareVisible ? 'active' : '']" class="sidebar">
 
                             {{-- Restaurant Shopping Cart --}}
-                            <div :class="totalPrice == 0 ? 'd-none' : ''">
+                            <div v-if="totalPrice == 0">
                                 <div class="cart">
+                                    <h2 class="pt-2">Carrello</h2>
+                                    <p class="pt-5">Il tuo carrello al momento risulta vuoto!</p>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <div class="cart">
+                                    <h2 class="pt-2">Carrello</h2>
                                     {{-- Cart Inside --}}
-                                    <h2>Carrello</h2>
+                                    <a v-on:click="emptyCart()">Svuota</a>
                                     <ul>
                                         <li v-for="product in shoppingCart">
                                             <span>@{{ product.name }}</span>
@@ -176,7 +202,7 @@
                                             <a v-on:click="addQuantity(product)"> + </a>
                                         </li>
                                     </ul>
-                                    <h3>Totale: @{{ totalPrice }}€</h3>
+                                    <h3>Totale: @{{ totalPrice.toFixed(2) }}€</h3>
                                     {{-- End Cart Inside --}}
 
                                     {{-- Go to Checkout Form --}}
@@ -243,7 +269,7 @@
                                     <p class="food-card-ingredients">Ingredienti: @{{ plate.ingredients }}</p>
 
                                     <div class="food-card-price-button">
-                                        <span class="food-card-price">@{{ plate.price }} €</span>
+                                        <span class="food-card-price">@{{ plate.price.toFixed(2) }} €</span>
                                         <button class="food-card-button" v-on:click="sidebareVisibility(), addPlateToCart(plate, index)">Add to cart</button>
                                     </div>
                                 </div>
@@ -268,4 +294,15 @@
 
     {{-- Script JS --}}
     <script src="{{ asset('js/home.js') }}"></script>
+
+    {{-- Swiper Slider Script --}}
+    <script>
+        const swiper = new Swiper('.swiper-container', {
+            direction: 'horizontal',
+            loop: true,
+            autoplay: {
+                delay: 2500,
+            },
+        });
+    </script>
 @endsection

@@ -31,7 +31,7 @@
     <body>
         <div class="container">
             <div class="col-md-6 offset-md-3">
-                <h1>Payment Form</h1>
+                <h1>Complete Payment</h1>
                 <div class="spacer"></div>
 
                 @if (session()->has('success_message'))
@@ -54,14 +54,20 @@
                 <form action="{{ route('braintree-checkout') }}" method="POST" id="payment-form">
                     @csrf
                     @method('POST')
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName">
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -71,17 +77,15 @@
                                 <input type="text" class="form-control" id="address" name="address">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="postalcode">Postal Code</label>
                                 <input type="text" class="form-control" id="postalcode" name="postalcode">
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -123,8 +127,6 @@
                     </div>
 
                     <div class="spacer"></div>
-
-                    <div id="paypal-button"></div>
 
                     <div class="spacer"></div>
 

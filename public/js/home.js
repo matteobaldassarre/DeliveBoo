@@ -155,7 +155,9 @@ var app = new Vue({
       axios.get('/api/restaurants/' + restaurantId + '/plates').then(function (result) {
         _this3.currentRestaurantPlates = result.data.plates;
       });
-      this.restaurantChosen = true;
+      this.restaurantChosen = true; // Scrolling page to the top after a menu is selected
+
+      window.scrollTo(0, 0);
     },
     addPlateToCart: function addPlateToCart(plate) {
       // Se il piatto appartiene a quel ristorante oppure se il carrello è vuoto
@@ -212,6 +214,12 @@ var app = new Vue({
 
       localStorage.setItem('shoppingCart', serializedShoppingCart);
       localStorage.setItem('totalPrice', serializedTotalPrice);
+    },
+    // Empties the shoppingCart & clears localStorage
+    emptyCart: function emptyCart() {
+      this.totalPrice = 0;
+      this.shoppingCart = [];
+      localStorage.clear();
     }
   },
   // MOUNTED FUNCTIONS

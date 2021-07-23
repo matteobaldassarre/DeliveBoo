@@ -23,15 +23,23 @@ class PlateController extends Controller
 
         $plates = Plate::all();
 
-        $existing_types = array_unique(array_map(fn ($plate) => $plate->type, $plates->all()));
-
         $filtered_plates = [];
 
         foreach ($plates as $plate) {
            if ($plate->user_id == $current_user_id) {
                $filtered_plates[] = $plate;
            }
-        }        
+        }
+
+        $pluralizations = [
+            'Antipasto' => 'Antipasti',
+            'Primo' => 'Primi',
+            'Secondo' => 'Secondi',
+            'Contorno' => 'Contorni',
+            'Dolce' => 'Dolci',
+        ];
+        
+        $existing_types = array_unique(array_map(fn ($plate) => $pluralizations[$plate->type], $filtered_plates));
 
         $data = [
             'plates' => $filtered_plates,
