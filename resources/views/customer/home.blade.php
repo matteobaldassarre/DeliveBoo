@@ -247,7 +247,7 @@
 
                                     <div class="food-card-price-button">
                                         <span class="food-card-price">@{{ plate.price }} €</span>
-                                        <button class="food-card-button" v-on:click="buttonSidebareVisibility(), addPlateToCart(plate, index)">Add to cart</button>
+                                        <button class="food-card-button" v-on:click="sidebareVisibility(), addPlateToCart(plate, index)">Add to cart</button>
                                     </div>
                                 </div>
                             </div>
