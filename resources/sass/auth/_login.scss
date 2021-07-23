@@ -1,7 +1,96 @@
-.login-page {
-    text-align: center;
-    padding: 20px 0px;
-    background-color: $primary-color;
-    font-size: 25px;
-    margin-bottom: 10vh;
+.access-page-container {
+    .login-page {
+        text-align: center;
+        padding: 20px 0px;
+        background-color: $primary-color;
+        font-size: 25px;
+        margin-bottom: 10vh;
+    }
+
+    .login-container {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .login-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .box {
+        width: 350px;
+        border: 1px solid rgb(82, 82, 82);
+    }
+
+    .title {
+
+        h2 {
+            color: rgb(82, 82, 82);
+            text-align: center;
+        }
+    }
+
+    .input-container {
+        padding: 0 15px 35px 15px;
+
+        input {
+            border: 1px solid rgb(82, 82, 82);
+        }
+
+        ::-webkit-input-placeholder {
+            text-align: center;
+        }
+
+        :-moz-placeholder {
+            text-align: center;
+        }
+
+    }
+
+    .user-input {
+        width: 250px;
+        margin: auto;
+        text-align: center;
+
+        .check {
+            padding-top: 15px;
+        }
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    .click {
+        width: 250px;
+        margin: auto;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        font-size: 17px;
+        padding: 5px 0;
+        cursor: pointer;
+
+        a {
+            color: white;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    h4 {
+        padding: 20px 0 15px 0;
+    }
+
+    @media screen and (max-width: 360px) {
+
+        .box {
+            border: none;
+            margin-top: -30px;
+        }
+
+    }
 }

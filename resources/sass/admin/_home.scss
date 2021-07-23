@@ -4,7 +4,34 @@
     padding: 20px 0px;
     background-color: $primary-color;
     font-size: 25px;
-    margin-bottom: 10vh;
+    margin-bottom: 20px;
+
+    .logo {
+        a {
+            position: relative;
+            bottom: 5px;
+        }
+    }
+
+    .logout-dropdown {
+        font-size: 15px
+    }
+
+    .wrapper {
+        @include flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            font-size: 15px;
+        }
+
+        .btn {
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
 }
 
 // Admin Dashboard Main

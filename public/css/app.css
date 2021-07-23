@@ -83,12 +83,17 @@ a {
 .sidebar {
   position: fixed;
   top: 0;
-  right: -250px;
-  background-color: #262626;
+  right: -300px;
+  background-color: #2A5353;
   z-index: 10;
-  width: 250px;
+  width: 300px;
   height: 100%;
   transition: 0.3s;
+  padding: 5px;
+}
+
+.sidebar .fa-shopping-cart {
+  font-size: 22px;
 }
 
 ul {
@@ -101,15 +106,14 @@ ul li {
 }
 
 ul li a {
-  padding: 10px 20px;
   color: #fff;
-  display: block;
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-ul li a:hover {
-  background-color: grey;
+ul li span {
+  font-size: 18px;
+  vertical-align: middle;
 }
 
 .sidebarBtn {
@@ -118,11 +122,11 @@ ul li a:hover {
   left: -50px;
   width: 50px;
   height: 50px;
-  box-sizing: border-box;
   cursor: pointer;
-  background-color: #f5f5f5;
   border: none;
   outline: none;
+  background-color: #1E3C3C;
+  color: white;
 }
 
 .sidebarBtn span {
@@ -180,12 +184,93 @@ ul li a:hover {
   display: none;
 }
 
-.login-page {
+.access-page-container .login-page {
   text-align: center;
   padding: 20px 0px;
   background-color: #2A5353;
   font-size: 25px;
   margin-bottom: 10vh;
+}
+
+.access-page-container .login-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.access-page-container .login-content {
+  display: flex;
+  justify-content: center;
+}
+
+.access-page-container .box {
+  width: 350px;
+  border: 1px solid #525252;
+}
+
+.access-page-container .title h2 {
+  color: #525252;
+  text-align: center;
+}
+
+.access-page-container .input-container {
+  padding: 0 15px 35px 15px;
+}
+
+.access-page-container .input-container input {
+  border: 1px solid #525252;
+}
+
+.access-page-container .input-container ::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.access-page-container .input-container :-moz-placeholder {
+  text-align: center;
+}
+
+.access-page-container .user-input {
+  width: 250px;
+  margin: auto;
+  text-align: center;
+}
+
+.access-page-container .user-input .check {
+  padding-top: 15px;
+}
+
+.access-page-container .button-container {
+  text-align: center;
+}
+
+.access-page-container .click {
+  width: 250px;
+  margin: auto;
+  background-color: #2A5353;
+  color: white;
+  border: none;
+  font-size: 17px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.access-page-container .click a {
+  color: white;
+}
+
+.access-page-container .click a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.access-page-container h4 {
+  padding: 20px 0 15px 0;
+}
+
+@media screen and (max-width: 360px) {
+  .access-page-container .box {
+    border: none;
+    margin-top: -30px;
+  }
 }
 
 .register-page {
@@ -196,11 +281,87 @@ ul li a:hover {
   margin-bottom: 10vh;
 }
 
+.register-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.register-content {
+  display: flex;
+  justify-content: center;
+}
+
+.user-input {
+  width: 250px;
+  margin: auto;
+  text-align: center;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.container {
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.container h1 {
+  color: #1E3C3C;
+}
+
+.container .restaurant-form {
+  justify-content: center;
+}
+
+.container .margin_auto {
+  margin: auto;
+}
+
+.container .margin_auto #cover {
+  text-align: left;
+}
+
+.container .restaurant-type {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  width: 52%;
+  margin: auto;
+}
+
+.container .restaurant-type .form-check {
+  width: calc(100% / 5);
+}
+
+@media screen and (max-width: 768px) {
+  .container .restaurant-type {
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container .restaurant-type {
+    max-width: 100%;
+  }
+}
+
 .page-header {
   text-align: center;
   padding: 20px 0px;
   background-color: #2A5353;
   font-size: 25px;
+}
+
+.page-header .menu-header {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+}
+
+.page-header .menu-header .btn:focus {
+  box-shadow: none;
 }
 
 .container h2 {
@@ -223,7 +384,31 @@ ul li a:hover {
   padding: 20px 0px;
   background-color: #2A5353;
   font-size: 25px;
-  margin-bottom: 10vh;
+  margin-bottom: 20px;
+}
+
+.admin-dashboard-header .logo a {
+  position: relative;
+  bottom: 5px;
+}
+
+.admin-dashboard-header .logout-dropdown {
+  font-size: 15px;
+}
+
+.admin-dashboard-header .wrapper {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-dashboard-header .wrapper a {
+  font-size: 15px;
+}
+
+.admin-dashboard-header .wrapper .btn:focus {
+  box-shadow: none;
 }
 
 .admin-dashboard-main .restaurant-cover {
@@ -378,7 +563,7 @@ ul li a:hover {
   background-color: #2A5353;
   position: absolute;
   top: 100%;
-  left: 25%;
+  left: 50%;
   transform: translate(-50%, -50%);
   margin: 0 auto;
   text-align: center;

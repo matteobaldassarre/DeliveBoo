@@ -3,6 +3,19 @@
     padding: 20px 0px;
     background-color: $primary-color;
     font-size: 25px;
+
+    .menu-header {
+        @include flex;
+        justify-content: space-between;
+
+        .btn {
+
+            &:focus {
+                box-shadow: none;
+            }
+
+        }
+    }
 }
 
 .container {
@@ -18,7 +31,7 @@
 
 .fa-trash-alt {
     color: rgba(236, 72, 72, 0.849);
-
     font-size: 18px;
     margin-left: 15px;
 }
+
