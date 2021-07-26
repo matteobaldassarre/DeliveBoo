@@ -1,0 +1,31 @@
+.create-plate-container {
+    .margin_auto {
+        margin: auto;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: $primary_color;
+
+        &:hover {
+            background-color: $primary_color;
+        }
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    .select {
+        label {
+            font-size: 15px;
+        }
+        padding-bottom: 10px;
+        select {
+            margin-left: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            bottom: 2px;
+        }
+    }
+}

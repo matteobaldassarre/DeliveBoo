@@ -1,9 +1,20 @@
-.container {
+.edit-restaurant-container {
     text-align: center;
     margin-bottom: 10vh;
 
     h1 {
         color: $text_color;
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    .form-check {
+        .form-check-label {
+            font-size: 15px;
+            vertical-align: middle;
+        }
     }
 
     .restaurant-form {

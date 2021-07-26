@@ -1,0 +1,64 @@
+.create-restaurant-container {
+    .margin_auto {
+        margin: auto;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: $primary_color;
+
+        &:hover {
+            background-color: $primary_color;
+        }
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    .restaurant-type {
+        @include flex;
+        flex-wrap: wrap;
+        width: 56%;
+        margin: auto;
+
+        label {
+            font-size: 15px;
+        }
+
+        .form-check {
+            width: calc(100% / 5);
+        }
+
+    }
+
+    // NavBar Media Queries for medium devices
+    @media screen and (max-width: 992px) {
+        .restaurant-type {
+            max-width: 40%;
+            .form-check {
+                width: calc(100% / 2);
+                padding-left: 0px;
+            }
+        }
+    }
+
+    // NavBar Media Queries for tablets
+    @media screen and (max-width: 768px) {
+        .restaurant-type {
+            max-width: 50%;
+        }
+    }
+
+    // NavBar Media Queries for small devices
+    @media screen and (max-width: 576px) {
+        .restaurant-type {
+            max-width: 100%;
+            justify-content: space-between;
+
+            .form-check {
+                width: calc(100% / 2 - 25px)
+            }
+        }
+    }
+}

@@ -35,3 +35,13 @@
     margin-left: 15px;
 }
 
+.admin-plates-index {
+    .btn-primary {
+        background-color: $primary_color;
+
+        &:hover, &:active {
+            background-color: $primary_color;
+        }
+    }
+}
+

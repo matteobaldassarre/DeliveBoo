@@ -77,8 +77,17 @@
                         </div>
                         <div class="burger" v-if="burgerVisible">
                             <div class="login-register">
-                                <a href="{{ url('/login') }}" class="access-buttons">Login</a>
-                                <a href="{{ url('/register') }}" class="access-buttons">Register</a>
+                                @guest
+                                    <a href="{{ url('/login') }}" class="access-buttons">Login</a>
+                                    <a href="{{ url('/register') }}" class="access-buttons">Register</a>
+                                @else
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-white">Logout</a>
+                                    <a href="{{ route('admin.home') }}" class="text-white">Dashboard</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                @endguest
                             </div>
                         </div>
                     </div>

@@ -19,13 +19,13 @@ let mesi = [
 
 let quantita = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-//Global options
+// Global options
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 18;
 Chart.defaults.font.color = '#000';
 
 let chart = new Chart(myCanvas, {
-    // Serve a selezionare il tipo di grafico 
+    // Serve a selezionare il tipo di grafico
     // Altri tipi sono: bar, line, radar, ciambella, polarArea, bolla, scatter,
     type: 'bar',
     data: {

@@ -14,7 +14,7 @@
     <header class="admin-dashboard-header">
         <div class="wrapper">
             {{-- DeliveBoo Logo --}}
-            <div class="logo">
+            <div class="deliveboo-logo">
                 <a style="cursor: pointer" href="{{ route('customer.home') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="102" height="38.833" viewBox="0 0 102 38.833">
                         <g id="Raggruppa_3" data-name="Raggruppa 3" transform="translate(-127 -74.167)">

@@ -45,12 +45,14 @@
     {{-- End Page Header --}}
 
 
-    <div class="container">
+    <div class="container admin-plates-index">
 
         {{-- Private Restaurant Menu Page --}}
         @if (count($plates) == 0)
-            <h3>Your Menu is Empty!</h3>
-            <a class="btn btn-primary" href="{{ route('admin.plates.create') }}">Add Plate</a>
+        <div class="text-center mt-5">
+            <h3 class="text-center">Il tuo Menu al momento è vuoto!</h3>
+            <a class="btn btn-primary" href="{{ route('admin.plates.create') }}">Aggiungi Piatto</a>
+        </div>
         @else
 
             @foreach ($types_ordered as $type => $plates_ordered)

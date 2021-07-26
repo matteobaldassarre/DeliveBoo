@@ -46,7 +46,7 @@
 
     .login-register {
         width: 30%;
-        text-align: center;
+        text-align: right;
 
         .access-buttons {
             background-color: white;
@@ -397,11 +397,14 @@
 .burger {
     position: relative;
     top: 50%;
+
     .login-register {
+
         .access-buttons {
             padding: 5px 10px;
             font-size: .85em;
         }
+
         display: flex;
         justify-content:space-around;
         align-items: center;

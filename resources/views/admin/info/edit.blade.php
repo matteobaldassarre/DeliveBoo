@@ -17,14 +17,35 @@
                     </svg>
                 </a>
             </div>
+
+            {{-- Options Dropdown --}}
+            <div class="logout-dropdown">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <a href="{{ route('admin.home') }}" class="dropdown-item">Dashboard</a>
+                    </div>
+                </div>
+                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
         </div>
     </header>
     {{-- End Admin Dashboard Header --}}
 
-    <div class="container">
+    <div class="container edit-restaurant-container">
         <div class="restaurant-form">
-            <div class="row col-md-4 col-lg-7 margin_auto pb-2 pt-2">
-                <h1>Edit Your Restaurant</h1>
+            <div class="row col-md-6 col-lg-7 margin_auto pb-2 pt-2">
+                <h1>Modifica Ristorante</h1>
             </div>
 
             {{-- Bootstrap Validation Error Box --}}
@@ -47,18 +68,10 @@
 
                 <div class="form-group">
                     <div class="row col-md-6 col-lg-7 margin_auto">
-                        <h5 for="restaurant_name">Restaurant Name</h5>
-                        <input type="text" class="form-control" id="restaurant_name" name="restaurant_name" value="{{ $user_info->restaurant_name }}">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="row col-md-6 col-lg-7 margin_auto">
-                        <h5 for="cover">Restaurant Cover</h5>
+                        <label>Immagine Ristorante</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                <label id="cover" class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                <input type="file" id="cover" name="cover">
                             </div>
                         </div>
                     </div>
@@ -66,21 +79,28 @@
 
                 <div class="form-group">
                     <div class="row col-md-6 col-lg-7 margin_auto">
-                        <h5 for="address">Restaurant Address</h5>
+                        <label for="restaurant_name">Nome Ristorante</label>
+                        <input type="text" class="form-control" id="restaurant_name" name="restaurant_name" value="{{ $user_info->restaurant_name }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row col-md-6 col-lg-7 margin_auto">
+                        <label for="address">Indirizzo</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="Enter your restaurant address" value="{{ $user_info->address }}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="row col-md-6 col-lg-7 margin_auto">
-                        <h5 for="VAT">VAT Number</h5>
+                        <label for="VAT">Partita IVA</label>
                         <input type="text" class="form-control" id="VAT" name="VAT" placeholder="Enter your VAT Number" value="{{ $user_info->VAT }}">
                     </div>
                 </div> 
 
                 <div class="form-group">
                     <div class="input-group row col-md-6 col-lg-7 margin_auto">
-                        <h5>Select Restaurant types</h5>
+                        <label>Seleziona Tipo</label>
                     </div>
 
                     <div class="restaurant-type">
@@ -99,7 +119,7 @@
 
                 <div class="form-group">
                     <div class="row col-md-6 col-lg-7 margin_auto">
-                        <button type="submit" class="btn btn-primary done-button">Done</button>
+                        <button type="submit" class="btn btn-primary done-button">Modifica</button>
                     </div>
                 </div>
             </form>

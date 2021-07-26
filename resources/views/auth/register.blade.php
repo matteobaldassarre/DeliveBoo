@@ -34,11 +34,27 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            {{-- Name Input Field --}}
+                            <div class="user-input">
+                                <label for="name"></label>
+
+                                <div>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- Email Input Field --}}
                             <div class="user-input">
                                 <label for="email"></label>
 
                                 <div>
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" email="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -48,6 +64,7 @@
                                 </div>
                             </div>
 
+                            {{-- Password Input Field --}}
                             <div class="user-input">
                                 <label for="password"></label>
 
@@ -62,6 +79,7 @@
                                 </div>
                             </div>
 
+                            {{-- Confirm Password Input Field --}}
                             <div class="user-input">
                                 <label for="password-confirm"></label>
 
@@ -70,6 +88,7 @@
                                 </div>
                             </div>
 
+                            {{-- Login & Register Buttons --}}
                             <div class="button-container">
                                 <button type="submit" class="click">
                                     REGISTRATI

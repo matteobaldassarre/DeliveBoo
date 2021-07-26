@@ -347,28 +347,24 @@ ul li span {
   margin-top: 25px;
 }
 
-.container {
-  text-align: center;
-  margin-bottom: 10vh;
-}
-
-.container h1 {
-  color: #1E3C3C;
-}
-
-.container .restaurant-form {
-  justify-content: center;
-}
-
-.container .margin_auto {
+.create-restaurant-container .margin_auto {
   margin: auto;
 }
 
-.container .margin_auto #cover {
-  text-align: left;
+.create-restaurant-container .btn-primary {
+  width: 100%;
+  background-color: #2A5353;
 }
 
-.container .restaurant-type {
+.create-restaurant-container .btn-primary:hover {
+  background-color: #2A5353;
+}
+
+.create-restaurant-container label {
+  font-size: 18px;
+}
+
+.create-restaurant-container .restaurant-type {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
@@ -376,45 +372,183 @@ ul li span {
   margin: auto;
 }
 
-.container .restaurant-type .form-check {
+.create-restaurant-container .restaurant-type label {
+  font-size: 15px;
+}
+
+.create-restaurant-container .restaurant-type .form-check {
   width: calc(100% / 5);
 }
 
-.container .done-button {
-  background-color: #2A5353;
-  width: 100%;
-}
-
-.container .done-button:hover {
-  background-color: #2A5353;
-}
-
 @media screen and (max-width: 992px) {
-  .container .restaurant-type {
-    max-width: 45%;
+  .create-restaurant-container .restaurant-type {
+    max-width: 40%;
   }
 
-  .container .restaurant-type .form-check {
+  .create-restaurant-container .restaurant-type .form-check {
     width: calc(100% / 2);
     padding-left: 0px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .container .restaurant-type {
+  .create-restaurant-container .restaurant-type {
     max-width: 50%;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .container .restaurant-type {
+  .create-restaurant-container .restaurant-type {
     max-width: 100%;
     justify-content: space-between;
   }
 
-  .container .restaurant-type .form-check {
+  .create-restaurant-container .restaurant-type .form-check {
     width: calc(100% / 2 - 25px);
   }
+}
+
+.edit-restaurant-container {
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.edit-restaurant-container h1 {
+  color: #1E3C3C;
+}
+
+.edit-restaurant-container label {
+  font-size: 18px;
+}
+
+.edit-restaurant-container .form-check .form-check-label {
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.edit-restaurant-container .restaurant-form {
+  justify-content: center;
+}
+
+.edit-restaurant-container .margin_auto {
+  margin: auto;
+}
+
+.edit-restaurant-container .margin_auto #cover {
+  text-align: left;
+}
+
+.edit-restaurant-container .restaurant-type {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  width: 56%;
+  margin: auto;
+}
+
+.edit-restaurant-container .restaurant-type .form-check {
+  width: calc(100% / 5);
+}
+
+.edit-restaurant-container .done-button {
+  background-color: #2A5353;
+  width: 100%;
+}
+
+.edit-restaurant-container .done-button:hover {
+  background-color: #2A5353;
+}
+
+@media screen and (max-width: 992px) {
+  .edit-restaurant-container .restaurant-type {
+    max-width: 45%;
+  }
+
+  .edit-restaurant-container .restaurant-type .form-check {
+    width: calc(100% / 2);
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .edit-restaurant-container .restaurant-type {
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .edit-restaurant-container .restaurant-type {
+    max-width: 100%;
+    justify-content: space-between;
+  }
+
+  .edit-restaurant-container .restaurant-type .form-check {
+    width: calc(100% / 2 - 25px);
+  }
+}
+
+.create-plate-container .margin_auto {
+  margin: auto;
+}
+
+.create-plate-container .btn-primary {
+  width: 100%;
+  background-color: #2A5353;
+}
+
+.create-plate-container .btn-primary:hover {
+  background-color: #2A5353;
+}
+
+.create-plate-container label {
+  font-size: 18px;
+}
+
+.create-plate-container .select {
+  padding-bottom: 10px;
+}
+
+.create-plate-container .select label {
+  font-size: 15px;
+}
+
+.create-plate-container .select select {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  bottom: 2px;
+}
+
+.edit-plate-container .margin_auto {
+  margin: auto;
+}
+
+.edit-plate-container .btn-primary {
+  width: 100%;
+  background-color: #2A5353;
+}
+
+.edit-plate-container .btn-primary:hover {
+  background-color: #2A5353;
+}
+
+.edit-plate-container label {
+  font-size: 18px;
+}
+
+.edit-plate-container .select {
+  padding-bottom: 10px;
+}
+
+.edit-plate-container .select label {
+  font-size: 15px;
+}
+
+.edit-plate-container .select select {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  bottom: 2px;
 }
 
 .page-header {
@@ -447,6 +581,15 @@ ul li span {
   color: rgba(236, 72, 72, 0.849);
   font-size: 18px;
   margin-left: 15px;
+}
+
+.admin-plates-index .btn-primary {
+  background-color: #2A5353;
+}
+
+.admin-plates-index .btn-primary:hover,
+.admin-plates-index .btn-primary:active {
+  background-color: #2A5353;
 }
 
 .admin-dashboard-header {
@@ -550,7 +693,7 @@ ul li span {
 
 .homepage-navbar .login-register {
   width: 30%;
-  text-align: center;
+  text-align: right;
 }
 
 .homepage-navbar .login-register .access-buttons {
