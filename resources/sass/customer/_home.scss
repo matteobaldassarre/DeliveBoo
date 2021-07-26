@@ -46,7 +46,7 @@
 
     .login-register {
         width: 30%;
-        text-align: right;
+        text-align: center;
 
         .access-buttons {
             background-color: white;
@@ -69,6 +69,9 @@
 
     .burger-menu {
         display: none;
+        i {
+            cursor: pointer;
+        }
     }
 
     // NavBar Media Queries for tablets
@@ -283,6 +286,9 @@
             h2 {
                 text-align: center;
             }
+            .burger {
+                display: none;
+            }
         }
 
         @media screen and (max-width: 575px) {
@@ -385,5 +391,21 @@
                 margin: auto;
             }
         }
+    }
+}
+
+.burger {
+    position: relative;
+    top: 50%;
+    .login-register {
+        .access-buttons {
+            padding: 5px 10px;
+            font-size: .85em;
+        }
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        width: 40%;
+        margin: auto;
     }
 }

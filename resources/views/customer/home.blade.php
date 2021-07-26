@@ -72,7 +72,13 @@
 
                             {{-- Responsive Burger Menu --}}
                             <div class="burger-menu">
-                                <i class="fa fa-bars"></i>
+                                <i v-on:click="burgerVisibility()" class="fa fa-bars"></i>
+                            </div>    
+                        </div>
+                        <div class="burger" v-if="burgerVisible">
+                            <div class="login-register">
+                                <a href="{{ url('/login') }}" class="access-buttons">Login</a>
+                                <a href="{{ url('/register') }}" class="access-buttons">Register</a>
                             </div>
                         </div>
                     </div>
