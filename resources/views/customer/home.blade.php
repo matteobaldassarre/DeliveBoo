@@ -241,11 +241,11 @@
                                 <div class="cart">
                                     <h2 class="pt-2">Carrello</h2>
                                     {{-- Cart Inside --}}
-                                    <a v-on:click="emptyCart()">Svuota</a>
+                                    <a v-on:click="emptyCart()" style="font-size: 20px">Svuota</a>
                                     <ul>
-                                        <li v-for="product in shoppingCart">
+                                        <li v-for="(product, index) in shoppingCart">
                                             <span>@{{ product.name }}</span>
-                                            <a v-on:click="removeQuantity(product), closeSidebare(totalPrice)"> - </a>
+                                            <a v-on:click="removeQuantity(product, index), closeSidebare(totalPrice)"> - </a>
                                             <span>@{{ product.quantity }}</span>
                                             <a v-on:click="addQuantity(product)"> + </a>
                                         </li>
@@ -301,11 +301,11 @@
                 {{-- Menu Sections --}}
                 <div class="menu-sections">
                     {{-- Section --}}
-                    <div v-for="type in platesTypes" v-if="currentRestaurantPlates.some((plate) => plate.type.replace(/.$/,'i') == type)">
+                    <div v-for="type in platesTypes" v-if="currentRestaurantPlates.some((plate) => plate.type.replace(/.$/,'i') == type && plate.visibility == 1)">
                         <h2>@{{ type }}</h2>
                         <div class="container-flex">
                             {{-- Food Card --}}
-                            <div class="food-card" v-for="(plate, index) in currentRestaurantPlates" v-if="plate.type.replace(/.$/,'i') == type">
+                            <div class="food-card" v-for="(plate, index) in currentRestaurantPlates" v-if="plate.type.replace(/.$/,'i') == type && plate.visibility == 1">
                                 {{-- Food Image --}}
                                 <div class="food-card-image">
                                     <img :src="'storage/' + plate.image" alt="plate-image">

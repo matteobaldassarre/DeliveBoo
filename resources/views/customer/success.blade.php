@@ -28,7 +28,7 @@
                         Totale: <span class="price">{{ $order->total }}€</span>
                         
                         <h4 class="pt-4">Info Cliente</h4>
-                        Nome: {{ $customer_name }} <br>
+                        Nome: {{ $order_name }} <br>
                         Indirizzo: {{ $order->address }} <br>
                         Email: {{ $order->mail }}
                     </p>

@@ -118,6 +118,7 @@ class UserInfoController extends Controller
                 'type' => $plate->type,
                 'quantity' => '0',
                 'image' => $plate->image,
+                'visibility' => $plate->visible,
                 'price' => $plate->price,
                 'user_id' => $plate->user_id
             ];

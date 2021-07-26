@@ -32,7 +32,6 @@ class PaymentController extends Controller
         $order_id = $request->id;
         $mail = $request->mail;
 
-
         $order = Order::findOrFail($order_id);
 
         if ($order->status) {
@@ -40,7 +39,6 @@ class PaymentController extends Controller
         }
 
         $amount = $order->total;
-
 
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
@@ -61,7 +59,7 @@ class PaymentController extends Controller
             $transaction = $result->transaction;
             
             // Update Order 
-            $order = Order::findOrFail($order_id);
+            // $order = Order::findOrFail($order_id);
 
             $order->name = $firstName . ' ' . $lastName;
             $order->address = $address;
@@ -72,13 +70,15 @@ class PaymentController extends Controller
 
             $order_info_table = DB::table('order_plate')
             ->join('plates', 'plate_id', '=', 'plates.id')
-            ->join('orders', 'order_id', '=', 'orders.id')
             ->join('users', 'user_id', '=', 'users.id')
+            ->join('orders', 'order_id', '=', 'orders.id')
             ->get();
 
             $this_order_info = [];
             $order_restaurant = '';
             $order_number = '';
+
+            dd($order_info_table->last());
 
             foreach ($order_info_table as $order) {
                 if ($order->order_id == $order_id) {
@@ -98,7 +98,7 @@ class PaymentController extends Controller
                 'order_number' => $order_number,
                 'order_info' => $this_order_info,
                 'order' => $order,
-                'customer_name' => $order->name
+                'order_name' => $order->name
             ];
 
             return view('customer.success', $data);

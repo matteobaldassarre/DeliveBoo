@@ -24,6 +24,9 @@ var app = new Vue({
         // Array storing the selected restaurant info
         currentRestaurantInfo: [],
 
+        // The current restaurant id that locks the cart from adding products from other restaurants
+        currentRestaurantId: 0,
+
         // Array storing the plates types for the menu page
         platesTypes: [
             'Antipasti',
@@ -80,6 +83,7 @@ var app = new Vue({
             // Getting the restaurants plates filtered by the API Controller
             axios.get('/api/restaurants/' + restaurantId + '/plates').then(result => {
                 this.currentRestaurantPlates = result.data.plates;
+                console.log(this.currentRestaurantPlates);
             });
             
             this.restaurantChosen = true;
@@ -89,8 +93,12 @@ var app = new Vue({
         },
 
         addPlateToCart(plate) {
-            // Se il piatto appartiene a quel ristorante oppure se il carrello è vuoto
-            if (plate.user_id == this.currentRestaurantInfo[0].user_id || this.shoppingCart == 0) {
+            // Blocking the cart if a product is added to the cart from a specific restaurant till it's empty
+            if (this.shoppingCart.length == 0) {
+                this.currentRestaurantId = this.currentRestaurantInfo[0].user_id;
+            }
+            
+            if (plate.user_id == this.currentRestaurantId || this.shoppingCart.length == 0) {
 
                 if (!this.shoppingCart.includes(plate)) {
                     this.shoppingCart.push(plate);
@@ -101,22 +109,28 @@ var app = new Vue({
                     this.totalPrice += plate.price;
                 }
 
+                this.saveShoppingCart(this.shoppingCart, this.totalPrice);
+
             } else {
                 alert('Puoi ordinare da un solo ristorante alla volta!');
             }
-
-            this.saveShoppingCart(this.shoppingCart, this.totalPrice);
         },
 
-        removeQuantity(product) {
+        removeQuantity(product, index) {
             if (product.quantity > 0) {
+
                 product.quantity--;
                 this.totalPrice -= product.price;
                 this.saveShoppingCart(this.shoppingCart, this.totalPrice);
-            } else if (this.totalPrice == 0) {
+
+                if (product.quantity == 0) {
+                    this.shoppingCart.splice(index, 1);
+                } 
+
+            }  else if (this.totalPrice == 0) {
                 this.shoppingCart = [];
                 product.quantity = 1;
-                this.saveShoppingCart(this.shoppingCart, this.totalPrice);
+                localStorage.clear();
             }
         },
 
@@ -127,7 +141,6 @@ var app = new Vue({
                 this.saveShoppingCart(this.shoppingCart, this.totalPrice);
             }
         },
-
 
         // SideBar Functions
         sidebareVisibility() {
@@ -154,6 +167,7 @@ var app = new Vue({
 
         // Empties the shoppingCart & clears localStorage
         emptyCart() {
+            this.restaurantId = 0;
             this.totalPrice = 0;
             this.shoppingCart = [];
             localStorage.clear();
@@ -162,6 +176,8 @@ var app = new Vue({
 
     // MOUNTED FUNCTIONS
     mounted() {
+        localStorage.clear();
+
         let deserializedShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
         let deserializedTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
 
@@ -170,8 +186,7 @@ var app = new Vue({
                 this.shoppingCart.push(element);
             });
             this.totalPrice = deserializedTotalPrice;
-        }
-           
+        }  
         
         // Getting all restaurants from the restaurants API
         axios.get('/api/restaurants').then(result => {
