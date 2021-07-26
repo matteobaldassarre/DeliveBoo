@@ -122,7 +122,8 @@ var app = new Vue({
     cartTotalQuantity: 0,
     // Order Total Price
     totalPrice: 0,
-    sidebareVisible: false
+    sidebareVisible: false,
+    burgerVisible: false
   },
   // REGULAR METHODS
   methods: {
@@ -211,6 +212,9 @@ var app = new Vue({
     sidebareVisibility: function sidebareVisibility() {
       this.sidebareVisible = !this.sidebareVisible;
     },
+    burgerVisibility: function burgerVisibility() {
+      this.burgerVisible = !this.burgerVisible;
+    },
     closeSidebare: function closeSidebare(totalPrice) {
       if (totalPrice == 0) {
         this.sidebareVisible = false;
@@ -270,7 +274,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! /Users/giovanni/Desktop/DeliveBoo/resources/js/home.js */"./resources/js/home.js");
 
 
 /***/ })

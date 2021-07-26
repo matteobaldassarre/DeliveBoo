@@ -48,7 +48,9 @@ var app = new Vue({
         // Order Total Price
         totalPrice: 0,
 
-        sidebareVisible: false
+        sidebareVisible: false,
+
+        burgerVisible: false
 
     },
 
@@ -145,6 +147,11 @@ var app = new Vue({
         // SideBar Functions
         sidebareVisibility() {
             this.sidebareVisible = !this.sidebareVisible;
+        },
+
+        burgerVisibility() {
+            this.burgerVisible = !this.burgerVisible;
+
         },
 
         closeSidebare(totalPrice) {

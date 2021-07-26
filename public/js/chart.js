@@ -148,7 +148,7 @@ var chart = new Chart(myCanvas, {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/matteobaldassarre/Desktop/Boolean/Progetto Finale/DeliveBoo/resources/js/chart.js */"./resources/js/chart.js");
+module.exports = __webpack_require__(/*! /Users/giovanni/Desktop/DeliveBoo/resources/js/chart.js */"./resources/js/chart.js");
 
 
 /***/ })
