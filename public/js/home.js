@@ -159,7 +159,6 @@ var app = new Vue({
 
       axios.get('/api/restaurants/' + restaurantId + '/plates').then(function (result) {
         _this3.currentRestaurantPlates = result.data.plates;
-        console.log(_this3.currentRestaurantPlates);
       });
       this.restaurantChosen = true; // Scrolling page to the top after a menu is selected
 
@@ -194,6 +193,8 @@ var app = new Vue({
 
         if (product.quantity == 0) {
           this.shoppingCart.splice(index, 1);
+        } else if (product.quantity == 0 && this.totalPrice == 0) {
+          console.log('ciao');
         }
       } else if (this.totalPrice == 0) {
         this.shoppingCart = [];

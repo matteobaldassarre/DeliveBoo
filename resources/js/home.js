@@ -85,7 +85,6 @@ var app = new Vue({
             // Getting the restaurants plates filtered by the API Controller
             axios.get('/api/restaurants/' + restaurantId + '/plates').then(result => {
                 this.currentRestaurantPlates = result.data.plates;
-                console.log(this.currentRestaurantPlates);
             });
             
             this.restaurantChosen = true;
@@ -127,7 +126,10 @@ var app = new Vue({
 
                 if (product.quantity == 0) {
                     this.shoppingCart.splice(index, 1);
-                } 
+                } else if (product.quantity == 0 && this.totalPrice == 0) {
+                    console.log('ciao');
+                    
+                }
 
             }  else if (this.totalPrice == 0) {
                 this.shoppingCart = [];

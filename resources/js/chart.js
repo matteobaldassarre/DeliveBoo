@@ -17,7 +17,7 @@ let mesi = [
     "Dicembre"
 ];
 
-let quantita = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let quantita = ['{{ $total_orders }}', 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 // Global options
 Chart.defaults.font.family = 'Lato';

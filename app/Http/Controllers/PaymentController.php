@@ -78,8 +78,6 @@ class PaymentController extends Controller
             $order_restaurant = '';
             $order_number = '';
 
-            dd($order_info_table->last());
-
             foreach ($order_info_table as $order) {
                 if ($order->order_id == $order_id) {
                     $this_order_info[] = [

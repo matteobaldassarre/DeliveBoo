@@ -97,7 +97,7 @@
 var myCanvas = document.getElementById("myCanvas").getContext('2d'); // Array contenenti i dati per popolare il grafico
 
 var mesi = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
-var quantita = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // Global options
+var quantita = ['{{ $total_orders }}', 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // Global options
 
 Chart.defaults.font.family = 'Lato';
 Chart.defaults.font.size = 18;

@@ -252,6 +252,7 @@
                                     <p class="pt-5">Il tuo carrello al momento risulta vuoto!</p>
                                 </div>
                             </div>
+
                             <div v-else>
                                 <div class="cart">
                                     <h2 class="pt-2">Carrello</h2>
@@ -265,11 +266,11 @@
                                             <a v-on:click="addQuantity(product)"> + </a>
                                         </li>
                                     </ul>
-                                    <h3>Totale: @{{ totalPrice.toFixed(2) }}€</h3>
+                                    <h3>Totale: @{{ Math.abs(totalPrice.toFixed(2)) }}€</h3>
                                     {{-- End Cart Inside --}}
 
                                     {{-- Go to Checkout Form --}}
-                                    <form action="{{ route('order-create') }}" method="get">
+                                    <form action="{{ route('order-create') }}" method="get" v-if="totalPrice > 0">
                                         @csrf
                                         @method('GET')
                                         <div v-for="plate in shoppingCart">

@@ -14,27 +14,27 @@ class HomeController extends Controller
         $current_user = Auth::user();
 
         // TODO PASS CHARTJS NUMBERS OF ORDERS
-        // $restaurant_id = Auth::id();
+        $restaurant_id = Auth::id();
 
-        // $restaurant_orders = DB::table('order_plate')
-        // ->join('plates', 'plate_id', '=', 'plates.id')
-        // ->join('orders', 'order_id', '=', 'orders.id')
-        // ->join('users', 'user_id', '=', 'users.id')
-        // ->get();
+        $restaurant_orders = DB::table('orders')
+        ->selectRaw('orders.id, MONTH(orders.created_at) as mese')
+        ->distinct()
+        ->leftJoin('order_plate', 'orders.id', '=', 'order_plate.order_id')
+        ->join('plates', 'plate_id', '=', 'plates.id')
+        ->where('user_id', '=', $restaurant_id)
+        ->get();
 
-        // $orders_list = collect($restaurant_orders->where('user_id', '=', $restaurant_id)->all());
+        $total_restaurant_orders = count($restaurant_orders);
 
-        // $filtered_orders = [];
 
-        // foreach ($orders_list as $order) {
-        //     if ($order->user_id == $restaurant_id && $order->status == 1) {
-        //         $filtered_orders[] = $order;
-        //     }
-        // }
+        $json_orders = json_encode($restaurant_orders);
 
+        
         $data = [
             'user' => $current_user,
-            'user_info' => $current_user->userInfo
+            'user_info' => $current_user->userInfo,
+            'total_orders' => $total_restaurant_orders,
+            'orders' => $json_orders
         ];
 
         return view('admin.home', $data);
