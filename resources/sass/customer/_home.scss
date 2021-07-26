@@ -27,6 +27,7 @@
 
             &:focus {
                 outline: none;
+                box-shadow: 0px 0px 10px 1px rgba(70, 221, 115, 0.3);
             }
 
             &::placeholder {
@@ -46,7 +47,6 @@
     .login-register {
         width: 30%;
         text-align: right;
-        padding-right: 20px;
 
         .access-buttons {
             background-color: white;
@@ -125,11 +125,19 @@
     }
 }
 
+.restaurant-bts-card {
+    transition: all 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
 // Customer Home Page Restaurant Menu Component
 .restaurant-menu-page-show {
     .menu-jumbotron {
         height: 350px;
-        margin-bottom: 180px;
+        margin-bottom: 150px;
         position: relative;
 
         .single-restaurant-cover {
@@ -178,10 +186,17 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        @media screen and (max-width: 575px) {
+            .menu-info-card {
+                width: 85%;
+            }
+        }
     } 
 
     .menu-sections {
         max-width: 1300px;
+        padding: 0px 10px;
         margin: 0 auto;
 
         .container-flex {
@@ -197,7 +212,7 @@
 
         .food-card {
             @include flex;
-            padding: 5px;
+            padding: 5px 0px;
             width: calc(100% / 2);
             padding-bottom: 20px;
 
@@ -227,20 +242,59 @@
                         color: #12A20B;
                     }
                 }
+
+                @media screen and (max-width: 575px) {
+                    .food-card-price-button {
+                        padding-top: 0px;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 575px) {
+                .food-card-info {
+                    text-align: center;
+                    padding-left: 0px;
+
+                    .food-card-title {
+                        margin-top: 10px;
+                    }
+                }
             }
         }
 
         @media screen and (max-width: 999px) {
+            .container-flex {
+                width: 100%;
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
 
             .food-card {
                 width: calc(100% / 1);
-                justify-content: space-evenly;
+                margin: auto;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container-flex {
+                align-content: flex-end;
             }
 
             h2 {
-                font-weight: bold;
-                margin-top: 50px;
                 text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 575px) {
+            .food-card {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 15px;
+            }
+
+            .menu-info-card {
+                width: 85%;
             }
         }
     }
@@ -265,4 +319,71 @@
         }
     }
 
+}
+
+// Homepage Footer
+.homepage-footer {
+    background-color: $primary_color;
+
+    .container {
+        @include flex;
+        justify-content: space-between;
+        color: white;
+        flex-wrap: wrap;
+        margin-bottom: 0px;
+        margin-top: 5%;
+
+        ul {
+            padding: 0px;
+        }
+
+        h3 {
+            font-weight: bold;
+        }
+
+        .download-app, .contact-us, .legal-pages {
+            padding-top: 25px;
+        }
+
+        .legal-pages {
+            a {
+                &:hover {
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .download-app {
+            margin-left: -11px;
+            text-align: center;
+
+            img {
+                width: 180px;
+                display: block;
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .download-app, .contact-us, .legal-pages {
+                width: 100%;
+            }
+
+            .download-app {
+                margin-left: 0px;
+
+                img {
+                    margin: auto;
+                }
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .legal-pages {
+                margin: auto;
+            }
+        }
+    }
 }

@@ -1,0 +1,31 @@
+.order-success-page {
+    opacity: 0;
+    .wrapper {
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .card {
+            width: 50%;
+        }
+
+        @media screen and (max-width: 999px) {
+            .card {
+                width: 100%;
+            }
+        }
+
+        .price {
+            color: #12A20B;
+        }
+
+        .btn-primary {
+            background-color: $primary_color;
+
+            &:hover {
+                background-color: $primary_color;
+            }
+        }
+    }
+}

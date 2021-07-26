@@ -373,12 +373,32 @@ ul li span {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
-  width: 52%;
+  width: 56%;
   margin: auto;
 }
 
 .container .restaurant-type .form-check {
   width: calc(100% / 5);
+}
+
+.container .done-button {
+  background-color: #2A5353;
+  width: 100%;
+}
+
+.container .done-button:hover {
+  background-color: #2A5353;
+}
+
+@media screen and (max-width: 992px) {
+  .container .restaurant-type {
+    max-width: 45%;
+  }
+
+  .container .restaurant-type .form-check {
+    width: calc(100% / 2);
+    padding-left: 0px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -390,6 +410,11 @@ ul li span {
 @media screen and (max-width: 576px) {
   .container .restaurant-type {
     max-width: 100%;
+    justify-content: space-between;
+  }
+
+  .container .restaurant-type .form-check {
+    width: calc(100% / 2 - 25px);
   }
 }
 
@@ -505,6 +530,7 @@ ul li span {
 
 .homepage-navbar .search-bar input:focus {
   outline: none;
+  box-shadow: 0px 0px 10px 1px rgba(70, 221, 115, 0.3);
 }
 
 .homepage-navbar .search-bar input::-moz-placeholder {
@@ -526,7 +552,6 @@ ul li span {
 .homepage-navbar .login-register {
   width: 30%;
   text-align: right;
-  padding-right: 20px;
 }
 
 .homepage-navbar .login-register .access-buttons {
@@ -601,9 +626,17 @@ ul li span {
   }
 }
 
+.restaurant-bts-card {
+  transition: all 0.3s;
+}
+
+.restaurant-bts-card:hover {
+  transform: scale(1.05);
+}
+
 .restaurant-menu-page-show .menu-jumbotron {
   height: 350px;
-  margin-bottom: 180px;
+  margin-bottom: 150px;
   position: relative;
 }
 
@@ -657,8 +690,15 @@ ul li span {
   align-items: center;
 }
 
+@media screen and (max-width: 575px) {
+  .restaurant-menu-page-show .menu-jumbotron .menu-info-card {
+    width: 85%;
+  }
+}
+
 .restaurant-menu-page-show .menu-sections {
   max-width: 1300px;
+  padding: 0px 10px;
   margin: 0 auto;
 }
 
@@ -677,7 +717,7 @@ ul li span {
 .restaurant-menu-page-show .menu-sections .food-card {
   display: flex;
   display: -webkit-flex;
-  padding: 5px;
+  padding: 5px 0px;
   width: calc(100% / 2);
   padding-bottom: 20px;
 }
@@ -709,16 +749,56 @@ ul li span {
   color: #12A20B;
 }
 
+@media screen and (max-width: 575px) {
+  .restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-price-button {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .restaurant-menu-page-show .menu-sections .food-card .food-card-info {
+    text-align: center;
+    padding-left: 0px;
+  }
+
+  .restaurant-menu-page-show .menu-sections .food-card .food-card-info .food-card-title {
+    margin-top: 10px;
+  }
+}
+
 @media screen and (max-width: 999px) {
+  .restaurant-menu-page-show .menu-sections .container-flex {
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
   .restaurant-menu-page-show .menu-sections .food-card {
     width: calc(100% / 1);
-    justify-content: space-evenly;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .restaurant-menu-page-show .menu-sections .container-flex {
+    align-content: flex-end;
   }
 
   .restaurant-menu-page-show .menu-sections h2 {
-    font-weight: bold;
-    margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .restaurant-menu-page-show .menu-sections .food-card {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .restaurant-menu-page-show .menu-sections .menu-info-card {
+    width: 85%;
   }
 }
 
@@ -739,6 +819,106 @@ ul li span {
 .infos > * .title {
   color: #1E3C3C;
   font-size: 1.75em;
+}
+
+.homepage-footer {
+  background-color: #2A5353;
+}
+
+.homepage-footer .container {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  color: white;
+  flex-wrap: wrap;
+  margin-bottom: 0px;
+  margin-top: 5%;
+}
+
+.homepage-footer .container ul {
+  padding: 0px;
+}
+
+.homepage-footer .container h3 {
+  font-weight: bold;
+}
+
+.homepage-footer .container .download-app,
+.homepage-footer .container .contact-us,
+.homepage-footer .container .legal-pages {
+  padding-top: 25px;
+}
+
+.homepage-footer .container .legal-pages a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.homepage-footer .container .download-app {
+  margin-left: -11px;
+  text-align: center;
+}
+
+.homepage-footer .container .download-app img {
+  width: 180px;
+  display: block;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .homepage-footer .container .download-app,
+  .homepage-footer .container .contact-us,
+  .homepage-footer .container .legal-pages {
+    width: 100%;
+  }
+
+  .homepage-footer .container .download-app {
+    margin-left: 0px;
+  }
+
+  .homepage-footer .container .download-app img {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homepage-footer .container .legal-pages {
+    margin: auto;
+  }
+}
+
+.order-success-page {
+  opacity: 0;
+}
+
+.order-success-page .wrapper {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-success-page .wrapper .card {
+  width: 50%;
+}
+
+@media screen and (max-width: 999px) {
+  .order-success-page .wrapper .card {
+    width: 100%;
+  }
+}
+
+.order-success-page .wrapper .price {
+  color: #12A20B;
+}
+
+.order-success-page .wrapper .btn-primary {
+  background-color: #2A5353;
+}
+
+.order-success-page .wrapper .btn-primary:hover {
+  background-color: #2A5353;
 }
 
 /*!

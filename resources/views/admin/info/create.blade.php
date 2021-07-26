@@ -40,7 +40,7 @@
 
             <div class="form-group">
                 <div class="row col-md-4 col-lg-3">
-                    <label for="address">Address</label>
+                    <label for="address">Restaurant Address</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Enter your restaurant address" value="{{ old('address') }}">
                 </div>
             </div>

@@ -13,7 +13,7 @@
     .margin_auto {
         margin: auto;
         
-        #cover{
+        #cover {
             text-align: left;
         }
     }
@@ -21,13 +21,33 @@
     .restaurant-type {
         @include flex;
         flex-wrap: wrap;
-        width: 52%;
+        width: 56%;
         margin: auto;
 
         .form-check {
             width: calc(100% / 5);
         }
 
+    }
+
+    .done-button {
+        background-color: $primary_color;
+        width: 100%;
+        
+        &:hover {
+            background-color: $primary_color;
+        }
+    }
+
+    // NavBar Media Queries for medium devices
+    @media screen and (max-width: 992px) {
+        .restaurant-type {
+            max-width: 45%;
+            .form-check {
+                width: calc(100% / 2);
+                padding-left: 0px;
+            }
+        }
     }
 
     // NavBar Media Queries for tablets
@@ -41,6 +61,11 @@
     @media screen and (max-width: 576px) {
         .restaurant-type {
             max-width: 100%;
+            justify-content: space-between;
+
+            .form-check {
+                width: calc(100% / 2 - 25px)
+            }
         }
     }
 }

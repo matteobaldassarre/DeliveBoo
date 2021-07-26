@@ -68,11 +68,11 @@
             <div class="select">
                 <label for="type">Select Plate Type: </label>
                 <select name="type" id="type">
-                    <option value="Antipasto">Antipasto</option>
-                    <option value="Primo">Primo</option>
-                    <option value="Secondo">Secondo</option>
-                    <option value="Contorno">Contorno</option>
-                    <option value="Dolce">Dolce</option>
+                    <option value="Antipasto" {{ old('type') == 'Antipasto' ? 'selected' : '' }}>Antipasto</option>
+                    <option value="Primo" {{ old('type') == 'Primo' ? 'selected' : '' }}>Primo</option>
+                    <option value="Secondo" {{ old('type') == 'Secondo' ? 'selected' : '' }}>Secondo</option>
+                    <option value="Contorno" {{ old('type') == 'Contorno' ? 'selected' : '' }}>Contorno</option>
+                    <option value="Dolce" {{ old('type') == 'Dolce' ? 'selected' : '' }}>Dolce</option>
                 </select>
             </div>
 

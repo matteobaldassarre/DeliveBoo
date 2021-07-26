@@ -8,18 +8,37 @@
 @endsection
 
 @section('page_content')
-    <div class="wrapper">
-        <div class="card text-center">
-            <div class="card-header">
-                Featured
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
+    <div class="order-success-page">
+        <div class="wrapper">
+            <div class="card text-center">
+                <div class="card-header">
+                    Riepilogo Ordine
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ordine Nº {{ $order_number }}</h5>
+
+                    <p class="card-text">
+                        <h4>Hai ordinato da: {{ $restaurant_name }}</h4>
+                        @foreach ($order_info as $info)
+                            <div>
+                                {{ $info['plate_name'] }} x {{ $info['plate_quantity'] }} - <span class="price">{{ $info['plate_price'] * $info['plate_quantity'] }}€</span>
+                            </div>
+                        @endforeach
+
+                        Totale: <span class="price">{{ $order->total }}€</span>
+                        
+                        <h4 class="pt-4">Info Cliente</h4>
+                        Nome: {{ $customer_name }} <br>
+                        Indirizzo: {{ $order->address }} <br>
+                        Email: {{ $order->mail }}
+                    </p>
+                    
+                    <a href="{{ route('customer.home') }}" class="btn btn-primary">Torna alla Home</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Grazie per aver ordinato su DeliveBoo, <br>
+                    il tuo ordine arriverà a breve!
+                </div>
             </div>
         </div>
     </div>
@@ -31,12 +50,15 @@
         localStorage.clear();
     </script>
     <script>
+        orderCard = document.querySelector('.order-success-page');
+
         Swal.fire({
             title: 'Success!',
             text: 'Payment Successful',
             icon: 'success',
             confirmButtonText: 'View Order'
-        })
+        }).then(() => {
+            orderCard.style.opacity = 1;
+        });
     </script>
 @endsection
-

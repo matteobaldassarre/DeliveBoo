@@ -39,6 +39,9 @@ var app = new Vue({
         // Cart Object
         shoppingCart: [],
 
+        // Cart products total quantity
+        cartTotalQuantity: 0,
+
         // Order Total Price
         totalPrice: 0,
 
@@ -98,9 +101,6 @@ var app = new Vue({
                     this.totalPrice += plate.price;
                 }
 
-                console.log(this.shoppingCart);
-                
-
             } else {
                 alert('Puoi ordinare da un solo ristorante alla volta!');
             }
@@ -157,12 +157,11 @@ var app = new Vue({
             this.totalPrice = 0;
             this.shoppingCart = [];
             localStorage.clear();
-        }
+        },
     }, 
 
     // MOUNTED FUNCTIONS
     mounted() {
-
         let deserializedShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
         let deserializedTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
 

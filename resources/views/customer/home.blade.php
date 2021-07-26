@@ -105,7 +105,7 @@
                     <h2>Ristoranti Popolari</h2>
                     <div class="row">
                         {{-- Bootstrap Plate Card --}}
-                        <div class="col-lg-3 mb-4" v-for="restaurant in defaultRestaurants" style="cursor: pointer">
+                        <div class="col-lg-3 mb-4 restaurant-bts-card" v-for="restaurant in defaultRestaurants" style="cursor: pointer">
                             <div class="card" v-on:click="getRestaurantInfo(restaurant.user_id)">
                                 {{-- Restaurant Image --}}
                                 <img class="card-img-top" :src="'storage/' + restaurant.cover" alt="restaurant-cover">
@@ -147,15 +147,63 @@
                 <div class="infos" v-if="filteredRestaurantsByType.length == 0">
                     <div class="why-deliveboo">
                         <div class="title">Why DeliveBoo?</div>
-                        DeliveBoo is a modern web application that allows you to order from all the best restaurants in town.
+                        DeliveBoo è un sito web moderno che ti permette di ordinare i tuoi cibi preferiti comodamente dal divano di casa tua!
                     </div>
                     <div class="about-us">
                         <div class="title">About Us</div>
-                        DeliveBoo is developed by a team of young and smart junior full-stack web developers
+                        DeliveBoo è sviluppato da un team di junior full-stack web developers che si sono formati presso l'accademia Boolean Careers
                     </div>
                 </div>
 
-                <div class="drawer-veil" id="drawer-veil"></div>
+                {{-- HomePage Footer --}}
+                <footer class="homepage-footer">
+                    <div class="container">
+                        {{-- Contact Us --}}
+                        <div class="contact-us">
+                            <h3>Contatti</h3>
+                            <ul>
+                                <li>
+                                    Telefono: +39 3391112400
+                                </li>
+                                <li>
+                                    Email: deliveboo.business@gmail.com
+                                </li>
+                                <li>
+                                    Indirizzo: Via Delivery 107, Roma
+                                </li>
+                            </ul>
+                        </div>
+
+                        {{-- Download the App --}}
+                        <div class="download-app">
+                            <h3>Scarica l'App</h3>
+                            <img src="img/google-play.png" alt="">
+                            <img src="img/app-store.png" alt="">
+                        </div>
+
+                        {{-- Legal Pages --}}
+                        <div class="legal-pages">
+                            <h3>Pagine Legali</h3>
+                            <ul>
+                                <li>
+                                    <a href="#">Terms & Conditions</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Refund Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Notifce for Copyright</a>
+                                </li>
+                                <li>
+                                    <a href="#">Comment Policy</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
 
             </div>
             {{-- End HomePage NavBar & Types Component --}}
@@ -253,7 +301,7 @@
                 {{-- Menu Sections --}}
                 <div class="menu-sections">
                     {{-- Section --}}
-                    <div v-for="type in platesTypes">
+                    <div v-for="type in platesTypes" v-if="currentRestaurantPlates.some((plate) => plate.type.replace(/.$/,'i') == type)">
                         <h2>@{{ type }}</h2>
                         <div class="container-flex">
                             {{-- Food Card --}}

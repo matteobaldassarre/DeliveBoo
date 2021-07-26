@@ -23,7 +23,7 @@
 
     <div class="container">
         <div class="restaurant-form">
-            <div class="row col-md-4 col-lg-6 margin_auto pb-2 pt-2">
+            <div class="row col-md-4 col-lg-7 margin_auto pb-2 pt-2">
                 <h1>Edit Your Restaurant</h1>
             </div>
 
@@ -46,14 +46,14 @@
                 @method('PUT')
 
                 <div class="form-group">
-                    <div class="row col-md-4 col-lg-6 margin_auto">
+                    <div class="row col-md-6 col-lg-7 margin_auto">
                         <h5 for="restaurant_name">Restaurant Name</h5>
                         <input type="text" class="form-control" id="restaurant_name" name="restaurant_name" value="{{ $user_info->restaurant_name }}">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="row col-md-4 col-lg-6 margin_auto">
+                    <div class="row col-md-6 col-lg-7 margin_auto">
                         <h5 for="cover">Restaurant Cover</h5>
                         <div class="input-group">
                             <div class="custom-file">
@@ -65,22 +65,22 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row col-md-4 col-lg-6 margin_auto">
-                        <h5 for="address">Address</h5>
+                    <div class="row col-md-6 col-lg-7 margin_auto">
+                        <h5 for="address">Restaurant Address</h5>
                         <input type="text" class="form-control" id="address" name="address" placeholder="Enter your restaurant address" value="{{ $user_info->address }}">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="row col-md-3 col-lg-6 margin_auto">
+                    <div class="row col-md-6 col-lg-7 margin_auto">
                         <h5 for="VAT">VAT Number</h5>
                         <input type="text" class="form-control" id="VAT" name="VAT" placeholder="Enter your VAT Number" value="{{ $user_info->VAT }}">
                     </div>
                 </div> 
 
                 <div class="form-group">
-                    <div class="input-group row col-md-4 col-lg-6 margin_auto">
-                        <h5 for="visibility">Select Restaurant types</h5>
+                    <div class="input-group row col-md-6 col-lg-7 margin_auto">
+                        <h5>Select Restaurant types</h5>
                     </div>
 
                     <div class="restaurant-type">
@@ -97,7 +97,11 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Done</button>
+                <div class="form-group">
+                    <div class="row col-md-6 col-lg-7 margin_auto">
+                        <button type="submit" class="btn btn-primary done-button">Done</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

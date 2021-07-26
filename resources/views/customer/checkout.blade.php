@@ -31,7 +31,7 @@
     <body>
         <div class="container">
             <div class="col-md-6 offset-md-3">
-                <h1>Complete Payment</h1>
+                <h1>Completa Pagamento</h1>
                 <div class="spacer"></div>
 
                 @if (session()->has('success_message'))

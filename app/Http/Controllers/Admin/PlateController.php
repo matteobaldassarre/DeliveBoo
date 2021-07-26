@@ -39,11 +39,22 @@ class PlateController extends Controller
             'Dolce' => 'Dolci',
         ];
         
+        $types_ordered = [];
+
+        foreach ($pluralizations as $key => $pl) {
+            $types_ordered[$pl] = array_filter($filtered_plates, fn($plate) => $plate->type == $key);
+
+            if(!count($types_ordered[$pl])) {
+                unset($types_ordered[$pl]);
+            }
+        }
+        
         $existing_types = array_unique(array_map(fn ($plate) => $pluralizations[$plate->type], $filtered_plates));
 
         $data = [
             'plates' => $filtered_plates,
-            'existing_types' => $existing_types
+            'existing_types' => $existing_types,
+            'types_ordered' => $types_ordered
         ];
         
         return view('admin.plates.index', $data);

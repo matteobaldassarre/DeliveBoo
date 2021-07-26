@@ -116,6 +116,8 @@ var app = new Vue({
     restaurantChosen: false,
     // Cart Object
     shoppingCart: [],
+    // Cart products total quantity
+    cartTotalQuantity: 0,
     // Order Total Price
     totalPrice: 0,
     sidebareVisible: false
@@ -170,8 +172,6 @@ var app = new Vue({
           plate.quantity++;
           this.totalPrice += plate.price;
         }
-
-        console.log(this.shoppingCart);
       } else {
         alert('Puoi ordinare da un solo ristorante alla volta!');
       }
