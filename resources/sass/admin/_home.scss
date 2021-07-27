@@ -73,4 +73,30 @@
         max-width: 500px;
         margin: auto;
     }
+
+    @media screen and (max-width: 575px) {
+        .restaurant-box {
+            padding: 0px;
+            position: static;
+            top: 0;
+            left: 0;
+            transform: translate(0%, 0%);
+            margin-top: 10px;
+
+            .btn-primary {
+                width: 40%;
+                margin-bottom: 10px
+            }
+
+            .restaurant-actions {
+                @include flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        ul {
+            padding: 0px;
+        }
+    }
 }
