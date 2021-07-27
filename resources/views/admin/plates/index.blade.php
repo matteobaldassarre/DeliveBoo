@@ -60,7 +60,7 @@
                 <div class="row">
                     @foreach ($plates_ordered as $plate)
                         {{-- Bootstrap Plate Card --}}
-                        <div class="col-lg-3 mb-4">
+                        <div class="col-lg-3 mb-4" style="{{ $plate->visible == 0 ? 'opacity: 0.6' : '' }}">
                             <div class="card">
                                 {{-- Plate Image --}}
                                 @if($plate->image)
@@ -80,7 +80,7 @@
                                     <p class="card-text">{{$plate->type}}</p>
 
                                     {{-- Plate Price --}}
-                                    <p class="card-text">Price: {{$plate->price}} €</p>
+                                    <p class="card-text">Prezzo: {{$plate->price}} €</p>
 
 
                                     {{-- Edit Plate Button --}}

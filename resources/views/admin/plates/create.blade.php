@@ -81,7 +81,7 @@
             <div class="form-group">
                 <div class="row col-md-12 col-lg-7 margin_auto">
                     <label for="restaurant_name">Nome Piatto</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Inserisci nome del piatto" value="{{ old('name') }}">
                 </div>
             </div>
 
@@ -89,7 +89,7 @@
             <div class="form-group">
                 <div class="row col-md-12 col-lg-7 margin_auto">
                     <label for="address">Ingredienti</label>
-                    <input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="Enter ingredients" value="{{ old('ingredients') }}">
+                    <input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="Inserisci gli ingredienti" value="{{ old('ingredients') }}">
                 </div>
             </div>
 
@@ -97,7 +97,7 @@
             <div class="form-group">
                 <div class="row col-md-12 col-lg-7 margin_auto">
                     <label for="price">Prezzo</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Enter price" value="{{ old('price') }}">
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Inserisci il prezzo" value="{{ old('price') }}">
                 </div>
             </div> 
 
