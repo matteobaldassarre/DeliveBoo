@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Login @endsection
+@section('page_title')Accedi @endsection
 
 @section('page_content')
     <div class="access-page-container">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Plate;
 use App\UserInfo;
 
@@ -20,6 +21,7 @@ class PlateController extends Controller
     public function index()
     {
         $current_user_id = Auth::id();
+        $user = Auth::user();
 
         $plates = Plate::all();
 
@@ -56,8 +58,12 @@ class PlateController extends Controller
             'existing_types' => $existing_types,
             'types_ordered' => $types_ordered
         ];
-        
-        return view('admin.plates.index', $data);
+
+        if ($user->userInfo) {
+            return view('admin.plates.index', $data);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -200,6 +206,9 @@ class PlateController extends Controller
     public function destroy($id)
     {
         $plate = Plate::findOrFail($id);
+        
+        DB::table('order_plate')->where('plate_id', '=', $id)->delete();
+
         $plate->delete();
 
         return redirect()->route('admin.plates.index');
@@ -211,7 +220,7 @@ class PlateController extends Controller
             'name' => 'required|min:5|max:80',
             'image' => 'nullable|image',
             'ingredients' => 'required|min:5|max:500',
-            'price' => 'required|numeric|gte:1|lte:500'
+            'price' => 'required|numeric|gte:1|lte:99'
         ]);
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Order Successful @endsection
+@section('page_title')Ordine Effettuato @endsection
 
 @section('specific-cdns')
     {{-- Sweet Alert CDN --}}
@@ -25,12 +25,7 @@
                             </div>
                         @endforeach
 
-                        Totale: <span class="price">{{ $order->total }}€</span>
-                        
-                        <h4 class="pt-4">Info Cliente</h4>
-                        Nome: {{ $order_name }} <br>
-                        Indirizzo: {{ $order->address }} <br>
-                        Email: {{ $order->mail }}
+                        Totale: <span class="price">{{ $order_total }}€</span>
                     </p>
                     
                     <a href="{{ route('customer.home') }}" class="btn btn-primary">Torna alla Home</a>
@@ -45,18 +40,22 @@
 @endsection
 
 @section('end_page_scripts')
+    {{-- Sweet Alert Script --}}
     <script src="sweetalert2.all.min.js"></script>
+
+    {{-- Clearing LocalStorage when an order is completed --}}
     <script>
         localStorage.clear();
     </script>
+
     <script>
         orderCard = document.querySelector('.order-success-page');
 
         Swal.fire({
-            title: 'Success!',
-            text: 'Payment Successful',
+            title: 'Fatto!',
+            text: 'Pagamento avvenuto con successo!',
             icon: 'success',
-            confirmButtonText: 'View Order'
+            confirmButtonText: 'Vedi Riepilogo'
         }).then(() => {
             orderCard.style.opacity = 1;
         });

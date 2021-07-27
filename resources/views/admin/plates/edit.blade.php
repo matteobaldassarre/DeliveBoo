@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Edit Plate @endsection
+@section('page_title')Modifica Piatto @endsection
 
 @section('page_content')
     {{-- Admin Dashboard Header --}}

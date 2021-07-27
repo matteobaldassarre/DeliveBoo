@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Restaurant Dashboard @endsection
+@section('page_title')Dashboard Ristorante @endsection
 
 @section('specific-cdns')
     {{-- Axios CDN --}}
@@ -51,7 +51,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header text-center">Restaurant Home</div>
+                    <div class="card-header text-center">Home Ristorante</div>
         
                     <div class="card-body text-center">
                         @if (session('status'))
@@ -61,47 +61,71 @@
                         @endif
 
                         {{-- Dashboard Welcome Message --}}
-                        <h2>Welcome {{ $user->name }}!</h2>
+                        <h2>Benvenuto/a, {{ $user->name }}!</h2>
                         <p>
-                            This is your Dashboard, you can visit the other links to take a look at DeliveBoo.
+                            Qui puoi visualizzare le informazioni relative al tuo ristorante.
                         </p>
 
                         @if (!$user_info)
-                            <h3>First Step</h3>
-                            <a class="btn btn-primary" href="{{ route('admin-info.create') }}">Add Restaurant Info</a>
+                            <h3>Primo Step</h3>
+                            <a class="btn btn-primary" href="{{ route('admin-info.create') }}">Aggiungi Ristorante</a>
                         @else
                             @if ($user_info->cover)
                                 <div class="flex-item">
                                     <img class="restaurant-cover" src="{{ asset('storage/' . $user_info->cover) }}" alt="{{ $user_info->restaurant_name  }}">
+                                    <div class="restaurant-box">
+                                        <ul>
+                                            <li>
+                                                Ristorante &#8594; {{ $user_info->restaurant_name }}
+                                            </li>
+
+                                            <li>
+                                                Indirizzo Ristorante &#8594; {{ $user_info->address }}
+                                            </li>
+                                            <li>
+                                                Nº Partita IVA &#8594; {{ $user_info->VAT }}
+                                            </li>
+
+                                            <li>
+                                                Tipologia &#8594;
+                                                @foreach ($user->types as $type)
+                                                        {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
+                                                @endforeach
+                                            </li>
+                                        </ul>
+
+                                        <div class="restaurant-actions">
+                                            <a href="{{ route('admin-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Modifica Ristorante</a>
+                                            <a href="{{ route('admin.plates.index') }}" class="btn btn-primary ml-3 mr-3">Visualizza Menu</a>
+                                            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Aggiungi Piatto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="flex-item">
+                                    <div class="restaurant-box">
+                                        <ul>
+                                            <li>
+                                                Ristorante &#8594; {{ $user_info->restaurant_name }}
+                                            </li>
+
+                                            <li>
+                                                Indirizzo Ristorante &#8594; {{ $user_info->address }}
+                                            </li>
+                                            <li>
+                                                Nº Partita IVA &#8594; {{ $user_info->VAT }}
+                                            </li>
+
+                                            <li>
+                                                Tipologia &#8594;
+                                                @foreach ($user->types as $type)
+                                                        {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
+                                                @endforeach
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             @endif
-
-                            <ul>
-                                <li>
-                                    Restaurant Name &#8594; {{ $user_info->restaurant_name }}
-                                </li>
-
-                                <li>
-                                    Restaurant Address &#8594; {{ $user_info->address }}
-                                </li>
-                                <li>
-                                    Your VAT &#8594; {{ $user_info->VAT }}
-                                </li>
-
-                                <li>
-                                    Types &#8594;
-                                    @foreach ($user->types as $type)
-                                            {{$type->type_name}}{{ $loop->last ? '' : ', ' }}
-                                    @endforeach
-                                </li>
-                            </ul>
-
-
-                            <div class="restaurant-actions">
-                                <a href="{{ route('admin-info.edit', ['slug' => $user_info->slug]) }}" class="btn btn-primary">Edit Your Restaurant</a>
-                                <a href="{{ route('admin.plates.index') }}" class="btn btn-primary">View Menu</a>
-                                <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Add Plate</a>
-                            </div>
                         @endif
                     </div>
                 </div>
@@ -109,7 +133,7 @@
         </div>
     </div>
 
-    <div class="container text-center">
+    <div class="container text-center pt-5 pb-5">
         <div class="chart-container" style="position: relative; height:30%; width:100%">
             <canvas id="myCanvas"></canvas>
         </div>
@@ -122,22 +146,15 @@
         let myCanvas = document.getElementById("myCanvas").getContext('2d');
 
         // Array contenenti i dati per popolare il grafico
-        let mesi = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+        let mesi = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+        let ordini = JSON.parse('{!! $orders !!}');
+        
+        let ordiniPerMese = new Array(12).fill(0);
+        
 
-        // arrayOrders = '{{ $orders }}';
-
-        // console.log(arrayOrders);
-
-        // for (var i = 1; i < 12; i++) {
-        //     if (order.month == i) {
-        //         quantita.push(order.total);
-        //     } else {
-        //         quantita.push(0);
-        //     }
-        // }
-
-
-        let quantita = [0, 0, 3, 4, 1, 2, 3, 0, 2, 3, 4, 1];
+        ordini.forEach((element) => {
+            ordiniPerMese[element.mese - 1]++;
+        });
 
         // Global options
         Chart.defaults.font.family = 'Lato';
@@ -153,21 +170,19 @@
                 labels: mesi,
                 datasets: [{
                     label: "Numero Ordini",
-                    data: quantita,
+                    data: ordiniPerMese,
                     // colore delle colonne
                     backgroundColor: [
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
-                        'rgb(0, 0, 0)',
+                        '#234620',
+                        '#32632d',
+                        '#488143',
+                        '#60a65a',
+                        '#78c471',
+                        '#91da8a',
+                        '#aaeca4',
+                        '#c9f6c5',
+                        '#d7f6d4',
+                        '#d2e7d0'
                     ],
                     hoverBorderWidth: 1,
                     hoverBorderColor: '#000'
@@ -177,7 +192,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Ordini ricevuti mese/anno',
+                        text: 'Ordini Ricevuti',
                         fontSize: 25
                     },
                     legend: {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Create Restaurant @endsection
+@section('page_title')Crea Ristorante @endsection
 
 @section('page_content')
     {{-- Admin Dashboard Header --}}

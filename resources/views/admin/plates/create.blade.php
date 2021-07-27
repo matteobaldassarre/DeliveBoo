@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Add Plate @endsection
+@section('page_title')Aggiungi Piatto @endsection
 
 @section('page_content')
     {{-- Admin Dashboard Header --}}

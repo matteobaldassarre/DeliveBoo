@@ -5,10 +5,12 @@
 @section('specific-cdns')
     {{-- Axios CDN --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    {{-- Swiper Slider CDN --}}
+    {{-- Swiper Slider Style CDN --}}
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    {{-- Swiper Slider CDN --}}
+    {{-- Swiper Slider Script CDN --}}
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    {{-- Sweet Alert CDN --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 
 @section('page_content')
@@ -42,8 +44,8 @@
 
                                 {{-- Login & Register Buttons --}}
                                 <div class="login-register">
-                                    <a href="{{ url('/login') }}" class="access-buttons">Login</a>
-                                    <a href="{{ url('/register') }}" class="access-buttons">Register</a>
+                                    <a href="{{ url('/login') }}" class="access-buttons">Accedi</a>
+                                    <a href="{{ url('/register') }}" class="access-buttons">Registrati</a>
                                 </div>
 
                             @else {{-- If the user is an Admin the following will be desplayed --}}
@@ -78,8 +80,8 @@
                         <div class="burger" v-if="burgerVisible">
                             <div class="login-register">
                                 @guest
-                                    <a href="{{ url('/login') }}" class="access-buttons">Login</a>
-                                    <a href="{{ url('/register') }}" class="access-buttons">Register</a>
+                                    <a href="{{ url('/login') }}" class="access-buttons">Accedi</a>
+                                    <a href="{{ url('/register') }}" class="access-buttons">Registrati</a>
                                 @else
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-white">Logout</a>
                                     <a href="{{ route('admin.home') }}" class="text-white">Dashboard</a>
@@ -117,7 +119,7 @@
 
                 {{-- Default Restaurants --}}
                 <div class="default-restaurants container" v-if="filteredRestaurantsByType.length == 0">
-                    <h2>Ristoranti Popolari</h2>
+                    <h2 class="text-center pt-3">Ristoranti Affiliati</h2>
                     <div class="row">
                         {{-- Bootstrap Plate Card --}}
                         <div class="col-lg-3 mb-4 restaurant-bts-card" v-for="restaurant in defaultRestaurants" style="cursor: pointer">
@@ -141,16 +143,14 @@
                     <div class="container">
                         <div class="row">
                             {{-- Bootstrap Plate Card --}}
-                            <div class="col-lg-3 mb-4" v-for="restaurant in filteredRestaurantsByType" style="cursor: pointer">
+                            <div class="col-lg-3 mb-4 restaurant-bts-card" v-for="restaurant in filteredRestaurantsByType" style="cursor: pointer">
                                 <div class="card" v-on:click="getRestaurantInfo(restaurant.user_id)">
                                     {{-- Restaurant Image --}}
-                                    <img class="card-img-top" :src="'storage/' + restaurant.cover" alt="restaurant-cover">
+                                    <img class="card-img-top" :src="'storage/' + restaurant.cover" alt="restaurant-cover" style="height: 158px">
 
                                     {{-- Restaurant Name --}}
-                                    <div class="card-body">
-                                        <div class="card-body text-center">
-                                            <h4 class="card-title user-select-none">@{{ restaurant.restaurant_name }}</h4>
-                                        </div>
+                                    <div class="card-body text-center">
+                                        <h4 class="card-title user-select-none">@{{ restaurant.restaurant_name }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                 </div>
 
                 {{-- HomePage Footer --}}
-                <footer class="homepage-footer">
+                <footer class="homepage-footer text-center" v-if="filteredRestaurantsByType.length == 0">
                     <div class="container">
                         {{-- Contact Us --}}
                         <div class="contact-us">
@@ -219,7 +219,6 @@
                         </div>
                     </div>
                 </footer>
-
             </div>
             {{-- End HomePage NavBar & Types Component --}}
 
@@ -347,7 +346,6 @@
             </div>
             {{-- End Single Restaurant Menu Component --}}
             <div v-on:click="sidebareVisibility()" :class="[!sidebareVisible ? 'activeTwo' : '']" class="veil"></div>
-            
         </div>
         {{-- End VueJS Container --}}
 @endsection

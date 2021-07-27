@@ -165,9 +165,13 @@ var app = new Vue({
       window.scrollTo(0, 0);
     },
     addPlateToCart: function addPlateToCart(plate) {
+      var _this4 = this;
+
       // Blocking the cart if a product is added to the cart from a specific restaurant till it's empty
       if (this.shoppingCart.length == 0) {
         this.currentRestaurantId = this.currentRestaurantInfo[0].user_id;
+        var serializedCurrentRestaurantId = JSON.stringify(this.currentRestaurantId);
+        localStorage.setItem('currentRestaurantId', serializedCurrentRestaurantId);
       }
 
       if (plate.user_id == this.currentRestaurantId || this.shoppingCart.length == 0) {
@@ -182,8 +186,18 @@ var app = new Vue({
 
         this.saveShoppingCart(this.shoppingCart, this.totalPrice);
       } else {
-        alert('Puoi ordinare da un solo ristorante alla volta!');
+        Swal.fire({
+          title: 'Attenzione!',
+          text: 'Stai provando ad ordinare da più ristoranti nello stesso momento! Svuota il tuo carrello oppure procedi all\'ordine per continuare.',
+          icon: 'error',
+          confirmButtonText: 'Okay',
+          confirmButtonColor: '#2A5353'
+        }).then(function () {
+          _this4.sidebareVisible = false;
+        });
       }
+
+      console.log(this.currentRestaurantId);
     },
     removeQuantity: function removeQuantity(product, index) {
       if (product.quantity > 0) {
@@ -194,12 +208,12 @@ var app = new Vue({
         if (product.quantity == 0) {
           this.shoppingCart.splice(index, 1);
         } else if (product.quantity == 0 && this.totalPrice == 0) {
-          console.log('ciao');
+          localStorage.clear();
         }
       } else if (this.totalPrice == 0) {
+        localStorage.clear();
         this.shoppingCart = [];
         product.quantity = 1;
-        localStorage.clear();
       }
     },
     addQuantity: function addQuantity(product) {
@@ -241,27 +255,28 @@ var app = new Vue({
   },
   // MOUNTED FUNCTIONS
   mounted: function mounted() {
-    var _this4 = this;
+    var _this5 = this;
 
-    localStorage.clear();
     var deserializedShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
     var deserializedTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
+    var deserializedCurrentRestaurantId = JSON.parse(localStorage.getItem('currentRestaurantId'));
 
     if (deserializedShoppingCart) {
       deserializedShoppingCart.forEach(function (element) {
-        _this4.shoppingCart.push(element);
+        _this5.shoppingCart.push(element);
       });
       this.totalPrice = deserializedTotalPrice;
+      this.currentRestaurantId = deserializedCurrentRestaurantId;
     } // Getting all restaurants from the restaurants API
 
 
     axios.get('/api/restaurants').then(function (result) {
-      _this4.restaurants = result.data.restaurants;
-      _this4.defaultRestaurants = result.data.restaurants;
+      _this5.restaurants = result.data.restaurants;
+      _this5.defaultRestaurants = result.data.restaurants;
     }); // Populating Restaurant Types Array
 
     axios.get('/api/restaurants/types').then(function (result) {
-      _this4.restaurantsTypes = result.data.restaurants_types;
+      _this5.restaurantsTypes = result.data.restaurants_types;
     });
   }
 });

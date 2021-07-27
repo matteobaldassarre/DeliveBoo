@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Register @endsection
+@section('page_title')Registrati @endsection
 
 @section('page_content')
     <div class="access-page-container">
@@ -39,7 +39,7 @@
                                 <label for="name"></label>
 
                                 <div>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Nome" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Restaurant Menu @endsection
+@section('page_title')Menu Ristorante @endsection
 
 @section('page_content')
     {{-- Page Header --}}
@@ -91,7 +91,7 @@
                                     <form action="{{ route('admin.plates.destroy', ['plate' => $plate->id ] )}}" method="post" class="d-inline-block" id="delete-form">
                                         @csrf
                                         @method('DELETE')
-                                        <a type="submit" class="ml-2" onclick="return confirm('Want to delete this plate?')"><i class="far fa-trash-alt"></i></a>
+                                        <button type="submit" class="ml-2" onclick="return confirm('Vuoi eliminare questo piatto?')"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                     {{-- End Delete Plate Button --}}
                                 </div>

@@ -97,6 +97,9 @@ var app = new Vue({
             // Blocking the cart if a product is added to the cart from a specific restaurant till it's empty
             if (this.shoppingCart.length == 0) {
                 this.currentRestaurantId = this.currentRestaurantInfo[0].user_id;
+
+                let serializedCurrentRestaurantId = JSON.stringify(this.currentRestaurantId);
+                localStorage.setItem('currentRestaurantId', serializedCurrentRestaurantId);
             }
             
             if (plate.user_id == this.currentRestaurantId || this.shoppingCart.length == 0) {
@@ -111,10 +114,19 @@ var app = new Vue({
                 }
 
                 this.saveShoppingCart(this.shoppingCart, this.totalPrice);
-
             } else {
-                alert('Puoi ordinare da un solo ristorante alla volta!');
+                Swal.fire({
+                    title: 'Attenzione!',
+                    text: 'Stai provando ad ordinare da più ristoranti nello stesso momento! Svuota il tuo carrello oppure procedi all\'ordine per continuare.',
+                    icon: 'error',
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#2A5353'
+                }).then(() => {
+                    this.sidebareVisible = false;
+                })
             }
+
+            console.log(this.currentRestaurantId);
         },
 
         removeQuantity(product, index) {
@@ -127,14 +139,13 @@ var app = new Vue({
                 if (product.quantity == 0) {
                     this.shoppingCart.splice(index, 1);
                 } else if (product.quantity == 0 && this.totalPrice == 0) {
-                    console.log('ciao');
-                    
+                    localStorage.clear();
                 }
 
             }  else if (this.totalPrice == 0) {
+                localStorage.clear();
                 this.shoppingCart = [];
                 product.quantity = 1;
-                localStorage.clear();
             }
         },
 
@@ -153,7 +164,6 @@ var app = new Vue({
 
         burgerVisibility() {
             this.burgerVisible = !this.burgerVisible;
-
         },
 
         closeSidebare(totalPrice) {
@@ -185,16 +195,16 @@ var app = new Vue({
 
     // MOUNTED FUNCTIONS
     mounted() {
-        localStorage.clear();
-
         let deserializedShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
         let deserializedTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
+        let deserializedCurrentRestaurantId = JSON.parse(localStorage.getItem('currentRestaurantId'));
 
         if (deserializedShoppingCart) {
             deserializedShoppingCart.forEach(element => {
                 this.shoppingCart.push(element);
             });
             this.totalPrice = deserializedTotalPrice;
+            this.currentRestaurantId = deserializedCurrentRestaurantId;
         }  
         
         // Getting all restaurants from the restaurants API

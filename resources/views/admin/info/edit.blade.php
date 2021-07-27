@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title')Edit Restaurant @endsection
+@section('page_title')Modifica Ristorante @endsection
 
 @section('page_content')
     {{-- Admin Dashboard Header --}}

@@ -77,6 +77,7 @@ class PaymentController extends Controller
             $this_order_info = [];
             $order_restaurant = '';
             $order_number = '';
+            $order_total = '';
 
             foreach ($order_info_table as $order) {
                 if ($order->order_id == $order_id) {
@@ -88,6 +89,7 @@ class PaymentController extends Controller
 
                     $order_restaurant = User::find($order->user_id)->userInfo->restaurant_name;
                     $order_number = $order->order_id;
+                    $order_total = $order->total;
                 }
             }
 
@@ -96,6 +98,7 @@ class PaymentController extends Controller
                 'order_number' => $order_number,
                 'order_info' => $this_order_info,
                 'order' => $order,
+                'order_total' => $order_total,
                 'order_name' => $order->name
             ];
 

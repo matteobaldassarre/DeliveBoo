@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Braintree Checkout</title>
+        <title>Checkout Ordine</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Additional Styles -->
@@ -30,7 +30,7 @@
 
     <body>
         <div class="container">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-6 offset-md-3 mt-5">
                 <h1>Completa Pagamento</h1>
                 <div class="spacer"></div>
 
@@ -131,7 +131,7 @@
                     <div class="spacer"></div>
 
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
-                    <button type="submit" class="btn btn-success">Payment € {{ $amount }} </button>
+                    <button type="submit" class="btn btn-success">Paga € {{ $amount }} </button>
                 </form>
                 {{-- End Payment Form --}}
             </div>

@@ -82,28 +82,28 @@ a {
 .jumbotron-container .slider-pic-1 {
   background-image: url(/images/pizza.jpeg?f87ce8c59effcd0f813a1f21f3b5d177);
   background-size: cover;
-  background-position: 0px -350px;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
 .jumbotron-container .slider-pic-2 {
-  background-image: url(/images/sushi.jpeg?71b492d2b54cc60e0b6369a0b265479a);
+  background-image: url(/images/sushi.jpeg?056b2251621cdcc35f96bafc93c36d24);
   background-size: cover;
-  background-position: 0px -200px;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
 .jumbotron-container .slider-pic-3 {
-  background-image: url(/images/noci.jpeg?0614ff5e348fe67e643690b2a06fca1c);
+  background-image: url(/images/legumi.jpeg?5869797b7370921015fc0fc7dddebf63);
   background-size: cover;
-  background-position: 0px -400px;
+  background-position: bottom;
   background-repeat: no-repeat;
 }
 
 .jumbotron-container .slider-pic-4 {
   background-image: url(/images/gelati.jpeg?b9fa904eb9a06f24f5022ef3affbe63e);
   background-size: cover;
-  background-position: 0px -100px;
+  background-position: top;
   background-repeat: no-repeat;
 }
 
@@ -265,6 +265,10 @@ ul li span {
   border: 1px solid #525252;
 }
 
+.access-page-container .input-container input:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
+}
+
 .access-page-container .input-container ::-webkit-input-placeholder {
   text-align: center;
 }
@@ -358,6 +362,10 @@ ul li span {
 
 .create-restaurant-container .btn-primary:hover {
   background-color: #2A5353;
+}
+
+.create-restaurant-container .btn-primary:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
 }
 
 .create-restaurant-container label {
@@ -500,6 +508,10 @@ ul li span {
   background-color: #2A5353;
 }
 
+.create-plate-container .btn-primary:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
+}
+
 .create-plate-container label {
   font-size: 18px;
 }
@@ -530,6 +542,10 @@ ul li span {
 
 .edit-plate-container .btn-primary:hover {
   background-color: #2A5353;
+}
+
+.edit-plate-container .btn-primary:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
 }
 
 .edit-plate-container label {
@@ -587,9 +603,17 @@ ul li span {
   background-color: #2A5353;
 }
 
-.admin-plates-index .btn-primary:hover,
-.admin-plates-index .btn-primary:active {
+.admin-plates-index .btn-primary:hover {
   background-color: #2A5353;
+}
+
+.admin-plates-index .btn-primary:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
+}
+
+.admin-plates-index button {
+  background-color: transparent;
+  border: none;
 }
 
 .admin-dashboard-header {
@@ -624,12 +648,35 @@ ul li span {
   box-shadow: none;
 }
 
+.admin-dashboard-main .flex-item {
+  position: relative;
+}
+
 .admin-dashboard-main .restaurant-cover {
-  width: 400px;
+  width: 100%;
+}
+
+.admin-dashboard-main .restaurant-box {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 5px;
+  border: 3px solid rgba(128, 128, 128, 0.63);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .admin-dashboard-main .btn-primary {
-  background-color: #1E3C3C;
+  background-color: #2A5353;
+}
+
+.admin-dashboard-main .btn-primary:hover {
+  background-color: #2A5353;
+}
+
+.admin-dashboard-main .btn-primary:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
 }
 
 .admin-dashboard-main .restaurant-actions {
@@ -774,6 +821,12 @@ ul li span {
 
 .restaurant-bts-card {
   transition: all 0.3s;
+}
+
+.restaurant-bts-card .card-img-top {
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .restaurant-bts-card:hover {
@@ -1087,6 +1140,10 @@ ul li span {
 
 .order-success-page .wrapper .btn-primary:hover {
   background-color: #2A5353;
+}
+
+.order-success-page .wrapper .btn-primary:focus {
+  box-shadow: 0px 0px 0px 4px rgba(60, 173, 15, 0.5);
 }
 
 /*!

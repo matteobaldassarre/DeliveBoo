@@ -26,15 +26,12 @@ class HomeController extends Controller
 
         $total_restaurant_orders = count($restaurant_orders);
 
-
-        $json_orders = json_encode($restaurant_orders);
-
         
         $data = [
             'user' => $current_user,
             'user_info' => $current_user->userInfo,
             'total_orders' => $total_restaurant_orders,
-            'orders' => $json_orders
+            'orders' => $restaurant_orders
         ];
 
         return view('admin.home', $data);
