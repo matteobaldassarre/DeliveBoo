@@ -242,7 +242,7 @@
                         </div>
 
                         {{-- DeliveBoo Cart Icon --}}
-                        <div :class="[sidebareVisible ? 'active' : '']" class="sidebar">
+                        <div :class="[sideBarVisible ? 'active' : '']" class="sidebar">
 
                             {{-- Restaurant Shopping Cart --}}
                             <div v-if="totalPrice == 0">
@@ -260,7 +260,7 @@
                                     <ul>
                                         <li v-for="(product, index) in shoppingCart">
                                             <span>@{{ product.name }}</span>
-                                            <a v-on:click="removeQuantity(product, index), closeSidebare(totalPrice)"> - </a>
+                                            <a v-on:click="removeQuantity(product, index), closeSideBar(totalPrice)"> - </a>
                                             <span>@{{ product.quantity }}</span>
                                             <a v-on:click="addQuantity(product)"> + </a>
                                         </li>
@@ -284,7 +284,7 @@
                             </div>
                             {{-- End Restaurant Shopping Cart --}}
 
-                            <button class="sidebarBtn" v-on:click="sidebareVisibility()">
+                            <button class="sidebarBtn" v-on:click="sideBarVisibility()">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
 
@@ -333,7 +333,7 @@
 
                                     <div class="food-card-price-button">
                                         <span class="food-card-price">@{{ plate.price.toFixed(2) }} €</span>
-                                        <button class="food-card-button" v-on:click="sidebareVisibility(), addPlateToCart(plate, index)">Add to cart</button>
+                                        <button class="food-card-button" v-on:click="sideBarVisibility(), addPlateToCart(plate, index)">Add to cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -345,7 +345,7 @@
                 
             </div>
             {{-- End Single Restaurant Menu Component --}}
-            <div v-on:click="sidebareVisibility()" :class="[!sidebareVisible ? 'activeTwo' : '']" class="veil"></div>
+            <div v-on:click="sideBarVisibility()" :class="[!sideBarVisible ? 'activeTwo' : '']" class="veil"></div>
         </div>
         {{-- End VueJS Container --}}
 @endsection

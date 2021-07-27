@@ -48,15 +48,17 @@ var app = new Vue({
         // Order Total Price
         totalPrice: 0,
 
-        sidebareVisible: false,
+        // Controls if the sidebar is opened or not
+        sideBarVisible: false,
 
+        // Controls if the burger menu is visible or not
         burgerVisible: false
-
     },
 
     // REGULAR METHODS
     methods: {
-        // Searching restaurant by its name
+        // Function that searches the restaurant by its name looping through all restaurants
+        // SearchedRestaurant -> The restaurant name wrote in the input by the User
         searchRestaurantByName(searchedRestaurant) {
             this.filteredRestaurantsByType = [];
             this.restaurants.forEach(element => {
@@ -66,13 +68,18 @@ var app = new Vue({
             });
         },
 
-        // Searching restaurant by type using Laravel Api
+
+        // Function that searches the restaurant by its type through an AJAX request to the Laravel API
+        // Type -> The type name clicked by the User
         searchRestaurantByType(type) {
             axios.get( '/api/restaurants/' + type ).then(result => {
                 this.filteredRestaurantsByType = result.data.restaurants;
             });
         },
 
+
+        // Function that gets the info of the current restaurant
+        // restaurantId -> The id of the current restaurant visited by the User
         getRestaurantInfo(restaurantId) {
             // Getting the restaurant info filtered by its id
             this.currentRestaurantInfo = [];
@@ -87,12 +94,16 @@ var app = new Vue({
                 this.currentRestaurantPlates = result.data.plates;
             });
             
+            // Setting the restaurant as the current restaurant chosen by the User
             this.restaurantChosen = true;
 
             // Scrolling page to the top after a menu is selected
             window.scrollTo(0, 0);
         },
 
+
+        // Function that lets you add plates to your shoppingCart
+        // Plate -> The current plate that the User wants to add to his shoppingCart
         addPlateToCart(plate) {
             // Blocking the cart if a product is added to the cart from a specific restaurant till it's empty
             if (this.shoppingCart.length == 0) {
@@ -102,6 +113,7 @@ var app = new Vue({
                 localStorage.setItem('currentRestaurantId', serializedCurrentRestaurantId);
             }
             
+            // If the plate is in the urrent restaurant menu or the shoppingCart is empty, the plate will be added to the cart
             if (plate.user_id == this.currentRestaurantId || this.shoppingCart.length == 0) {
 
                 if (!this.shoppingCart.includes(plate)) {
@@ -114,7 +126,7 @@ var app = new Vue({
                 }
 
                 this.saveShoppingCart(this.shoppingCart, this.totalPrice);
-            } else {
+            } else { // If it doesn't an alert message will be thrown and the plate won't be added
                 Swal.fire({
                     title: 'Attenzione!',
                     text: 'Stai provando ad ordinare da più ristoranti nello stesso momento! Svuota il tuo carrello oppure procedi all\'ordine per continuare.',
@@ -122,13 +134,15 @@ var app = new Vue({
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#2A5353'
                 }).then(() => {
-                    this.sidebareVisible = false;
+                    this.sideBarVisible = false;
                 })
             }
-
-            console.log(this.currentRestaurantId);
         },
 
+
+        // Function that lets you decrease the quantity of a product in the shoppingCart
+        // product -> The current product element
+        // index -> The index of the current product
         removeQuantity(product, index) {
             if (product.quantity > 0) {
 
@@ -138,6 +152,7 @@ var app = new Vue({
 
                 if (product.quantity == 0) {
                     this.shoppingCart.splice(index, 1);
+                    this.saveShoppingCart(this.shoppingCart, this.totalPrice);
                 } else if (product.quantity == 0 && this.totalPrice == 0) {
                     localStorage.clear();
                 }
@@ -149,6 +164,10 @@ var app = new Vue({
             }
         },
 
+
+        // Function that lets you increase the quantity of a product in the shoppingCart
+        // product -> The current product element
+        // index -> The index of the current product
         addQuantity(product) {
             if (product.quantity == 0 || product.quantity > 0) {
                 product.quantity++;
@@ -157,22 +176,10 @@ var app = new Vue({
             }
         },
 
-        // SideBar Functions
-        sidebareVisibility() {
-            this.sidebareVisible = !this.sidebareVisible;
-        },
 
-        burgerVisibility() {
-            this.burgerVisible = !this.burgerVisible;
-        },
-
-        closeSidebare(totalPrice) {
-            if (totalPrice == 0) {
-                this.sidebareVisible = false;
-            }
-        },
-
-        // Saves shoppingCart in localStorage
+        // Function that saves shoppingCart in localStorage
+        // shoppingCart -> array of object where all the shoppingCart data are stored
+        // totalPrice -> the total amount of the current order
         saveShoppingCart(shoppingCart, totalPrice) {
             // Serializing shopping cart content
             let serializedShoppingCart = JSON.stringify(shoppingCart);
@@ -184,12 +191,32 @@ var app = new Vue({
             localStorage.setItem('totalPrice', serializedTotalPrice);
         },
 
-        // Empties the shoppingCart & clears localStorage
+        // Function that empties the shoppingCart & clears localStorage
         emptyCart() {
             this.restaurantId = 0;
             this.totalPrice = 0;
             this.shoppingCart = [];
             localStorage.clear();
+        },
+
+        // SideBar Functions
+        // Open & Close the sideBar based on its visibility status
+        sideBarVisibility() {
+            this.sideBarVisible = !this.sideBarVisible;
+        },
+
+
+        // Closes the sidebar if the totalPrice of the order reaches 0€
+        closeSideBar(totalPrice) {
+            if (totalPrice == 0) {
+                this.sideBarVisible = false;
+            }
+        },
+
+
+        // Manage the burger menu visibility
+        burgerVisibility() {
+            this.burgerVisible = !this.burgerVisible;
         },
     }, 
 
