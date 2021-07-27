@@ -142,12 +142,6 @@
         <!-- Braintree Hosted CDN -->
         <script src="https://js.braintreegateway.com/web/3.38.1/js/hosted-fields.min.js"></script>
 
-        <!-- Load PayPal's checkout.js Library -->
-        <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
-
-        <!-- Load the PayPal Checkout component -->
-        <script src="https://js.braintreegateway.com/web/3.38.1/js/paypal-checkout.min.js"></script>
-
         <!-- Hosted Js Script -->
         <script>
             var form = document.querySelector('#payment-form');
@@ -179,17 +173,17 @@
                         number: {
                             selector: '#card-number',
                             placeholder: '4111 1111 1111 1111',
-                            name: 'cc_number'
+                            name: 'cc_number',
                         },
                         cvv: {
                             selector: '#cvv',
                             placeholder: '123', 
-                            name: 'cvc'
+                            name: 'cvc',
                         },
                         expirationDate: {
                             selector: '#expiration-date',
                             placeholder: '10/2019',
-                            name: 'expiry'
+                            name: 'expiry',
                         }
                     }
                 }, function (hostedFieldsErr, hostedFieldsInstance) {
@@ -212,49 +206,6 @@
                             form.submit();
                         });
                     }, false);
-                });
-                // Create a PayPal Checkout component.
-                braintree.paypalCheckout.create({
-                    client: clientInstance
-                }, function (paypalCheckoutErr, paypalCheckoutInstance) {
-                    // Stop if there was a problem creating PayPal Checkout.
-                    // This could happen if there was a network error or if it's incorrectly
-                    // configured.
-                    if (paypalCheckoutErr) {
-                        console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
-                        return;
-                    }
-                    // Set up PayPal with the checkout.js library
-                    paypal.Button.render({
-                        env: 'sandbox', // or 'production'
-                        commit: true,
-                        payment: function () {
-                            return paypalCheckoutInstance.createPayment({
-                                // Your PayPal options here. For available options, see
-                                // http://braintree.github.io/braintree-web/current/PayPalCheckout.html#createPayment
-                                flow: 'checkout', // Required
-                                amount: document.getElementById('amount').value, // Required
-                                currency: 'EUR', // Required
-                            });
-                        },
-                        onAuthorize: function (data, actions) {
-                            return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
-                                // Submit `payload.nonce` to your server.
-                                document.querySelector('#nonce').value = payload.nonce;
-                                form.submit();
-                            });
-                        },
-                        onCancel: function (data) {
-                            console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
-                        },
-                        onError: function (err) {
-                            console.error('checkout.js error', err);
-                        }
-                    }, '#paypal-button').then(function () {
-                        // The PayPal button will be rendered in an html element with the id
-                        // `paypal-button`. This function will be called when the PayPal button
-                        // is set up and ready to be used.
-                    });
                 });
             });
 

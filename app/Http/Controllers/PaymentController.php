@@ -24,6 +24,14 @@ class PaymentController extends Controller
 
     public function checkout(Gateway $gateway, Request $request)
     {
+        $request->validate([
+            'firstName' => 'required|min:3|max:30',
+            'lastName' => 'required|min:3|max:30',
+            'address' => 'required|min:7|max:80',
+            'postalcode' => 'required|digits:5',
+            'mail' => 'required|email',
+        ]);
+
         $nonce = $request->payment_method_nonce;
         $firstName = $request->firstName;
         $lastName = $request->lastName;

@@ -55,7 +55,8 @@
             title: 'Fatto!',
             text: 'Pagamento avvenuto con successo!',
             icon: 'success',
-            confirmButtonText: 'Vedi Riepilogo'
+            confirmButtonText: 'Vedi Riepilogo',
+            confirmButtonColor: '#2A5353'
         }).then(() => {
             orderCard.style.opacity = 1;
         });
