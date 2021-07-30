@@ -57,14 +57,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="firstName">First Name</label>
+                                <label for="firstName">Nome</label>
                                 <input type="text" class="form-control" id="firstName" name="firstName">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="lastName">Last Name</label>
+                                <label for="lastName">Cognome</label>
                                 <input type="text" class="form-control" id="lastName" name="lastName">
                             </div>
                         </div>
@@ -73,14 +73,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="address">Address</label>
+                                <label for="address">Indirizzo</label>
                                 <input type="text" class="form-control" id="address" name="address">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="postalcode">Postal Code</label>
+                                <label for="postalcode">Codice Postale</label>
                                 <input type="text" class="form-control" id="postalcode" name="postalcode">
                             </div>
                         </div>
@@ -101,7 +101,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="cc_number">Credit Card Number</label>
+                            <label for="cc_number">Numero Carta</label>
 
                             <div class="form-group" id="card-number">
                                 
@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <label for="expiry">Expiry</label>
+                            <label for="expiry">Scadenza</label>
 
                             <div class="form-group" id="expiration-date">
                                 

@@ -37,7 +37,7 @@
 
                             {{-- Search Restaurant --}}
                             <div class="search-bar">
-                                <input type="text" placeholder="Search Restaurant" v-model="searchedRestaurant" v-on:keyup="searchRestaurantByName(searchedRestaurant)">
+                                <input type="text" placeholder="Cerca ristorante" v-model="searchedRestaurant" v-on:keyup="searchRestaurantByName(searchedRestaurant)">
                             </div>
 
                             @guest {{-- If the user is a Guest the following will be desplayed --}}
@@ -314,7 +314,7 @@
 
 
                 {{-- Menu Sections --}}
-                <div class="menu-sections">
+                <div class="menu-sections" v-if="currentRestaurantPlates.length > 0">
                     {{-- Section --}}
                     <div v-for="type in platesTypes" v-if="currentRestaurantPlates.some((plate) => plate.type.replace(/.$/,'i') == type && plate.visibility == 1)">
                         <h2>@{{ type }}</h2>
@@ -339,6 +339,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div v-else>
+                    <h2 class="text-center">Non ci sono piatti nel menu di questo ristorante al momento.</h2>
                 </div>
                 {{-- End Menu Sections --}}
 
